@@ -1,0 +1,11 @@
+.img{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 534px;
+}
+.content{
+    opacity: 0.4;
+}
