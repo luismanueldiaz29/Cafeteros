@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { RegistrarComponent } from './registrar/registrar.component';
+import { AuditoriaComponent } from './auditoria/auditoria.component';
 
 const routes : Routes = [
   { 
@@ -13,6 +15,14 @@ const routes : Routes = [
     path : 'Home',
     component : HomeComponent
   },
+  {
+    path : "Registrar",
+    component : RegistrarComponent
+  },
+  {
+    path : "auditoria",
+    component : AuditoriaComponent    
+  }
   //angular7
   // {path:'',redirectTo:'/user/login',pathMatch:'full'},
   // {

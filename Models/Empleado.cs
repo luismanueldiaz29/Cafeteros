@@ -8,8 +8,8 @@ using Newtonsoft.Json;
 namespace Cafeteros.Models{
     public class Empleado{
         
-        [JsonProperty("id")][Key]
-        public string id {get; set;}
+        [JsonProperty("Id")][Key]
+        public int Id {get; set;}
 
         [JsonProperty("Nombres")]
         public string Nombres { get; set; }

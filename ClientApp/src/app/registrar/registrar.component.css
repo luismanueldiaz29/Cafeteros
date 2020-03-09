@@ -1,0 +1,35 @@
+/* td {
+    border: black 1px solid;
+}
+tr{
+    border: black 1px solid;
+}
+input{
+    background-color:white;
+    border: white 0;
+}
+
+input{
+    width: auto;
+}
+.intput-largo{
+    width: 100%;
+}
+.tabla{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+} */
+
+.dat{
+    /* width: 10%; */
+    background-color: transparent;
+    border: transparent 0;
+}
+
+.title-center{
+    text-align: center;
+    padding-bottom: 10px;
+}

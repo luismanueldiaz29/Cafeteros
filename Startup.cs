@@ -32,28 +32,12 @@ namespace Cafeteros
         public void ConfigureServices(IServiceCollection services)
         {   
            
-            services.AddDbContext<CafeterosContext>(options => 
-            options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
-            
-            services.AddControllersWithViews();
+           services.AddDbContext<ApplicationDbContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
 
-            //configracion de swagger
-            ConfigureSwagger(services);
-
-            //configuracion de la utenticacion por token
-            ConfigureAutentication(services);
-
-            // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
-        }
-
-        private void ConfigureAutentication(IServiceCollection services){
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                 .AddEntityFrameworkStores<CafeterosContext>()
-                 .AddDefaultTokenProviders();
+              .AddEntityFrameworkStores<ApplicationDbContext>()
+              .AddDefaultTokenProviders();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -69,30 +53,59 @@ namespace Cafeteros
                     Encoding.UTF8.GetBytes(Configuration["ApplicationSettings : SecretKey"])),
                      ClockSkew = TimeSpan.Zero
                  });
-        }
-        private void ConfigureSwagger( IServiceCollection services){
-            services.AddSwaggerDocument(config =>
+
+            services.AddMvc();
+
+            // In production, the Angular files will be served from this directory
+            services.AddSpaStaticFiles(configuration =>
             {
-                config.PostProcess = document =>
-                {
-                    document.Info.Version = "v1";
-                    document.Info.Title = "ToDo API";
-                    document.Info.Description = "A simple ASP.NET Core web API";
-                    document.Info.TermsOfService = "None";
-                    document.Info.Contact = new NSwag.OpenApiContact
-                    {
-                        Name = "Unicesar",
-                        Email = "luismanueldiazsequea@gmail.com",
-                        Url = "https://github.com/luismanueldiaz29/Ponencias"
-                    };
-                    document.Info.License = new NSwag.OpenApiLicense
-                    {
-                        Name = "Use under LICX",
-                        Url = "https://example.com/license"
-                    };
-                };
+                configuration.RootPath = "ClientApp/dist";
             });
         }
+
+        // private void ConfigureAutentication(IServiceCollection services){
+        //     services.AddIdentity<ApplicationUser, IdentityRole>()
+        //          .AddEntityFrameworkStores<ApplicationDbContext>()
+        //          .AddDefaultTokenProviders();
+
+        //     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        //         .AddJwtBearer(options =>
+        //          options.TokenValidationParameters = new TokenValidationParameters
+        //          {
+        //              ValidateIssuer = true,
+        //              ValidateAudience = true,
+        //              ValidateLifetime = true,
+        //              ValidateIssuerSigningKey = true,
+        //              ValidIssuer = "yourdomain.com",
+        //              ValidAudience = "yourdomain.com",
+        //              IssuerSigningKey = new SymmetricSecurityKey(
+        //             Encoding.UTF8.GetBytes(Configuration["ApplicationSettings : SecretKey"])),
+        //              ClockSkew = TimeSpan.Zero
+        //          });
+        // }
+        // private void ConfigureSwagger( IServiceCollection services){
+        //     services.AddSwaggerDocument(config =>
+        //     {
+        //         config.PostProcess = document =>
+        //         {
+        //             document.Info.Version = "v1";
+        //             document.Info.Title = "ToDo API";
+        //             document.Info.Description = "A simple ASP.NET Core web API";
+        //             document.Info.TermsOfService = "None";
+        //             document.Info.Contact = new NSwag.OpenApiContact
+        //             {
+        //                 Name = "Unicesar",
+        //                 Email = "luismanueldiazsequea@gmail.com",
+        //                 Url = "https://github.com/luismanueldiaz29/Ponencias"
+        //             };
+        //             document.Info.License = new NSwag.OpenApiLicense
+        //             {
+        //                 Name = "Use under LICX",
+        //                 Url = "https://example.com/license"
+        //             };
+        //         };
+        //     });
+        // }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -100,14 +113,15 @@ namespace Cafeteros
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }else{
+                app.UseExceptionHandler("/Home/Error");
             }
 
-            // app.UseAuthentication();
-            // app.UseMvc();
-
-            app.UseHttpsRedirection();
-
+            
             app.UseStaticFiles();
+            app.UseHttpsRedirection();
+            app.UseAuthentication();
+            
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();

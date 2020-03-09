@@ -1,16 +1,15 @@
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Identity;
-using Cafeteros.Models;
-using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
+using System.Linq;
+using System.Security.Claims;
 using System.Text;
-using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
+using Cafeteros.Models;
 
 namespace Cafeteros.Controllers
 {
@@ -84,14 +83,13 @@ namespace Cafeteros.Controllers
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.UniqueName, userInfo.Email),
-                new Claim("miValor", "Lo que yo quiera"),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["ApplicationSettings : SecretKey"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Llave_super_secreta"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var expiration = DateTime.UtcNow.AddHours(1);
+            var expiration = DateTime.UtcNow.AddDays(7);
 
             JwtSecurityToken token = new JwtSecurityToken(
                issuer: "yourdomain.com",
@@ -99,11 +97,13 @@ namespace Cafeteros.Controllers
                claims: claims,
                expires: expiration,
                signingCredentials: creds);
+
             return Ok(new
             {
                 token = new JwtSecurityTokenHandler().WriteToken(token),
                 expiration = expiration
             });
+
         }
     }
 }
