@@ -7,7 +7,10 @@ import { MaterialModule } from '../material/material';
   styleUrls: ['./registrar.component.css']
 })
 export class RegistrarComponent implements OnInit {
-  
+  asistente : string;
+  tradicional : string;
+  organizacion : string;
+  selectServicioSanitario : string;
   imports : [MaterialModule];
   
 

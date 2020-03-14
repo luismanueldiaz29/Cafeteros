@@ -1,4 +1,4 @@
-<mat-progress-bar mode="query" *ngIf = "showSpinner"></mat-progress-bar>
+<!-- <mat-progress-bar mode="query" *ngIf = "showSpinner"></mat-progress-bar> -->
 <app-nav-menu></app-nav-menu>
 
     <section>
@@ -268,18 +268,236 @@
 
                                   <mat-step [stepControl]="threeFormGroup">
                                       <!-- tercer step -->
-                                        <ng-template matStepLabel></ng-template>
-                                        <div class="row">
-                                          <div class="col-md-2">
-                                            <button type="submit" class="btn btn-info btn-fill pull-left" matStepperPrevious>Atras</button>
-                                          </div>
-                                          <div class="col-md-8">
-                                            <button type="submit" class="btn btn-info btn-fill pull-right">Guardar</button>
-                                          </div>
-                                          <div class="col-md-2">
-                                            <button type="submit" class="btn btn-info btn-fill pull-right" matStepperNext>siguiente</button>    
+                                      <ng-template matStepLabel></ng-template>
+
+                                      <div class="row">
+                                        <div class="col-md-4">
+                                          <div class="form-group">
+                                            <label>Tenencia de tierra</label>
+                                            <select name="select" class="form-control">
+                                                <option value="Propia">Propia</option>
+                                                <option value="Comunitaria">Comunitaria</option>
+                                                <option value="Otra">Otra</option>
+                                            </select>
                                           </div>
                                         </div>
+
+                                        <div class="col-md-4">
+                                          <div class="form-group">
+                                            <label>Legalidad</label>
+                                            <select name="select" class="form-control">
+                                              <option value="Escritura">Escritura</option>
+                                              <option value="Certificado autoridad">Certificado autoridad</option>
+                                              <option value="Carta venta">Carta venta</option>
+                                            </select>                                          
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="row">
+                                        <!-- inicio row -->
+                                        <div class="col-md-4">
+                                          <div class="form-group">
+                                            <Label>Asistente a la asamblea comunitarias</Label>
+                                            <select name="select" class="form-control" [(ngModel)]="asistente" placeholder="Elija una opción">
+                                              <option value="no">NO</option>
+                                              <option value="si">SI</option>
+                                            </select>
+                                            <div *ngIf = "asistente == 'si'">
+                                              <input class="form-control" placeholder="Cargo si desempeña" type="text">
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                          <div class="form-group">
+                                            <Label>Asistente a trabajos tradicionales</Label>
+                                            <select name="select" class="form-control" [(ngModel)]="tradicional" placeholder="Elija una opción">
+                                              <option value="no">NO</option>
+                                              <option value="si">SI</option>
+                                            </select>
+                                            <div *ngIf = "tradicional == 'si'">
+                                              <input class="form-control" placeholder="Cargo si desempeña" type="text">
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                          <div class="form-group">
+                                            <Label>Pertenece a una organización aparte</Label>
+                                            <select name="select" class="form-control" [(ngModel)]="organizacion" placeholder="Elija una opción">
+                                              <option value="no">NO</option>
+                                              <option value="si">SI</option>
+                                            </select>
+                                            <div *ngIf = "organizacion == 'si'">
+                                              <input class="form-control" placeholder="A cual ?" type="text">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <!-- fin row -->
+                                      </div>
+
+                                      <div class="row">
+                                        <!-- inicio row -->
+                                        <div class="col-md-4">
+                                          <div class="form-group">
+                                            <label>Tipo de vivienda</label>
+                                            <select name="select" class="form-control">
+                                              <option value="Tradicional">Tradicional</option>
+                                              <option value="Occidental">Occidental</option>
+                                            </select>                                          
+                                          </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                          <div class="form-group">
+                                            <label>Numero de habitaciones</label>
+                                            <input type="number" class="form-control">
+                                          </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                          <div class="form-group">
+                                            <label>Material predominante</label>
+                                            <select name="select" class="form-control">
+                                              <option value="Barro">Barro</option>
+                                              <option value="Adobe">Adobe</option>
+                                              <option value="Ladrillo">Ladrillo</option>
+                                              <option value="Bloque">Bloque</option>
+                                              <option value="Plastico">Plastico</option>
+                                              <option value="Otro">Otro</option>
+                                            </select>   
+                                          </div>
+                                        </div>
+                                        <!-- fin row -->
+                                      </div>
+
+                                      <div class="row">
+                                        <!-- inicio row -->
+                                        <div class="col-md-4">
+                                          <div class="form-group">
+                                            <label>Material predominante</label>
+                                            <select name="select" class="form-control">
+                                              <option value="Barro">Barro</option>
+                                              <option value="Adobe">Adobe</option>
+                                              <option value="Ladrillo">Ladrillo</option>
+                                              <option value="Bloque">Bloque</option>
+                                              <option value="Plastico">Plastico</option>
+                                              <option value="Otro">Otro</option>
+                                            </select>
+                                          </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                          <div class="form-group">
+                                            <label>Material del techo</label>
+                                            <select name="select" class="form-control">
+                                              <option value="Paja">Paja</option>
+                                              <option value="Zinc">Zinc</option>
+                                              <option value="Palma">Palma</option>
+                                              <option value="Eternit">Eternit</option>
+                                              <option value="Plastico">Plastico</option>
+                                              <option value="Otro">Otro</option>
+                                            </select>
+                                          </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                          <div class="form-group">
+                                            <label>Cuenta con piso ?</label>
+                                            <select name="select" class="form-control">
+                                              <option value="Ceramica">Ceramica</option>
+                                              <option value="Cemento">Cemento</option>
+                                              <option value="Tierra">Tierra</option>
+                                            </select>
+                                          </div>
+                                        </div>
+
+                                        <!-- fin row -->
+                                      </div>
+
+                                      <div class="row">
+                                        <!-- inicio row -->
+                                        <div class="col-md-4">
+                                          <div class="form-group">
+                                            <label>Tipo de cosina</label>
+                                            <select name="select" class="form-control">
+                                              <option value="Barro">Barro</option>
+                                              <option value="Adobe">Adobe</option>
+                                              <option value="Enramada">Ladrillo</option>
+                                              <option value="Compartida">Compartida</option>
+                                              <option value="Al aire">Al aire</option>
+                                              <option value="Al aire">Al aire</option>
+                                              <option value="No hay">No hay</option>
+                                            </select>
+                                          </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                          <div class="form-group">
+                                            <label>Material para cosinar</label>
+                                            <select name="select" class="form-control">
+                                              <option value="Leña">Leña</option>
+                                              <option value="Pipeta de gas">Pipeta de gas</option>
+                                              <option value="Petroleo">Petroleo</option>
+                                            </select>
+                                          </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                          <div class="form-group">
+                                            <label>Fuente de energia para cosinar</label>
+                                            <select name="select" class="form-control">
+                                              <option value="Bosque">Bosque</option>
+                                              <option value="Sombrio">Sombrio</option>
+                                              <option value="Otro">Otro</option>
+                                            </select>
+                                          </div>
+                                        </div>
+                                        <!-- fin row -->
+                                      </div>
+
+                                      <div class="row">
+                                        <!-- Inicio row -->
+                                        <div class="col-md-4">
+                                          <div class="form-group">
+                                            <label>Servicio sanitario</label>
+                                            <select name="selectServicioSanitario" [(ngModel)]="selectServicioSanitario" class="form-control">
+                                              <option value="SI">SI</option>
+                                              <option value="NO">NO</option>
+                                            </select>
+                                            <div *ngIf="selectServicioSanitario == 'SI'">
+                                              <input type="text" class="form-control" placeholder="Estado">
+                                            </div>
+                                          </div>
+                                        </div>
+                                          <div class="col-md-4">
+                                            <div class="form-group">
+                                              <label>Tipo Alumbrado</label>
+                                              <select name="select" class="form-control">
+                                                <option value="Mechon">Mechon</option>
+                                                <option value="Vela">Vela</option>
+                                                <option value="Solar">Solar</option>
+                                                <option value="Planta">Planta</option>
+                                                <option value="Foco de mano">Foco de mano</option>
+                                                <option value="Ninguno">Ninguno</option>
+                                              </select>
+                                            </div>
+                                          </div>
+
+                                          <!-- Fin row -->
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-2">
+                                          <button type="submit" class="btn btn-info btn-fill pull-left" matStepperPrevious>Atras</button>
+                                        </div>
+                                        <div class="col-md-8">
+                                          <button type="submit" class="btn btn-info btn-fill pull-right">Guardar</button>
+                                        </div>
+                                        <div class="col-md-2">
+                                          <button type="submit" class="btn btn-info btn-fill pull-right" matStepperNext>siguiente</button>    
+                                        </div>
+                                      </div>
                                       <!-- fin tercer step -->
                                   </mat-step>
 
