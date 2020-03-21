@@ -67,443 +67,696 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="header">
-                                    <h4 class="title">Registro de productores</h4>
+                                    <h4 class="title ">Registro de productores</h4>
                                 </div>
                                 <div class="content">
                                   <mat-horizontal-stepper linear #stepper>
                                     <mat-step [stepControl]="firstFormGroup">
-                                    <form>
+                                    <form [formGroup]="firstFormGroup">
+                                      <h5 class="title title-center">Datos personales del productor</h5>
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Nombre del productor</label>
-                                                    <input type="text" class="form-control" placeholder="nombre del productor">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Nº de cedula</label>
-                                                    <input type="text" class="form-control" placeholder="ingrece la cedula">
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Nombre del predio</label>
-                                                    <input type="text" class="form-control" placeholder="Nombre del predio">
+                                                    <input type="text" class="form-control" formControlName = "Nombre"  [ngClass]="{ 'is-invalid': submitted && f.Nombre.errors }" [(ngModel)]="productor.Nombre" placeholder="nombre del productor">
+                                                    <div *ngIf="submitted && f.Nombre.errors" class="invalid-feedback">
+                                                      <div *ngIf="f.Nombre.errors.required">Campo requerido</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label>Codigo cafetero</label>
-                                                    <input type="text" class="form-control" placeholder="Codigo cafetero">
+                                                    <label>Nº de cedula</label>
+                                                    <input type="text" class="form-control" formControlName = "id" [ngClass]="{ 'is-invalid': submitted && f.id.errors }" [(ngModel)]= "productor.id" placeholder="ingrece la cedula">
+                                                    <div *ngIf="submitted && f.id.errors" class="invalid-feedback">
+                                                      <div *ngIf="f.id.errors.required">Campo requerido</div>
+                                                    </div>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-4">
+                                              <div class="form-group">
+                                                  <label>Codigo cafetero</label>
+                                                  <input type="text" class="form-control" formControlName = "CodigoCafetero" [ngClass]="{ 'is-invalid': submitted && f.CodigoCafetero.errors }" [(ngModel)] = "productor.CodigoCafetero" placeholder="Codigo cafetero">
+                                                  <div *ngIf="submitted && f.CodigoCafetero.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.CodigoCafetero.errors.required">Campo requerido</div>
+                                                  </div>
+                                              </div>
+                                          </div>
                                         </div>
     
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label>Codigo de Finca</label>
-                                                    <input type="text" class="form-control" placeholder="Codigo de la finca">
+                                                    <label>Nombre del predio</label>
+                                                    <input type="text" class="form-control" formControlName="NombrePredio" [ngClass]="{ 'is-invalid': submitted && f.NombrePredio.errors }" [(ngModel)] = "productor.NombrePredio" placeholder="Nombre del predio">
+                                                    <div *ngIf="submitted && f.NombrePredio.errors" class="invalid-feedback">
+                                                      <div *ngIf="f.NombrePredio.errors.required">Campo requerido</div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
+                                              <div class="form-group">
+                                                  <label>Codigo de Finca</label>
+                                                  <input type="text" class="form-control"  placeholder="Codigo de la finca">
+                                              </div>
+                                            </div>
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Codigo SICA</label>
-                                                    <input type="text" class="form-control" placeholder="Ingrece el codigo">
+                                                    <input type="text" class="form-control" formControlName="CodigoSica" [ngClass]="{ 'is-invalid': submitted && f.CodigoSica.errors }" [(ngModel)] = "productor.CodigoSica" placeholder="Ingrece el codigo">
+                                                    <div *ngIf="submitted && f.CodigoSica.errors" class="invalid-feedback">
+                                                      <div *ngIf="f.CodigoSica.errors.required">Campo requerido</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-    
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Municipio</label>
-                                                    <input type="text" class="form-control" placeholder="Municipio">
+                                                    <input type="text" class="form-control"  formControlName="Municipio" [ngClass]="{ 'is-invalid': submitted && f.Municipio.errors }" [(ngModel)] = "productor.Municipio" placeholder="Municipio">
+                                                    <div *ngIf="submitted && f.Municipio.errors" class="invalid-feedback">
+                                                      <div *ngIf="f.Municipio.errors.required">Campo requerido</div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Vereda</label>
-                                                    <input type="number" class="form-control" placeholder="Vereda">
+                                                    <input type="text" class="form-control" formControlName="Vereda" [ngClass]="{ 'is-invalid': submitted && f.Vereda.errors }" [(ngModel)] = "productor.Vereda" placeholder="Vereda">
+                                                    <div *ngIf="submitted && f.Vereda.errors" class="invalid-feedback">
+                                                      <div *ngIf="f.Vereda.errors.required">Campo requerido</div>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-4">
+                                              <div class="form-group">
+                                                  <label>Numero de telefono</label>
+                                                  <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.NumeroTelefono.errors }" formControlName="NumeroTelefono" [(ngModel)] = "productor.NumeroTelefono" placeholder="Numero de telefono">
+                                                  <div *ngIf="submitted && f.NumeroTelefono.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.NumeroTelefono.errors.required">Campo requerido</div>
+                                                  </div>
+                                              </div>
+                                          </div>
                                         </div>
 
                                         <div class="row">
+                                          
                                           <div class="col-md-4">
                                               <div class="form-group">
-                                                  <label>Numero de telefono</label>
-                                                  <input type="text" class="form-control" placeholder="Numero de telefono">
-                                              </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                              <div class="form-group">
                                                   <label>Afiniacion a salud</label>
-                                                  <input type="number" class="form-control" placeholder="Afiniacion a salud">
+                                                  <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.AfiliacionSalud.errors }" formControlName="AfiliacionSalud" [(ngModel)] = "productor.AfiliacionSalud" placeholder="Afiniacion a salud">
+                                                  <div *ngIf="submitted && f.AfiliacionSalud.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.AfiliacionSalud.errors.required">Campo requerido</div>
+                                                  </div>
                                               </div>
                                           </div>
-                                      </div>
-                                        
-                                        <div class="row">
-                                          <div class="col-md-2">
-                                            
+
+                                          <div class="col-md-7">
+                                            <div class="form-group">
+                                              <label>Actividad(es) principal de ingreso</label>
+                                              <input type="text" class="form-control" formControlName="ActvidadesDedican" [ngClass]="{ 'is-invalid': submitted && f.ActvidadesDedican.errors }" [(ngModel)] = "productor.ActvidadesDedican" placeholder="Actividad a la que se dedica">
+                                              <div *ngIf="submitted && f.ActvidadesDedican.errors" class="invalid-feedback">
+                                                <div *ngIf="f.ActvidadesDedican.errors.required">Campo requerido</div>
+                                              </div>
                                           </div>
-                                          <div class="col-md-8"></div>
-                                          <div class="col-md-2">
-                                            <button type="submit" class="btn btn-info btn-fill pull-right" matStepperNext>siguiente</button>    
                                           </div>
                                         </div>
-                                        
-                                        
-                                        
+
+                                        <!-- tabla de datos familiares -->
+                                        <form>
+                                          <div class="row">
+                                            <div class="col-md-12">
+                                              <h5 class="title title-center">Datos Familiares</h5>
+                                              <div class="table-responsive table-full-width">
+                                                <table class="table table-striped table-bordered">
+                                                  <thead>
+                                                        <tr>
+                                                            <th class="title">Nombre</th>
+                                                            <th class="title">Documento</th>
+                                                            <th class="title">Fecha Nacimiento</th>
+                                                            <th class="title">Parentesco</th>
+                                                            <th class="title">Tipo Poblacion</th>
+                                                            <th class="title">Afiliacion salud</th>
+                                                            <th class="title">Nivel Educativo</th>
+                                                            <th class="title">Accion</th>
+                                                        </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                      <tr *ngFor="let field of fieldArray; let i = index">
+                                                          
+                                                          <td>
+                                                              <input [(ngModel)]="field.Nombre" class="form-control" type="text" name="{{field.Nombre}}" />
+                                                          </td>
+                                                          <td>
+                                                              <input [(ngModel)]="field.NumeroDocumento" class="form-control" type="text" name="{{field.NumeroDocumento}}" />
+                                                          </td>
+                                                          <td>
+                                                              <input [(ngModel)]="field.FechaNacimiento" class="form-control" type="date" name="{{field.FechaNacimiento}}" />
+                                                          </td>
+                                                          <td>
+                                                            <input [(ngModel)]="field.Parentesco" class="form-control" type="text" name="{{field.Parentesco}}" />
+                                                        </td>
+                                                        <td>
+                                                          <input [(ngModel)]="field.TipoPoblacion" class="form-control" type="text" name="{{field.TipoPoblacion}}" />
+                                                        </td>
+                                                        <td>
+                                                          <input [(ngModel)]="field.AfiliacionSalud" class="form-control" type="text" name="{{field.AfiliacionSalud}}" />
+                                                        </td>
+                                                        <td>
+                                                          <input [(ngModel)]="field.NivelEducativo" class="form-control" type="text" name="{{field.NivelEducativo}}" />
+                                                        </td>
+                                                          <td>
+                                                            <a class="badge" (click)="deleteFieldValue(i)">
+                                                              <img src="assets/dejar.png" alt="">
+                                                            </a>
+                                                          </td>
+                                                          
+                                                      </tr>
+                                                      <tr>
+                                                          <td>
+                                                              <input class="form-control" type="text"  [(ngModel)]="newAttribute.Nombre" name="newAttributeNombre" />
+                                                          </td>
+                                                          <td>
+                                                              <input class="form-control" type="text"  [(ngModel)]="newAttribute.NumeroDocumento" name="newAttributeNumeroDocumento" />
+                                                          </td>
+                                                          <td>
+                                                              <input class="form-control" type="date"  [(ngModel)]="newAttribute.FechaNacimiento" name="newAttributeFechaNacimiento" />
+                                                          </td>
+                                                          <td>
+                                                            <input class="form-control" type="text" [(ngModel)]="newAttribute.Parentesco" name="newAttributeParentesco" />
+                                                        </td>
+                                                        <td>
+                                                          <input class="form-control" type="text" [(ngModel)]="newAttribute.TipoPoblacion" name="newAttributeTipoPoblacion" />
+                                                        </td>
+                                                        <td>
+                                                          <input class="form-control" type="text" [(ngModel)]="newAttribute.AfiliacionSalud" name="newAttributeAfiliacionSalud" />
+                                                        </td>
+                                                        <td>
+                                                          <input class="form-control" type="text"  [(ngModel)]="newAttribute.NivelEducativo" name="newAttributeNivelEducativo" />
+                                                        </td>
+                                                          <td>
+                                                              <!-- <button class="btn btn-default" type="button" ">Add</button> -->
+                                                              <a class="badge" (click)="addFieldValue()">
+                                                                <img src="assets/comprobado.png" alt="">
+                                                              </a>
+                                                          </td>
+                                                      </tr>
+                                                  </tbody>
+                                                </table>
+                                              </div>
+                                              
+                                              <!-- <div class="row">
+                                                <div class="col-md-2">
+                                                  <button type="submit" class="btn btn-info btn-fill pull-left" matStepperPrevious>Atras</button>
+                                                </div>
+                                                <div class="col-md-8">
+                                                  
+                                                </div>
+                                                <div class="col-md-2">
+                                                  <button type="submit" class="btn btn-info btn-fill pull-right" matStepperNext>siguiente</button>    
+                                                </div>
+                                              </div>   -->
+                                              
+                                              <div class="clearfix"></div>
+                                            </div>
+                                          </div>
+                                        </form>
+                                        <!-- fin tabla de datos familiares -->
+                                        <!-- boton siguiente -->
+                                          <div class="row pager mt-3">
+                                            <div class="col"></div>
+                                            <div class="col-ml-5 pull-right ">
+                                              <button type="submit" class="btn btn-info btn-fill " (click)="onSubmit()" matStepperNext>siguiente</button>    
+                                            </div>
+                                          </div>
+                                        <!-- fin boton siguiente -->
                                     </form>
                                   </mat-step>
 
                                   <mat-step [stepControl]="secondFormGroup">
                                     <!-- segundo step -->
-
-                                    <form>
-                                      <div class="row">
-                                        <div class="col-md-12">
-                                          <h5 class="title title-center">Datos Familiares</h5>
-                                          <div class="table-responsive table-full-width">
-                                            <table class="table table-striped table-bordered">
-                                              <thead>
-                                                    <tr>
-                                                        <th class="title">Nombre</th>
-                                                        <th class="title">Documento</th>
-                                                        <th class="title">Fecha Nacimiento</th>
-                                                        <th class="title">Parentesco</th>
-                                                        <th class="title">Tipo Poblacion</th>
-                                                        <th class="title">Afiliacion salud</th>
-                                                        <th class="title">Nivel Educativo</th>
-                                                        <th class="title">Accion</th>
-                                                    </tr>
-                                              </thead>
-                                              <tbody>
-                                                  <tr *ngFor="let field of fieldArray; let i = index">
-                                                      <td>
-                                                          <input [(ngModel)]="field.code" class="form-control" type="text" name="{{field.code}}" />
-                                                      </td>
-                                                      <td>
-                                                          <input [(ngModel)]="field.name" class="form-control" type="text" name="{{field.name}}" />
-                                                      </td>
-                                                      <td>
-                                                          <input [(ngModel)]="field.price" class="form-control" type="text" name="{{field.price}}" />
-                                                      </td>
-                                                      <td>
-                                                        <input [(ngModel)]="field.price" class="form-control" type="text" name="{{field.price}}" />
-                                                    </td>
-                                                    <td>
-                                                      <input [(ngModel)]="field.price" class="form-control" type="text" name="{{field.price}}" />
-                                                    </td>
-                                                    <td>
-                                                      <input [(ngModel)]="field.price" class="form-control" type="text" name="{{field.price}}" />
-                                                    </td>
-                                                    <td>
-                                                      <input [(ngModel)]="field.price" class="form-control" type="text" name="{{field.price}}" />
-                                                    </td>
-                                                      <td>
-                                                        <a class="badge" (click)="deleteFieldValue(i)">
-                                                          <img src="assets/dejar.png" alt="">
-                                                        </a>
-                                                      </td>
-                                                      
-                                                  </tr>
-                                                  <tr>
-                                                      <td>
-                                                          <input class="form-control" type="text" id="newAttributeCode" [(ngModel)]="newAttribute.code" name="newAttributeCode" />
-                                                      </td>
-                                                      <td>
-                                                          <input class="form-control" type="text" id="newAttributeName" [(ngModel)]="newAttribute.name" name="newAttributeName" />
-                                                      </td>
-                                                      <td>
-                                                          <input class="form-control" type="text" id="newAttributePrice" [(ngModel)]="newAttribute.price" name="newAttributePrice" />
-                                                      </td>
-                                                      <td>
-                                                        <input class="form-control" type="text" id="newAttributePrice" [(ngModel)]="newAttribute.price" name="newAttributePrice" />
-                                                    </td>
-                                                    <td>
-                                                      <input class="form-control" type="text" id="newAttributePrice" [(ngModel)]="newAttribute.price" name="newAttributePrice" />
-                                                    </td>
-                                                    <td>
-                                                      <input class="form-control" type="text" id="newAttributePrice" [(ngModel)]="newAttribute.price" name="newAttributePrice" />
-                                                    </td>
-                                                    <td>
-                                                      <input class="form-control" type="text" id="newAttributePrice" [(ngModel)]="newAttribute.price" name="newAttributePrice" />
-                                                    </td>
-                                                      <td>
-                                                          <!-- <button class="btn btn-default" type="button" ">Add</button> -->
-                                                          <a class="badge" (click)="addFieldValue()">
-                                                            <img src="assets/comprobado.png" alt="">
-                                                          </a>
-                                                      </td>
-                                                  </tr>
-                                              </tbody>
-                                            </table>
-                                          </div>
-                                          
-                                          <div class="row">
-                                            <div class="col-md-2">
-                                              <button type="submit" class="btn btn-info btn-fill pull-left" matStepperPrevious>Atras</button>
-                                            </div>
-                                            <div class="col-md-8">
-                                              <!-- <button type="submit" class="btn btn-info btn-fill pull-right">Guardar</button> -->
-                                            </div>
-                                            <div class="col-md-2">
-                                              <button type="submit" class="btn btn-info btn-fill pull-right" matStepperNext>siguiente</button>    
-                                            </div>
-                                          </div>  
-                                          
-                                          <div class="clearfix"></div>
-                                        </div>
-                                      </div>
-                                    </form>
-                                    <!-- final segundo step -->
-                                  </mat-step>
-
-                                  <mat-step [stepControl]="threeFormGroup">
-                                      <!-- tercer step -->
                                       <ng-template matStepLabel></ng-template>
+                                      <form [formGroup] = "secondFormGroup">
 
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label>Tenencia de tierra</label>
-                                            <select name="select" class="form-control">
-                                                <option value="Propia">Propia</option>
-                                                <option value="Comunitaria">Comunitaria</option>
-                                                <option value="Otra">Otra</option>
-                                            </select>
-                                          </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label>Legalidad</label>
-                                            <select name="select" class="form-control">
-                                              <option value="Escritura">Escritura</option>
-                                              <option value="Certificado autoridad">Certificado autoridad</option>
-                                              <option value="Carta venta">Carta venta</option>
-                                            </select>                                          
-                                          </div>
-                                        </div>
-                                      </div>
-
-                                      <div class="row">
-                                        <!-- inicio row -->
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <Label>Asistente a la asamblea comunitarias</Label>
-                                            <select name="select" class="form-control" [(ngModel)]="asistente" placeholder="Elija una opción">
-                                              <option value="no">NO</option>
-                                              <option value="si">SI</option>
-                                            </select>
-                                            <div *ngIf = "asistente == 'si'">
-                                              <input class="form-control" placeholder="Cargo si desempeña" type="text">
-                                            </div>
-                                          </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <Label>Asistente a trabajos tradicionales</Label>
-                                            <select name="select" class="form-control" [(ngModel)]="tradicional" placeholder="Elija una opción">
-                                              <option value="no">NO</option>
-                                              <option value="si">SI</option>
-                                            </select>
-                                            <div *ngIf = "tradicional == 'si'">
-                                              <input class="form-control" placeholder="Cargo si desempeña" type="text">
-                                            </div>
-                                          </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <Label>Pertenece a una organización aparte</Label>
-                                            <select name="select" class="form-control" [(ngModel)]="organizacion" placeholder="Elija una opción">
-                                              <option value="no">NO</option>
-                                              <option value="si">SI</option>
-                                            </select>
-                                            <div *ngIf = "organizacion == 'si'">
-                                              <input class="form-control" placeholder="A cual ?" type="text">
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <!-- fin row -->
-                                      </div>
-
-                                      <div class="row">
-                                        <!-- inicio row -->
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label>Tipo de vivienda</label>
-                                            <select name="select" class="form-control">
-                                              <option value="Tradicional">Tradicional</option>
-                                              <option value="Occidental">Occidental</option>
-                                            </select>                                          
-                                          </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label>Numero de habitaciones</label>
-                                            <input type="number" class="form-control">
-                                          </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label>Material predominante</label>
-                                            <select name="select" class="form-control">
-                                              <option value="Barro">Barro</option>
-                                              <option value="Adobe">Adobe</option>
-                                              <option value="Ladrillo">Ladrillo</option>
-                                              <option value="Bloque">Bloque</option>
-                                              <option value="Plastico">Plastico</option>
-                                              <option value="Otro">Otro</option>
-                                            </select>   
-                                          </div>
-                                        </div>
-                                        <!-- fin row -->
-                                      </div>
-
-                                      <div class="row">
-                                        <!-- inicio row -->
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label>Material predominante</label>
-                                            <select name="select" class="form-control">
-                                              <option value="Barro">Barro</option>
-                                              <option value="Adobe">Adobe</option>
-                                              <option value="Ladrillo">Ladrillo</option>
-                                              <option value="Bloque">Bloque</option>
-                                              <option value="Plastico">Plastico</option>
-                                              <option value="Otro">Otro</option>
-                                            </select>
-                                          </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label>Material del techo</label>
-                                            <select name="select" class="form-control">
-                                              <option value="Paja">Paja</option>
-                                              <option value="Zinc">Zinc</option>
-                                              <option value="Palma">Palma</option>
-                                              <option value="Eternit">Eternit</option>
-                                              <option value="Plastico">Plastico</option>
-                                              <option value="Otro">Otro</option>
-                                            </select>
-                                          </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label>Cuenta con piso ?</label>
-                                            <select name="select" class="form-control">
-                                              <option value="Ceramica">Ceramica</option>
-                                              <option value="Cemento">Cemento</option>
-                                              <option value="Tierra">Tierra</option>
-                                            </select>
-                                          </div>
-                                        </div>
-
-                                        <!-- fin row -->
-                                      </div>
-
-                                      <div class="row">
-                                        <!-- inicio row -->
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label>Tipo de cosina</label>
-                                            <select name="select" class="form-control">
-                                              <option value="Barro">Barro</option>
-                                              <option value="Adobe">Adobe</option>
-                                              <option value="Enramada">Ladrillo</option>
-                                              <option value="Compartida">Compartida</option>
-                                              <option value="Al aire">Al aire</option>
-                                              <option value="Al aire">Al aire</option>
-                                              <option value="No hay">No hay</option>
-                                            </select>
-                                          </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label>Material para cosinar</label>
-                                            <select name="select" class="form-control">
-                                              <option value="Leña">Leña</option>
-                                              <option value="Pipeta de gas">Pipeta de gas</option>
-                                              <option value="Petroleo">Petroleo</option>
-                                            </select>
-                                          </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label>Fuente de energia para cosinar</label>
-                                            <select name="select" class="form-control">
-                                              <option value="Bosque">Bosque</option>
-                                              <option value="Sombrio">Sombrio</option>
-                                              <option value="Otro">Otro</option>
-                                            </select>
-                                          </div>
-                                        </div>
-                                        <!-- fin row -->
-                                      </div>
-
-                                      <div class="row">
-                                        <!-- Inicio row -->
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label>Servicio sanitario</label>
-                                            <select name="selectServicioSanitario" [(ngModel)]="selectServicioSanitario" class="form-control">
-                                              <option value="SI">SI</option>
-                                              <option value="NO">NO</option>
-                                            </select>
-                                            <div *ngIf="selectServicioSanitario == 'SI'">
-                                              <input type="text" class="form-control" placeholder="Estado">
-                                            </div>
-                                          </div>
-                                        </div>
+                                        <h5 class="title title-center">Aspectos Socio Economicos</h5>
+                                        <!-- <input type="text" class="form-control" formControlName="ActvidadesDedican" [ngClass]="{ 'is-invalid': submitted && f.ActvidadesDedican.errors }" [(ngModel)] = "productor.ActvidadesDedican" placeholder="Actividad a la que se dedica">
+                                              <div *ngIf="submitted && f.ActvidadesDedican.errors" class="invalid-feedback">
+                                                <div *ngIf="f.ActvidadesDedican.errors.required">Campo requerido</div>
+                                              </div> -->
+                                        <div class="row">
                                           <div class="col-md-4">
                                             <div class="form-group">
-                                              <label>Tipo Alumbrado</label>
-                                              <select name="select" class="form-control">
-                                                <option value="Mechon">Mechon</option>
-                                                <option value="Vela">Vela</option>
-                                                <option value="Solar">Solar</option>
-                                                <option value="Planta">Planta</option>
-                                                <option value="Foco de mano">Foco de mano</option>
-                                                <option value="Ninguno">Ninguno</option>
+                                              <label>Tenencia de tierra</label>
+                                              <select  formControlName = "TenenciaTierra" [ngClass]="{ 'is-invalid': submitted && f2.TenenciaTierra.errors }" aria-placeholder="seleccione una opcion" [(ngModel)] = "aspectoEconomico.TenenciaTierra" class="form-control">
+                                                  <option value="Propia">Propia</option>
+                                                  <option value="Comunitaria">Comunitaria</option>
+                                                  <option value="Otra">Otra</option>
+                                              </select>
+                                              <div *ngIf="submitted && f2.TenenciaTierra.errors" class="invalid-feedback">
+                                                <div *ngIf="f2.TenenciaTierra.errors.required">Campo requerido</div>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-4">
+                                            <div class="form-group">
+                                              <label>Legalidad</label>
+                                              <select formControlName = "Legalidad" [ngClass]="{ 'is-invalid': submitted && f2.Legalidad.errors }" aria-placeholder="seleccione una opcion" [(ngModel)] = "aspectoEconomico.Legalidad" class="form-control">
+                                                <option value="Escritura">Escritura</option>
+                                                <option value="Certificado autoridad">Certificado autoridad</option>
+                                                <option value="Carta venta">Carta venta</option>
+                                              </select>
+                                              <div *ngIf="submitted && f2.Legalidad.errors" class="invalid-feedback">
+                                                <div *ngIf="f2.Legalidad.errors.required">Campo requerido</div>
+                                              </div>                                          
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <h5 class="title mt-2 mb-2">Participacion comunitaria</h5>
+
+                                        <div class="row">
+                                          <!-- inicio row -->
+                                          <div class="col-md-4">
+                                            <div class="form-group">
+                                              <Label>Asistente a la asamblea comunitarias</Label>
+                                              <select [ngClass]="{ 'is-invalid': submitted && f2.AsistenteAsamblea.errors }" formControlName = "AsistenteAsamblea" aria-placeholder="seleccione una opcion" [(ngModel)] = "participacionComunitaria.AsistenteAsamblea" class="form-control">
+                                                <option value="no">NO</option>
+                                                <option value="si">SI</option>
+                                              </select>
+                                              <div *ngIf = "participacionComunitaria.AsistenteAsamblea == 'si'">
+                                                <input class="form-control" formControlName="CargoAsamblea" [(ngModel)] = "participacionComunitaria.CargoAsamblea" placeholder="Cargo si desempeña" type="text">
+                                              </div>
+                                              <div *ngIf="submitted && f2.AsistenteAsamblea.errors " class="invalid-feedback">
+                                                <div *ngIf="f2.AsistenteAsamblea.errors.required">Campo requerido</div>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-4">
+                                            <div class="form-group">
+                                              <Label>Asistente a trabajos tradicionales</Label>
+                                              <select [ngClass]="{ 'is-invalid': submitted && f2.AsistenteTrabajos.errors }" class="form-control"  formControlName="AsistenteTrabajos" [(ngModel)] = "participacionComunitaria.AistenteTrabajos" placeholder="Elija una opción">
+                                                <option value="no">NO</option>
+                                                <option value="si">SI</option>
+                                              </select>
+                                              <div *ngIf = "participacionComunitaria.AistenteTrabajos == 'si'">
+                                                <input class="form-control"  formControlName="CargoTrabajo" [(ngModel)] = "participacionComunitaria.CargoTrabajo" placeholder="Cargo si desempeña" type="text">
+                                              </div>
+                                              <div *ngIf="submitted && f2.AsistenteTrabajos.errors" class="invalid-feedback">
+                                                <div *ngIf="f2.AsistenteTrabajos.errors.required">Campo requerido</div>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-4">
+                                            <div class="form-group">
+                                              <Label>Pertenece a una organización aparte</Label>
+                                              <select [ngClass]="{ 'is-invalid': submitted && f2.OrganizacionAparte.errors }" class="form-control" formControlName="OrganizacionAparte" [(ngModel)] = "participacionComunitaria.OrganizacionAparte" placeholder="Elija una opción">
+                                                <option value="no">NO</option>
+                                                <option value="si">SI</option>
+                                              </select>
+                                              <div *ngIf = "participacionComunitaria.OrganizacionAparte == 'si'">
+                                                <input class="form-control" formControlName="CualOrganizacion" [(ngModel)] = "participacionComunitaria.CualOrganizacion" placeholder="A cual ?" type="text">
+                                              </div>
+                                              <div *ngIf="submitted && f2.OrganizacionAparte.errors" class="invalid-feedback">
+                                                <div *ngIf="f2.OrganizacionAparte.errors.required">Campo requerido</div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <!-- fin row -->
+                                        </div>
+                                        <h5 class="title mt-2 mb-2">Aspecto de habitabilidad</h5>
+                                        <div class="row">
+                                          <!-- inicio row -->
+                                          <div class="col-md-4">
+                                            <div class="form-group">
+                                              <label>Tipo de vivienda</label>
+                                              <select  class="form-control" formControlName="TipoVivienda" [(ngModel)] = "habitabilidad.TipoVivienda" placeholder="Elija una opción">
+                                                <option value="Tradicional">Tradicional</option>
+                                                <option value="Occidental">Occidental</option>
+                                              </select>                                          
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-4">
+                                            <div class="form-group">
+                                              <label>Numero de habitaciones</label>
+                                              <input type="number" class="form-control"formControlName="NumeroHabitaciones" [(ngModel)] = "habitabilidad.NumeroHabitaciones" placeholder="Ingrece el numero de habitaciones">
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-4">
+                                            <div class="form-group">
+                                              <label>Material predominante</label>
+                                              <select  class="form-control" formControlName="MaterialPredominante" [(ngModel)] = "habitabilidad.MaterialPredominante" placeholder="Elija una opción">
+                                                <option value="Barro">Barro</option>
+                                                <option value="Adobe">Adobe</option>
+                                                <option value="Ladrillo">Ladrillo</option>
+                                                <option value="Bloque">Bloque</option>
+                                                <option value="Plastico">Plastico</option>
+                                                <option value="Otro">Otro</option>
+                                              </select>   
+                                            </div>
+                                          </div>
+                                          <!-- fin row -->
+                                        </div>
+
+                                        <!-- <div class="row"> -->
+                                          <!-- inicio row -->
+                                          <!-- <div class="col-md-4">
+                                            <div class="form-group">
+                                              <label>Material predominante</label>
+                                              <select class="form-control" formControlName="material">
+                                                <option value="Barro">Barro</option>
+                                                <option value="Adobe">Adobe</option>
+                                                <option value="Ladrillo">Ladrillo</option>
+                                                <option value="Bloque">Bloque</option>
+                                                <option value="Plastico">Plastico</option>
+                                                <option value="Otro">Otro</option>
+                                              </select>
+                                            </div>
+                                          </div> -->
+
+
+
+                                          <!-- <div class="col-md-4">
+                                            <div class="form-group">
+                                              <label>Cuenta con piso ?</label>
+                                              <select  formControlName = "CuentaPiso" class="form-control" >
+                                                <option value="Ceramica">Ceramica</option>
+                                                <option value="Cemento">Cemento</option>
+                                                <option value="Tierra">Tierra</option>
+                                              </select>
+                                            </div>
+                                          </div> -->
+
+                                          <!-- fin row -->
+                                        <!-- </div> -->
+
+                                        <div class="row">
+                                          <!-- inicio row -->
+                                          <div class="col-md-4">
+                                            <div class="form-group">
+                                              <label>Tipo de cosina</label>
+                                              <select  class="form-control" formControlName="TipoCosina" [(ngModel)] = "habitabilidad.MaterialCosinar" placeholder="Elija una opción">
+                                                <option value="Barro">Barro</option>
+                                                <option value="Adobe">Adobe</option>
+                                                <option value="Enramada">Ladrillo</option>
+                                                <option value="Compartida">Compartida</option>
+                                                <option value="Al aire">Al aire</option>
+                                                <option value="Al aire">Al aire</option>
+                                                <option value="No hay">No hay</option>
                                               </select>
                                             </div>
                                           </div>
 
-                                          <!-- Fin row -->
-                                      </div>
-                                      <div class="row">
-                                        <div class="col-md-2">
-                                          <button type="submit" class="btn btn-info btn-fill pull-left" matStepperPrevious>Atras</button>
+                                          <div class="col-md-4">
+                                            <div class="form-group">
+                                              <label>Material para cosinar</label>
+                                              <select  class="form-control" formControlName="EnergiaCosinar" [(ngModel)] = "habitabilidad.EnergiaCosinar" placeholder="Elija una opción">
+                                                <option value="Leña">Leña</option>
+                                                <option value="Pipeta de gas">Pipeta de gas</option>
+                                                <option value="Petroleo">Petroleo</option>
+                                              </select>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-4">
+                                            <div class="form-group">
+                                              <label>Material del techo</label>
+                                              <select  class="form-control" formControlName="MaterialTecho" [(ngModel)] = "habitabilidad.MaterialTecho" placeholder="Elija una opción">
+                                                <option value="Paja">Paja</option>
+                                                <option value="Zinc">Zinc</option>
+                                                <option value="Palma">Palma</option>
+                                                <option value="Eternit">Eternit</option>
+                                                <option value="Plastico">Plastico</option>
+                                                <option value="Otro">Otro</option>
+                                              </select>
+                                            </div>
+                                          </div>
+                                          <!-- fin row -->
                                         </div>
-                                        <div class="col-md-8">
-                                          <button type="submit" class="btn btn-info btn-fill pull-right">Guardar</button>
-                                        </div>
-                                        <div class="col-md-2">
-                                          <button type="submit" class="btn btn-info btn-fill pull-right" matStepperNext>siguiente</button>    
-                                        </div>
-                                      </div>
-                                      <!-- fin tercer step -->
+
+                                        <!-- Botones sigientes y atras -->
+                                          <div class="row">
+                                            <!-- Inicio row -->
+                                            <div class="col-md-4">
+                                              <div class="form-group">
+                                                <label>Servicio sanitario</label>
+                                                <select  class="form-control" formControlName="ServicioSanitario" [(ngModel)] = "habitabilidad.ServicioSanitario" placeholder="Elija una opción">
+                                                  <option value="SI">SI</option>
+                                                  <option value="NO">NO</option>
+                                                </select>
+                                                <div *ngIf="habitabilidad.ServicioSanitario == 'SI'">
+                                                  <input type="text" class="form-control" formControlName = "estadoServicioSanitario" placeholder="Estado">
+                                                </div>
+                                              </div>
+                                            </div>
+                                              <div class="col-md-4">
+                                                <div class="form-group">
+                                                  <label>Tipo Alumbrado</label>
+                                                  <select  class="form-control" formControlName="TipoAlumbrado" [(ngModel)] = "habitabilidad.TipoAlumbrado" placeholder="Elija una opción">
+                                                    <option value="Mechon">Mechon</option>
+                                                    <option value="Vela">Vela</option>
+                                                    <option value="Solar">Solar</option>
+                                                    <option value="Planta">Planta</option>
+                                                    <option value="Foco de mano">Foco de mano</option>
+                                                    <option value="Ninguno">Ninguno</option>
+                                                  </select>
+                                                </div>
+                                              </div>
+
+                                              <!-- Fin row -->
+                                          </div>
+                                          
+                                          <div id="Guardar">
+                                            <button type="submit" class="btn btn-success btn-fill" (click) = "guardar()">Guardar</button>
+                                          </div>
+                                          <div class="row pager">
+                                              <div class="col pull-left">
+                                                <button type="submit" class="btn btn-info btn-fill"  matStepperPrevious>Atras</button>
+                                              </div>
+                                              
+                                              <div class="col-ml-5 pull-right ">
+                                                <button type="submit" class="btn btn-info btn-fill " (click) = "onSubmit()" matStepperNext>siguiente</button>    
+                                              </div>
+                                          </div>
+                                        <!-- fin Botones sigientes y atras -->
+                                      </form>
+                                      <!-- fin Segundo step -->
                                   </mat-step>
 
-                                  </mat-horizontal-stepper>
-                                </div>
+                                <mat-step [stepControl]="threeFormGroup">
+                                  <!-- tercer step -->
+                                    <ng-template matStepLabel></ng-template>
+
+                                    <form>
+                                      <h5 class="title mb-4">Disponibilidad de agua para uso domestico u agrícola</h5>
+
+                                      <!-- Table -->
+                                      <div class="table-responsive table-full-width">
+                                        <table class="table table-striped table-bordered">
+                                          <thead>
+                                            <tr>
+                                              <th class="title title-center">Fuente</th>
+                                              <th class="title title-center">Uso domestico</th>
+                                              <th class="title title-center">Uso agricola</th>
+                                              <th class="title title-center">Disponibilidad </th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <td class="title">
+                                                Acueducto veredal
+                                              </td>
+                                              <td>
+                                                <div class="checkbox">
+                                                  <input id="checkbox1" type="checkbox">
+                                                  <label for="checkbox1"></label>
+                                                </div>
+                                              </td>
+                                              <td>
+                                                <div class="checkbox">
+                                                  <input id="checkbox2" type="checkbox">
+                                                  <label for="checkbox2"></label>
+                                                </div>
+                                              </td>
+                                              <td>
+                                                <div class="row">
+                                                  <div class="col-md-3"></div>
+                                                  <div class="col-md-6">
+                                                    <select name="select" class="form-control">
+                                                      <option value="Premanente">Premanente</option>
+                                                      <option value="Temporal">Temporal</option>
+                                                    </select>                                                    
+                                                  </div>
+                                                  <div class="col-md-3"></div>
+                                                </div>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td class="title">
+                                                Quebrada-rio
+                                              </td>
+                                              <td>
+                                                <div class="checkbox">
+                                                  <input id="checkbox1" type="checkbox">
+                                                  <label for="checkbox1"></label>
+                                                </div>
+                                              </td>
+                                              <td>
+                                                <div class="checkbox">
+                                                  <input id="checkbox1" type="checkbox">
+                                                  <label for="checkbox1"></label>
+                                                </div>
+                                              </td>
+                                              <td>
+                                                <div class="row">
+                                                  <div class="col-md-3"></div>
+                                                  <div class="col-md-6">
+                                                    <select name="select" class="form-control">
+                                                      <option value="Premanente">Premanente</option>
+                                                      <option value="Temporal">Temporal</option>
+                                                    </select>                                                    
+                                                  </div>
+                                                  <div class="col-md-3"></div>
+                                                </div>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td class="title">
+                                                Nacimiento
+                                              </td>
+                                              <td>
+                                                <div class="checkbox">
+                                                  <input id="checkbox1" type="checkbox">
+                                                  <label for="checkbox1"></label>
+                                                </div>
+                                              </td>
+                                              <td>
+                                                <div class="checkbox">
+                                                  <input id="checkbox1" type="checkbox">
+                                                  <label for="checkbox1"></label>
+                                                </div>
+                                              </td>
+                                              <td>
+                                                <div class="row">
+                                                  <div class="col-md-3"></div>
+                                                  <div class="col-md-6">
+                                                    <select name="select" class="form-control">
+                                                      <option value="Premanente">Premanente</option>
+                                                      <option value="Temporal">Temporal</option>
+                                                    </select>                                                    
+                                                  </div>
+                                                  <div class="col-md-3"></div>
+                                                </div>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td class="title">
+                                                Otros
+                                              </td>
+                                              <td>
+                                                <div class="checkbox">
+                                                  <input id="checkbox1" type="checkbox">
+                                                  <label for="checkbox1"></label>
+                                                </div>
+                                              </td>
+                                              <td>
+                                                <div class="checkbox">
+                                                  <input id="checkbox1" type="checkbox">
+                                                  <label for="checkbox1"></label>
+                                                </div>
+                                              </td>
+                                              <td>
+                                                <div class="row">
+                                                  <div class="col-md-3"></div>
+                                                  <div class="col-md-6">
+                                                    <select name="select" class="form-control">
+                                                      <option value="Premanente">Premanente</option>
+                                                      <option value="Temporal">Temporal</option>
+                                                    </select>                                                    
+                                                  </div>
+                                                  <div class="col-md-3"></div>
+                                                </div>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                      <!-- end table -->
+
+                                      <div class="row">
+                                        <div class="col-md-3">
+                                          <div class="form-group">
+                                            <label>Tipo de almacenamiento</label>
+                                            <select name="select" class="form-control" placeholder="tipo de almacenamiento">
+                                              <option value="Tanque individual">Tanque individual</option>
+                                              <option value="tanque comunitario">Tanque comunitario</option>
+                                            </select>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                          <div class="form-group">
+                                            <label>Volumen (metros cubicos)</label>
+                                            <input type="text" class="form-control" placeholder="volumen">
+                                          </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                          <div class="form-group">
+                                            <label>Numero de usuarios</label>
+                                            <input type="number" class="form-control" placeholder="numero de usuarios">
+                                          </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                          <div class="form-group">
+                                            <label>Estudio de calidad del agua?</label>
+                                            <Select name="select" [(ngModel)]="CumpleEstudios" class="form-control">
+                                              <option value="NO">No</option>
+                                              <option value="SI">Si</option>
+                                            </Select>
+                                            <div *ngIf="CumpleEstudios == 'SI'">
+                                              <input type="text" placeholder="resultados del estudio" class="form-control">
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label>Se eviencia desperdicio y escape de agua en la unidad productiva?</label>
+                                            <select name="selct" class="form-control">
+                                              <option value="SI">No</option>
+                                              <option value="NO">No</option>
+                                            </select>
+                                          </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label>Se hace mantenimineto de las instalaciones para la conduccion del agua?</label>
+                                            <select name="selct" class="form-control">
+                                              <option value="SI">No</option>
+                                              <option value="NO">No</option>
+                                            </select>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <h5 class="title mt-md-3">Condiciones laborales: ¿Cuantas personas tranajan en la finca?</h5>
+                                      <div>
+
+                                      </div>
+                                    </form>
+
+                                  <!-- fin tercer step  -->
+                                </mat-step>
+                              </mat-horizontal-stepper>
                             </div>
+                          </div>
                         </div>
                         <!-- <div class="col-md-4">
                             <div class="card card-user">

@@ -16,5 +16,16 @@ namespace Cafeteros.Models
         }
 
         public DbSet<Empleado> Empleado { get; set; }
+
+        public DbSet<Productor> Productor { get; set; }
+
+        public DbSet<Familiar> Familiar { get; set; }
+
+        public DbSet<Habitabilidad> Habitabilidad { get; set; }
+
+        public DbSet<PaticipacionComunitaria> PaticipacionComunitaria { get; set; }
+
+        public DbSet<AspectoEconomico> AspectoEconomico { get; set; }
+
     }
 }

@@ -29,7 +29,13 @@ input{
     border: transparent 0;
 }
 
-.title-center{
+.title-center {
     text-align: center;
     padding-bottom: 10px;
+}
+
+#Guardar{
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
