@@ -1,11 +1,11 @@
 export class Productor{
     id : string;
-    Nombre : string;
-    CodigoCafetero : string;
-    NombrePredio : string;
-    CodigoSica : string;
-    Municipio : string;
-    Vereda : string;
+    nombre : string;
+    codigoCafetero : string;
+    nombrePredio : string;
+    codigoSica : string;
+    municipio : string;
+    vereda : string;
     NumeroTelefono : string;
     AfiliacionSalud : string;
     ActvidadesDedican : string;

@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { HomeComponent } from './home/home.component';
 import { AuditoriaComponent } from './auditoria/auditoria.component';
+import { PromotoriaComponent } from './promotoria/promotoria.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AuditoriaComponent } from './auditoria/auditoria.component';
     FetchDataComponent,
     LoginComponent,
     RegistrarComponent,
-    AuditoriaComponent
+    AuditoriaComponent,
+    PromotoriaComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

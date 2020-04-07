@@ -1,7 +1,7 @@
 export class Habitabilidad{
     id : number;
     TipoVivienda : string;
-    NumeroHabitaciones : string;
+    NumeroHabitaciones : number;
     MaterialPredominante : string;
     MaterialTecho : string;
     MaterialCosinar : string;

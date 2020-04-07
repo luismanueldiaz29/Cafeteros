@@ -1,0 +1,293 @@
+<mat-progress-bar mode="query" *ngIf = "showSpinner"></mat-progress-bar>
+<app-nav-menu></app-nav-menu>
+
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row pt-md-5 mt-md-3 mb-5">
+                    <div class="col-md-12">
+                        <div class="content">
+                            <div class="content animated fadeInUp">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="header">
+                                                    <h4 class="title">Registro de Promotoria</h4>
+                                                </div>
+                                                <div class="content">
+                                                    <!-- content de formulario -->
+                                                    <div class="content">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <div class="from-group">
+                                                                    <label>Fecha visita</label>
+                                                                    <input type="text" class="form-control" [(ngModel)]="fechaVisita" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label>Hora de visita</label>
+                                                                    <input type="text" class="form-control" [(ngModel)]="hora" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label>Proxima visita</label>
+                                                                    <input type="date" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>Nombre del productor</label>
+                                                                    <input type="text" class="form-control" [(ngModel)]="productor.nombre" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label>Cedula</label>
+                                                                    <input type="text" class="form-control" [(ngModel)]="productor.id" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <div class="form-group alig">
+                                                                    <label>Productores</label><br>
+                                                                    <button class="navbar-toggler bg-light" type="button" data-toggle="modal" data-target="#modalCart">
+                                                                        <img src="assets/agriculture.png" >
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <div class="form-group">
+                                                                    <label>Nombre de la finca o predio</label>
+                                                                    <input type="text" class="form-control" [(ngModel)]="productor.nombrePredio" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label>Codigo</label>
+                                                                    <input type="text" class="form-control" [(ngModel)]="productor.codigoCafetero" readonly>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <div class="form-group">
+                                                                    <label>Municipio</label>
+                                                                    <input type="text" class="form-control" [(ngModel)]="productor.municipio" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                <div class="form-group">
+                                                                    <label>Vereda</label>
+                                                                    <input type="text" class="form-control" [(ngModel)]="productor.vereda" readonly>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="col-md-2"></div>
+                                                            <div class="col-md-8">
+                                                                <div class="form-group">
+                                                                    <label>Objetivo de la visita</label>
+                                                                    <textarea type="text" class="md-textarea form-control"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="col-md-2"></div>
+                                                            <div class="col-md-8">
+                                                                <div class="form-group">
+                                                                    <label>Situacion encontrada(Avances, dificultades): </label>
+                                                                    <textarea type="text" class="md-textarea form-control"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="col-md-2"></div>
+                                                            <div class="col-md-8">
+                                                                <div class="form-group">
+                                                                    <label>Intercambio de saberes (practicas, conocimientos propios, experiencia, recomendaciones): </label>
+                                                                    <textarea type="text" class="md-textarea form-control"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <hr>
+
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h5 class="title title-center">Labores realizadas</h5>
+                                                                <div class="table-responsive table-full-width">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th class="title title-center">ACTIVIDAD</th>
+                                                                                <th class="title title-center">FECHA</th>
+                                                                                <th class="title title-center">ACCION</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr *ngFor="let field of fieldArrayLabores; let i = index">
+                                                                                <td>
+                                                                                    <input type="text" class="form-control">
+                                                                                </td>
+                                                                                <td>
+                                                                                    <input type="date" class="form-control">
+                                                                                </td>
+                                                                                <td class="title-center">
+                                                                                    <button class="badge btn" (click)="deleteFieldValueLabores(i)">
+                                                                                        <img src="assets/dejar.png" alt="">
+                                                                                    </button>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <input type="text" class="form-control">
+                                                                                </td>
+                                                                                <td>
+                                                                                    <input type="date" class="form-control">
+                                                                                </td>
+                                                                                <td class="title-center">
+                                                                                    <button class="badge btn" (click)="addFieldValueLabores()">
+                                                                                        <img src="assets/comprobado.png" alt="">
+                                                                                    </button>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <hr>
+
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h5 class="title title-center">labores programadas</h5>
+                                                                <div class="table-responsive table-full-width">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th class="title title-center">COMPROMISO O ACTIVIDAD</th>
+                                                                                <th class="title title-center">FECHA</th>
+                                                                                <th class="title title-center">ACCION</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr *ngFor="let field of fieldArrayCompromiso; let I = index">
+                                                                                <td>
+                                                                                    <input type="text" class="form-control">
+                                                                                </td>
+                                                                                <td>
+                                                                                    <input type="date" class="form-control">
+                                                                                </td>
+                                                                                <td class="title-center">
+                                                                                    <button class="badge btn" (click)="deleteFieldValueCompromiso(I)">
+                                                                                        <img src="assets/dejar.png">
+                                                                                    </button>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <input type="text" class="form-control">
+                                                                                </td>
+                                                                                <td>
+                                                                                    <input type="date" class="form-control">
+                                                                                </td>
+                                                                                <td class="title-center">
+                                                                                    <button class="badge btn" (click)="addFieldValueCompromiso()">
+                                                                                        <img src="assets/comprobado.png" alt="">
+                                                                                    </button>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div id = "Guardar">
+                                                            <Button class="btn btn-primary" (click)="add()">Guardar</Button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal: modalCart -->
+<div class="modal fade fadebd-example-modal-lg" data-backdrop="static" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h4 class="title white-text">Lista de productores</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text title">X</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+
+        <h5 class="title title-center"> Selecionar Productor</h5>
+
+        <!-- Table -->
+        <div class="table-responsive table-full-width">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th class="title title-center">Cedula</th>
+                <th class="title title-center">Nombre</th>
+                <th class="title title-center">Codigo</th>
+                <th class="title title-center">Finca</th>
+                <th class="title title-center">Municipio</th>
+                <th class="title title-center">Vereda</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor = "let productor of productores" (click)="getRecord(productor)" data-dismiss="modal" aria-label="Close">
+                <td>{{productor.id}}</td>
+                <td>{{productor.nombre}}</td>
+                <td>{{productor.codigoCafetero}}</td>
+                <td>{{productor.nombrePredio}}</td>
+                <td>{{productor.municipio}}</td>
+                <td>{{productor.vereda}}</td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+        <!-- end table -->
+
+      </div>
+      <!--Footer-->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal: modalCart -->
+<!-- end of modal -->

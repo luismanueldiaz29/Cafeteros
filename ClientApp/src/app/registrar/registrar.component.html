@@ -206,17 +206,17 @@
                                                   <tbody>
                                                       <tr *ngFor="let field of fieldArray; let i = index">
                                                           
-                                                          <td>
-                                                              <input [(ngModel)]="field.Nombre" class="form-control" type="text" name="{{field.Nombre}}" />
-                                                          </td>
-                                                          <td>
-                                                              <input [(ngModel)]="field.NumeroDocumento" class="form-control" type="text" name="{{field.NumeroDocumento}}" />
-                                                          </td>
-                                                          <td>
-                                                              <input [(ngModel)]="field.FechaNacimiento" class="form-control" type="date" name="{{field.FechaNacimiento}}" />
-                                                          </td>
-                                                          <td>
-                                                            <input [(ngModel)]="field.Parentesco" class="form-control" type="text" name="{{field.Parentesco}}" />
+                                                        <td>
+                                                            <input [(ngModel)]="field.Nombre" class="form-control" type="text" name="{{field.Nombre}}" />
+                                                        </td>
+                                                        <td>
+                                                            <input [(ngModel)]="field.NumeroDocumento" class="form-control" type="text" name="{{field.NumeroDocumento}}" />
+                                                        </td>
+                                                        <td>
+                                                            <input [(ngModel)]="field.FechaNacimiento" class="form-control" type="date" name="{{field.FechaNacimiento}}" />
+                                                        </td>
+                                                        <td>
+                                                          <input [(ngModel)]="field.Parentesco" class="form-control" type="text" name="{{field.Parentesco}}" />
                                                         </td>
                                                         <td>
                                                           <input [(ngModel)]="field.TipoPoblacion" class="form-control" type="text" name="{{field.TipoPoblacion}}" />
@@ -228,9 +228,9 @@
                                                           <input [(ngModel)]="field.NivelEducativo" class="form-control" type="text" name="{{field.NivelEducativo}}" />
                                                         </td>
                                                           <td>
-                                                            <a class="badge" (click)="deleteFieldValue(i)">
+                                                            <button class="badge btn" (click)="deleteFieldValue(i)">
                                                               <img src="assets/dejar.png" alt="">
-                                                            </a>
+                                                            </button>
                                                           </td>
                                                           
                                                       </tr>
@@ -258,9 +258,9 @@
                                                         </td>
                                                           <td>
                                                               <!-- <button class="btn btn-default" type="button" ">Add</button> -->
-                                                              <a class="badge" (click)="addFieldValue()">
+                                                              <button  class="badge btn" (click)="addFieldValue()">
                                                                 <img src="assets/comprobado.png" alt="">
-                                                              </a>
+                                                              </button>
                                                           </td>
                                                       </tr>
                                                   </tbody>
@@ -387,13 +387,16 @@
                                           </div>
                                           <!-- fin row -->
                                         </div>
+                                        
+                                        <!-- Habitabilidad -->
                                         <h5 class="title mt-2 mb-2">Aspecto de habitabilidad</h5>
+
                                         <div class="row">
                                           <!-- inicio row -->
                                           <div class="col-md-4">
                                             <div class="form-group">
                                               <label>Tipo de vivienda</label>
-                                              <select  class="form-control" formControlName="TipoVivienda" [(ngModel)] = "habitabilidad.TipoVivienda" placeholder="Elija una opción">
+                                              <select   class="form-control" formControlName="TipoVivienda" [(ngModel)] = "habitabilidad.TipoVivienda" placeholder="Elija una opción">
                                                 <option value="Tradicional">Tradicional</option>
                                                 <option value="Occidental">Occidental</option>
                                               </select>                                          

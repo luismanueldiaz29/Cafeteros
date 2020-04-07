@@ -193,8 +193,8 @@ namespace Cafeteros.Migrations
                     b.Property<string>("MaterialTecho")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NumeroHabitaciones")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("NumeroHabitaciones")
+                        .HasColumnType("int");
 
                     b.Property<string>("ServicioSanitario")
                         .HasColumnType("nvarchar(max)");
@@ -211,6 +211,52 @@ namespace Cafeteros.Migrations
                         .IsUnique();
 
                     b.ToTable("Habitabilidad");
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.LaboresProgramada", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Actividad")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fecha")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VisitaPromotoriaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("VisitaPromotoriaId");
+
+                    b.ToTable("LaboresProgramada");
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.LaboresRealizada", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Actividad")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fecha")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VisitaPromotoriaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("VisitaPromotoriaId");
+
+                    b.ToTable("LaboresRealizada");
                 });
 
             modelBuilder.Entity("Cafeteros.Models.PaticipacionComunitaria", b =>
@@ -284,6 +330,41 @@ namespace Cafeteros.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Productor");
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.VisitaPromotoria", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FechaProxVista")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FechaVisita")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HoraVisita")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IntercambioSaberes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ObjetivoVisita")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("SituacionEncontrada")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("ProductorId");
+
+                    b.ToTable("VisitaPromotoria");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -440,6 +521,24 @@ namespace Cafeteros.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Cafeteros.Models.LaboresProgramada", b =>
+                {
+                    b.HasOne("Cafeteros.Models.VisitaPromotoria", "VisitaPromotoria")
+                        .WithMany()
+                        .HasForeignKey("VisitaPromotoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.LaboresRealizada", b =>
+                {
+                    b.HasOne("Cafeteros.Models.VisitaPromotoria", "VisitaPromotoria")
+                        .WithMany()
+                        .HasForeignKey("VisitaPromotoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Cafeteros.Models.PaticipacionComunitaria", b =>
                 {
                     b.HasOne("Cafeteros.Models.AspectoEconomico", "AspectoEconomico")
@@ -447,6 +546,13 @@ namespace Cafeteros.Migrations
                         .HasForeignKey("Cafeteros.Models.PaticipacionComunitaria", "AspectoEconomicoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.VisitaPromotoria", b =>
+                {
+                    b.HasOne("Cafeteros.Models.Productor", "Productor")
+                        .WithMany()
+                        .HasForeignKey("ProductorId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

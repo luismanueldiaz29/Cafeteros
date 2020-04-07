@@ -39,6 +39,9 @@ namespace Cafeteros.Models
         [JsonProperty("Familiares")]
         public List<Familiar> Familiares = new List<Familiar>();
 
+        [JsonProperty("VisitaPromotorias")]
+        public List<VisitaPromotoria> VisitaPromotorias = new List<VisitaPromotoria>();        
+
         [JsonProperty("AspectoEconomico")]
         public AspectoEconomico AspectoEconomico {get; set;}
 

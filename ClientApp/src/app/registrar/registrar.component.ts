@@ -9,6 +9,9 @@ import { Familiar } from '../Models/Familiar';
 import { AspectoEconomico } from '../Models/AspectoEconomico';
 import { Habitabilidad } from '../Models/Habitabilidad';
 import { PaticipacionComunitaria } from '../Models/PaticipacionComunitaria';
+import { AspectoEconomicoService } from '../services/aspectoEconomico.service';
+import { HabitabilidadService } from '../services/habitabilidad.service';
+import { PaticipacionComunitariaService } from '../services/participacionComunitaria';
 
 @Component({
   selector: 'app-registrar',
@@ -39,7 +42,10 @@ export class RegistrarComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder, //para formulario reactivo
     private productorService : ProductorService,
-    private familiarService : FamiliarService
+    private familiarService : FamiliarService,
+    private aspectoEconomicoService : AspectoEconomicoService,
+    private habitabilidadService : HabitabilidadService,
+    private participacionComunitariaService : PaticipacionComunitariaService
   ) { }
 
   ngOnInit() {
@@ -68,11 +74,11 @@ export class RegistrarComponent implements OnInit {
   }
 
   incializarVariables(){
-    this.productor = {id : "",Nombre : "",CodigoCafetero : "",NombrePredio : "",CodigoSica : "",Municipio : "",Vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : ""};
+    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : ""};
     //this.familiar = {id : null,Nombre : "",NumeroDocumento : "",FechaNacimiento : "",Parentesco : "",TipoPoblacion : "",AfiliacionSalud : "",NivelEducativo : "",ProductorId : ""};
     this.aspectoEconomico = {id : 0, TenenciaTierra : "",Legalidad : "",ProductorId : ""}
     this.participacionComunitaria = {id : 0, AsistenteAsamblea : "",CargoAsamblea : "",AistenteTrabajos : "",CargoTrabajo : "",OrganizacionAparte : "",CualOrganizacion : "",AspectoEconomicoId : 0}
-    this.habitabilidad = {id : 0,TipoVivienda : "",NumeroHabitaciones : "",MaterialPredominante : "",MaterialTecho : "",MaterialCosinar : "",EnergiaCosinar : "",ServicioSanitario : "",TipoAlumbrado : "",AspectoEconomicoId : 0}
+    this.habitabilidad = {id : 0,TipoVivienda : "",NumeroHabitaciones : 0,MaterialPredominante : "",MaterialTecho : "",MaterialCosinar : "",EnergiaCosinar : "",ServicioSanitario : "",TipoAlumbrado : "",AspectoEconomicoId : 0}
   }
 
   validarFromgroup(){
@@ -156,11 +162,8 @@ export class RegistrarComponent implements OnInit {
           }
         );
       });
-      Swal.fire(
-        'Accion sastifactoria!',
-        'Para saltar esto pulse ok!',
-        'success'
-      )
+      
+      this.GuardarAspectoEconomico(id);
     }catch(error){
       Swal.fire(
         'Accion incorrecta!',
@@ -170,6 +173,42 @@ export class RegistrarComponent implements OnInit {
     }
   }
 
+  GuardarAspectoEconomico(id : string){
+    this.aspectoEconomico.ProductorId =  id;
+    this.aspectoEconomicoService.add(this.aspectoEconomico).subscribe(
+      aspectoEco => {
+        aspectoEco != null ? this.guardarHabitabilidad(aspectoEco.id) : alert('No se pudo guardar aspecto economico')
+      }
+    );
+  }
+
+  guardarHabitabilidad(id : number){
+    this.habitabilidad.AspectoEconomicoId = id;
+    this.habitabilidadService.add(this.habitabilidad).subscribe(
+      habitabilidad => {
+        habitabilidad != null ? this.guardarParticipacionComunitaria(id) : alert('No se pudo guardar la habitabilidad')
+      }
+    );
+  }
+
+  guardarParticipacionComunitaria(id : number){
+    this.participacionComunitaria.AspectoEconomicoId = id;
+    this.participacionComunitariaService.add(this.participacionComunitaria).subscribe(
+      participacion => {
+        participacion != null ? Swal.fire(
+          'Accion sastifactoria!',
+          'Para saltar esto pulse ok!',
+          'success'
+        ) 
+        :
+        Swal.fire(
+          'Accion incorrecta!',
+          'Para saltar esto pulse ok!',
+          'error'
+        )
+      }
+    );
+  }
   onReset() {
     this.submitted = false;
     this.firstFormGroup.reset();

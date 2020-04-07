@@ -19,8 +19,8 @@ namespace Cafeteros.Controllers
         public HabitabilidadController(ApplicationDbContext context){
             _context = context;
             if (_context.Habitabilidad.Count() == 0){
-                _context.Habitabilidad.Add(new Habitabilidad { TipoVivienda = "occidental", NumeroHabitaciones = "5", MaterialPredominante = "barro", MaterialTecho = "zinc", MaterialCosinar = "gas", EnergiaCosinar = "calle linda", ServicioSanitario = "123", TipoAlumbrado = "1", AspectoEconomicoId = 1});
-                _context.Habitabilidad.Add(new Habitabilidad { TipoVivienda = "occidental", NumeroHabitaciones = "2", MaterialPredominante = "ladrillo", MaterialTecho = "teja", MaterialCosinar = "leña", EnergiaCosinar = "calle cuba", ServicioSanitario = "123", TipoAlumbrado = "1", AspectoEconomicoId = 2});
+                _context.Habitabilidad.Add(new Habitabilidad { TipoVivienda = "occidental", NumeroHabitaciones = 5, MaterialPredominante = "barro", MaterialTecho = "zinc", MaterialCosinar = "gas", EnergiaCosinar = "calle linda", ServicioSanitario = "123", TipoAlumbrado = "1", AspectoEconomicoId = 1});
+                _context.Habitabilidad.Add(new Habitabilidad { TipoVivienda = "occidental", NumeroHabitaciones = 5, MaterialPredominante = "ladrillo", MaterialTecho = "teja", MaterialCosinar = "leña", EnergiaCosinar = "calle cuba", ServicioSanitario = "123", TipoAlumbrado = "1", AspectoEconomicoId = 2});
                 _context.SaveChanges();
             }
         }

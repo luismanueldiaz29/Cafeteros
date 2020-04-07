@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { AuditoriaComponent } from './auditoria/auditoria.component';
+import { PromotoriaComponent } from './promotoria/promotoria.component';
 
 const routes : Routes = [
   { 
@@ -22,6 +23,10 @@ const routes : Routes = [
   {
     path : "auditoria",
     component : AuditoriaComponent    
+  },
+  {
+    path : 'Promotoria',
+    component : PromotoriaComponent
   }
   //angular7
   // {path:'',redirectTo:'/user/login',pathMatch:'full'},

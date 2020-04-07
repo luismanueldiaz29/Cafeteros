@@ -4,6 +4,13 @@ body {
   background-color: #eee;
 }
 
+/* centrar los titulos */
+.title-center {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+
 /* navbar */
 .sidebar {
   height: 100vh;

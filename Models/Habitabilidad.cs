@@ -13,7 +13,7 @@ namespace Cafeteros.Models
         public string TipoVivienda {get; set;}
 
         [JsonProperty("NumeroHabitaciones")]
-        public string NumeroHabitaciones { get; set; }
+        public int NumeroHabitaciones { get; set; }
 
         [JsonProperty("MaterialPredominante")]
         public string MaterialPredominante { get; set; }

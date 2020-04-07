@@ -9,11 +9,7 @@ namespace Cafeteros.Models
 {
     public class ApplicationDbContext: IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            :base(options)
-        {
-
-        }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options){}
 
         public DbSet<Empleado> Empleado { get; set; }
 
@@ -27,5 +23,10 @@ namespace Cafeteros.Models
 
         public DbSet<AspectoEconomico> AspectoEconomico { get; set; }
 
+        public DbSet<VisitaPromotoria> VisitaPromotoria { get; set; }
+
+        public DbSet<LaboresProgramada> LaboresProgramada { get; set; }
+
+        public DbSet<LaboresRealizada> LaboresRealizada { get; set; }
     }
 }
