@@ -75,7 +75,8 @@ namespace Cafeteros.Migrations
                     Vereda = table.Column<string>(nullable: true),
                     NumeroTelefono = table.Column<string>(nullable: true),
                     AfiliacionSalud = table.Column<string>(nullable: true),
-                    ActvidadesDedican = table.Column<string>(nullable: true)
+                    ActvidadesDedican = table.Column<string>(nullable: true),
+                    Estado = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

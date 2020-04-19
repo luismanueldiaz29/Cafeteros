@@ -9,19 +9,22 @@ import { VisitaPromotoriaService } from '../services/visitaPromotoria.service';
 import { LaboresProgramada } from '../Models/LaboresProgramada';
 import { LaboresRealizada } from '../Models/LaboresRealizada';
 import Swal from 'sweetalert2'
+import { element } from 'protractor';
+import { MaterialModule } from '../material/material';
+import { stringify } from 'querystring';
 @Component({
   selector: 'app-promotoria',
   templateUrl: './promotoria.component.html',
   styleUrls: ['./promotoria.component.css']
 })
 export class PromotoriaComponent implements OnInit {
-
+  imports :  [MaterialModule];
   Visita : VisitaPromotoria;
   productores : Productor[];
-  productor : Productor;
+  public productor : Productor;
   laboresProgramada : LaboresProgramada;
   LaboresRealizada : LaboresRealizada;
-
+  private id : string;
 
   //Este Array me sirve para obtener el mes porque this.date.getMonth() me retorna el mes en numero
   //meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
@@ -48,17 +51,38 @@ export class PromotoriaComponent implements OnInit {
     this.getProductores();
     //instancio mis variables con las que capturo losa datos en el formulario
     this.intanciarVariables();
+    //con esta funcion valido si hay una solicitud de promotoria
+    this.getPromotoria();
   }
 
+  
+  getPromotoria(){
+    this.id = sessionStorage.getItem('productorId');
+    if(this.id != null){
+      this.productorService.get(this.id).subscribe(
+        productor => {
+          if(productor != null)
+          this.productor = productor;
+          sessionStorage.removeItem('productorId');
+        }
+      );
+      
+    }
+  }
+
+  onRightClick(productor : Productor){
+    alert('right click '+productor.nombre);
+  }
   //metodo con el que capturo los productores
   getProductores(){
-    this.productorService.getAll().subscribe(
+    this.productorService.getAllEstado(true).subscribe(
       productores => {
         this.productores = productores;
       }
     ); 
   }
 
+  
   fechaNum(num : number) : string{
     if(num < 10){ return '0'+num; }else{ return num+'' }
   }
@@ -68,12 +92,12 @@ export class PromotoriaComponent implements OnInit {
   }
 
   // inicio Labores realizadas
-    private fieldArrayLabores: Array<any> = [];
-    private newAttributeLabores: any = {};
+    private fieldArrayLabores: Array<LaboresRealizada> = [];
+    private newAttributeLabores: LaboresRealizada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId: null};
 
     addFieldValueLabores() {
         this.fieldArrayLabores.push(this.newAttributeLabores)
-        this.newAttributeLabores = {};
+        this.newAttributeLabores = {id : 0, actividad : "", fecha : "", visitaPromotoriaId: 0};
     }
     deleteFieldValueLabores(index) {
         this.fieldArrayLabores.splice(index, 1);
@@ -81,12 +105,12 @@ export class PromotoriaComponent implements OnInit {
   // fin labores realizadas
 
   //inicio compromiso de labores
-  private fieldArrayCompromiso: Array<any> = [];
-  private newAttributeCompromiso: any = {};
+  private fieldArrayCompromiso: Array<LaboresProgramada> = [];
+  private newAttributeCompromiso: LaboresProgramada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId: null};
 
   addFieldValueCompromiso(){
     this.fieldArrayCompromiso.push(this.newAttributeCompromiso);
-    this.newAttributeCompromiso = {}
+    this.newAttributeCompromiso = {id : 0, actividad : "", fecha : "", visitaPromotoriaId: 0};
   }
 
   deleteFieldValueCompromiso(index){
@@ -96,8 +120,8 @@ export class PromotoriaComponent implements OnInit {
 
 
   intanciarVariables(){
-    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : ""};
-    this.Visita = { id : 0, FechaVisita : "",HoraVisita : "",FechaProxVista : "",objetivoVisita : "",situacionEncontrada : "",intercambioSaberes : "",productorId : ""}
+    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : "", estado: false};
+    this.Visita = { id : 0, fechaVisita : this.fechaVisita ,horaVisita : this.hora ,fechaProxVista : "",objetivoVisita : "",situacionEncontrada : "",intercambioSaberes : "",productorId : ""}
     this.laboresProgramada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId : 0};
     this.LaboresRealizada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId : 0};
   }
@@ -148,8 +172,8 @@ export class PromotoriaComponent implements OnInit {
 
   mensajeCorrecto(){
     Swal.fire(
-      'Good job!',
-      'You clicked the button!',
+      'Accion satisfactoria!',
+      'Se a registrado correctamente!',
       'success'
     )
   }
@@ -159,35 +183,50 @@ export class PromotoriaComponent implements OnInit {
     this.visitaService.add(this.Visita).subscribe(
       visita => {
         visita != null ? this.addLabores(visita.id) 
-        : alert('No se guardo la visita de promotoria')
+        : console.log('No se guardo la visita de promotoria')
       }
     );
   }
 
   addLabores(VisitaId : number){
-
-    this.LaboresRealizada.visitaPromotoriaId = VisitaId;
-    this.laboresProgramada.visitaPromotoriaId = VisitaId;
-    try {
-      this.laboresRealizadaService.add(this.LaboresRealizada).subscribe(
-        laboresRealizada => {
-          laboresRealizada != null ?  console.log('Se guardo la informacion de labores relizada') 
-          : console.log('No se guardo la informacion de labores realizada')
+    
+    if(this.newAttributeLabores != null){
+      this.newAttributeLabores.visitaPromotoriaId = VisitaId;
+      this.laboresRealizadaService.add(this.newAttributeLabores).subscribe(
+        laboresRealizadas => {
+          if (laboresRealizadas == null) console.log('newAtributeLabores no fue registrada')
         }
       );
 
-      this.laboresProgramadaService.add(this.laboresProgramada).subscribe(
-        laboresProgramada => {
-          laboresProgramada == null ? console.log('se guardo la informacion de labores programada') 
-          : console.log('No se pudo guardar la nformacion de labores programada')
+      this.fieldArrayLabores.forEach( element => {
+        element.visitaPromotoriaId = VisitaId;
+        this.laboresRealizadaService.add(element).subscribe(
+          laboresField => {
+            if(laboresField == null) console.log('Ocurrio un error en array labores realizadas')
+          }
+        );
+      });
+    }
+
+    if(this.newAttributeCompromiso != null){
+      this.newAttributeCompromiso.visitaPromotoriaId = VisitaId;
+      this.laboresProgramadaService.add(this.newAttributeCompromiso).subscribe(
+        laboresProgramada =>{
+          if(laboresProgramada == null) alert('newAttributeCompromiso no se pudo registrar labores programadas')
         }
       );
 
-      this.mensajeCorrecto();
-    } catch (error) {
-      
-    }  
-      
+      this.fieldArrayCompromiso.forEach( element => {
+        element.visitaPromotoriaId = VisitaId;
+        this.laboresProgramadaService.add(element).subscribe(
+          laboresPorgramada => {
+            if(laboresPorgramada == null) alert('fieldArrayCompromiso no se pudo registrar labores programadas')
+          }
+        );
+      });
+    }
+
+    this.mensajeCorrecto();
   }
 
 }

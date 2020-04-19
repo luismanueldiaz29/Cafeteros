@@ -4,7 +4,8 @@ import {
   MatButtonModule,
   MatToolbarModule,
   MatSidenavModule,
-  MatTabsModule, MatMenuModule,
+  MatTabsModule, 
+  MatMenuModule,
   MatStepperModule,
   MatInputModule,
   MatAutocompleteModule,
@@ -16,7 +17,8 @@ import {
   MatIconModule,
   MatListModule,
   MatProgressBarModule,
-  MatCardModule
+  MatCardModule,
+  MatPaginatorModule
 } from '@angular/material';
 
 
@@ -38,7 +40,8 @@ const material = [
     MatIconModule,
     MatListModule,
     MatProgressBarModule,
-    MatCardModule
+    MatCardModule, 
+    MatPaginatorModule
   ];
 
   @NgModule({

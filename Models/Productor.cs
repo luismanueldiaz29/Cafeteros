@@ -36,6 +36,9 @@ namespace Cafeteros.Models
         [JsonProperty("ActvidadesDedican")]
         public string ActvidadesDedican {get; set;}
 
+        [JsonProperty("Estado")]
+        public bool Estado {get; set;}
+
         [JsonProperty("Familiares")]
         public List<Familiar> Familiares = new List<Familiar>();
 
@@ -44,6 +47,5 @@ namespace Cafeteros.Models
 
         [JsonProperty("AspectoEconomico")]
         public AspectoEconomico AspectoEconomico {get; set;}
-
     }
 }

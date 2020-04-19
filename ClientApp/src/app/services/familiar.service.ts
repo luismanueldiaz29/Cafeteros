@@ -18,7 +18,6 @@ export class FamiliarService {
 
   /** POST: add a new Familiar to the server */
   add(Familiar: Familiar): Observable<Familiar> {
-
     return this.http.post<Familiar>(this.baseUrl + 'api/Familiar', Familiar, httpOptions).pipe(
       tap((newFamiliar: Familiar) => this.log(`added newFamiliar w/ id=${newFamiliar.id}`)),
       catchError(this.handleError<Familiar>('addFamiliar'))
@@ -32,6 +31,14 @@ export class FamiliarService {
         tap(_ => this.log('fetched Familiar')),
         catchError(this.handleError<Familiar[]>('getFamiliar', []))
       );
+  }
+  /** este metodo me retorna todos los familiares de los productores */
+  getAllFamiliarProdId(id: string): Observable<Familiar[]> {
+    const url = `${this.baseUrl + 'api/Familiar/Productor'}/${id}`;
+    return this.http.get<Familiar[]>(url).pipe(
+      tap(_ => this.log(`fetched Familiar id=${id}`)),
+      catchError(this.handleError<Familiar[]>(`Familiar id=${id}`))
+    );
   }
 
   get(id: number): Observable<Familiar> {

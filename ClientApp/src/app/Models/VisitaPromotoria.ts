@@ -1,8 +1,8 @@
 export class VisitaPromotoria{
     id : number;
-    FechaVisita : string;
-    HoraVisita : string;
-    FechaProxVista : string;
+    fechaVisita : string;
+    horaVisita : string;
+    fechaProxVista : string;
     objetivoVisita : string;
     situacionEncontrada : string;
     intercambioSaberes : string;

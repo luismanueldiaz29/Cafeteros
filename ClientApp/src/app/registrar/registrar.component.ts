@@ -66,15 +66,13 @@ export class RegistrarComponent implements OnInit {
   guardarProductor(){
     this.productorService.add(this.productor).subscribe(
       productor => {
-        productor != null ?
-          this.GuardarFamiliar(productor.id)
-         : alert('No se pudo guardar el productor')
+        if(productor != null) this.GuardarFamiliar(productor.id)
       }
     );
   }
 
   incializarVariables(){
-    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : ""};
+    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : "", estado: false};
     //this.familiar = {id : null,Nombre : "",NumeroDocumento : "",FechaNacimiento : "",Parentesco : "",TipoPoblacion : "",AfiliacionSalud : "",NivelEducativo : "",ProductorId : ""};
     this.aspectoEconomico = {id : 0, TenenciaTierra : "",Legalidad : "",ProductorId : ""}
     this.participacionComunitaria = {id : 0, AsistenteAsamblea : "",CargoAsamblea : "",AistenteTrabajos : "",CargoTrabajo : "",OrganizacionAparte : "",CualOrganizacion : "",AspectoEconomicoId : 0}

@@ -3,7 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Productor } from '../Models/Productor';
-
+import Swal from 'sweetalert2'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -33,6 +33,16 @@ export class ProductorService {
         catchError(this.handleError<Productor[]>('getProductor', []))
       );
   }
+
+  getAllEstado(estado : boolean): Observable<Productor[]> {
+      const url = `${this.baseUrl + 'api/Productor/Estado'}/${estado}`
+     return this.http.get<Productor[]>(url)
+      .pipe(
+        tap(_ => this.log('fetched Productor')),
+        catchError(this.handleError<Productor[]>('getProductor', []))
+      );
+  }
+
 
   get(id: string): Observable<Productor> {
     const url = `${this.baseUrl + 'api/Productor'}/${id}`;
@@ -66,7 +76,11 @@ export class ProductorService {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      Swal.fire(
+        'Accion incorrecta!',
+        error,
+        'error'
+      ) // log to console instead
 
       // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);

@@ -14,6 +14,8 @@ import { RegistrarComponent } from './registrar/registrar.component';
 import { HomeComponent } from './home/home.component';
 import { AuditoriaComponent } from './auditoria/auditoria.component';
 import { PromotoriaComponent } from './promotoria/promotoria.component';
+import { ConsultarProductorComponent } from './List-productor/consultar-productor.component';
+import { InfoProductorComponent } from './info-productor/info-productor.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { PromotoriaComponent } from './promotoria/promotoria.component';
     LoginComponent,
     RegistrarComponent,
     AuditoriaComponent,
-    PromotoriaComponent
+    PromotoriaComponent,
+    ConsultarProductorComponent,
+    InfoProductorComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

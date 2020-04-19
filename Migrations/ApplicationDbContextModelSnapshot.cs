@@ -312,6 +312,9 @@ namespace Cafeteros.Migrations
                     b.Property<string>("CodigoSica")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Estado")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Municipio")
                         .HasColumnType("nvarchar(max)");
 

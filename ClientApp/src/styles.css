@@ -4,6 +4,23 @@ body {
   background-color: #eee;
 }
 
+/* ocultar parte de pantalla */
+@media print
+{    
+    .no-print, h1, h2, .no-print, button, .label, .title *
+    {
+        display: none !important;
+    }
+}
+/* fin ocultar parte de pantalla */
+
+/* tablas para seleccionar */
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #cfc9c9;
+  cursor: pointer;
+}
+/* fin tablas para selecionar */
+
 /* centrar los titulos */
 .title-center {
   text-align: center;

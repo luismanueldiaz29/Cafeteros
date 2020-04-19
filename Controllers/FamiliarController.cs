@@ -42,6 +42,23 @@ namespace Cafeteros.Controllers
             return Familiar;
         }
 
+        [HttpGet("Productor/{id}")]
+        public async Task<ActionResult<IEnumerable<Familiar>>> getFamiliarProductor(string id)
+        {
+            var Familiar = await _context.Familiar.ToListAsync();
+            List <Familiar> familiares = new List<Familiar>();
+            foreach (Familiar item in Familiar)
+            {
+                if(item.ProductorId == id){
+                    familiares.Add(item);
+                }
+            }
+            if(familiares == null){
+                return NotFound();
+            }
+            return familiares;
+        }
+
         // POST: api/Task
         [HttpPost]
         public async Task<ActionResult<Familiar>> PostFamiliar(Familiar item)

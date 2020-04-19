@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cafeteros.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200407190235_Cafeteros")]
+    [Migration("20200419003448_Cafeteros")]
     partial class Cafeteros
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -313,6 +313,9 @@ namespace Cafeteros.Migrations
 
                     b.Property<string>("CodigoSica")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Estado")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Municipio")
                         .HasColumnType("nvarchar(max)");

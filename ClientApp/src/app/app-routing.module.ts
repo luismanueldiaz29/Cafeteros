@@ -6,6 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { AuditoriaComponent } from './auditoria/auditoria.component';
 import { PromotoriaComponent } from './promotoria/promotoria.component';
+import { ConsultarProductorComponent } from './List-productor/consultar-productor.component';
+import { InfoProductorComponent } from './info-productor/info-productor.component';
 
 const routes : Routes = [
   { 
@@ -27,6 +29,14 @@ const routes : Routes = [
   {
     path : 'Promotoria',
     component : PromotoriaComponent
+  },
+  {
+    path : 'List-Productor',
+    component : ConsultarProductorComponent
+  },
+  {
+    path : 'info_Productor',
+    component : InfoProductorComponent
   }
   //angular7
   // {path:'',redirectTo:'/user/login',pathMatch:'full'},
