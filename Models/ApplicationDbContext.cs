@@ -28,5 +28,13 @@ namespace Cafeteros.Models
         public DbSet<LaboresProgramada> LaboresProgramada { get; set; }
 
         public DbSet<LaboresRealizada> LaboresRealizada { get; set; }
+
+        public DbSet<DisponibilidadAgua> DisponibilidadAgua { get; set; }
+        
+        public DbSet<AlmacenamientoAgua> AlmacenamientoAgua { get; set; }
+
+        public DbSet<MesaDirectiva> MesaDirectiva { get; set; }
+
+        public DbSet<Tecnico> Tecnico { get; set; }
     }
 }

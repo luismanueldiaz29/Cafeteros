@@ -1,10 +1,10 @@
 export class PaticipacionComunitaria{
     id : number;
-    AsistenteAsamblea : string;
-    CargoAsamblea : string;
-    AistenteTrabajos : string;
-    CargoTrabajo : string;
-    OrganizacionAparte : string;
-    CualOrganizacion : string;
-    AspectoEconomicoId : number;
+    asistenteAsamblea : string;
+    cargoAsamblea : string;
+    aistenteTrabajos : string;
+    cargoTrabajo : string;
+    organizacionAparte : string;
+    cualOrganizacion : string;
+    aspectoEconomicoId : number;
 }

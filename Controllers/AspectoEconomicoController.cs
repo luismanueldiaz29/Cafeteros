@@ -42,6 +42,19 @@ namespace Cafeteros.Controllers
             return AspectoEconomico;
         }
 
+        [HttpGet("Productor/{id}")]
+        public async Task<ActionResult<AspectoEconomico>> getAspectoEconomicoProductor(string id)
+        {
+            var AspectoEconomico = await _context.AspectoEconomico.ToListAsync();
+            foreach (AspectoEconomico item in AspectoEconomico)
+            {
+                if(item.ProductorId == id){
+                    return item;
+                }
+            }
+            return NotFound();
+        }
+
         // POST: api/Task
         [HttpPost]
         public async Task<ActionResult<AspectoEconomico>> PostAspectoEconomico(AspectoEconomico item)

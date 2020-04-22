@@ -21,30 +21,32 @@
                                     <h1 class="title">Login</h1>
                                 </div>
                                 <div class="content">
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="text" class="form-control"  placeholder="ingrece su email" >
-                    
-                                        <!-- <input  formControlName="correo" class="form-control"
-                                        [ngClass]="{ 'is-invalid': submitted && f.correo.errors }" placeholder="ingrece su email"
-                                        type="text" />
-                                        <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
-                                            <div *ngIf="f.correo.errors.required">correo es requerido</div>
-                                        </div> -->
-                    
-                                    </div> 
-                                    <div class="form-group">
-                                        <label>Contraceña</label>
-                                        <input type="password" class="form-control" placeholder="ingrece su contraceña" >
-                                        
-                                        <!-- <input  formControlName="password" class="form-control"
-                                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="ingrece su password"
-                                        type="text" />
-                                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                            <div *ngIf="f.password.errors.required">password es requerido</div>
-                                        </div> -->
-                                    </div>
-                                        <button class="btn btn-info btn-fill" routerLink = "/Home">Acceder</button>
+                                    <form [formGroup]="formGroup">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <!-- <input type="text" class="form-control"  placeholder="ingrece su email" > -->
+                        
+                                            <input  formControlName="Usuario" class="form-control"
+                                            [ngClass]="{'is-invalid': submitted && f.Usuario.errors}" placeholder="ingrece su email"
+                                            type="text" [(ngModel)]="login.Usuario"/>
+                                            <div *ngIf="submitted && f.Usuario.errors" class="invalid-feedback">
+                                                <div *ngIf="f.Usuario.errors.required">Correo es requerido</div>
+                                            </div>
+                        
+                                        </div> 
+                                        <div class="form-group">
+                                            <label>Password</label>
+                                            <!-- <input type="Password" class="form-control" placeholder="ingrece su Password" > -->
+                                            
+                                            <input  formControlName="Password" class="form-control"
+                                            [ngClass]="{'is-invalid': submitted && f.Password.errors}" placeholder="ingrece su Contraceña"
+                                            type="password" [(ngModel)]="login.Password"/>
+                                            <div *ngIf="submitted && f.Password.errors" class="invalid-feedback">
+                                                <div *ngIf="f.Password.errors.required">Contraceña es requerido</div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-info btn-fill" (click)="onSubmit()">Acceder</button>
+                                    </form>
                                 </div> 
                             </div>
                             </div>

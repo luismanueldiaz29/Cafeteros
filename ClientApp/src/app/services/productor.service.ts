@@ -3,7 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Productor } from '../Models/Productor';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -34,7 +34,7 @@ export class ProductorService {
       );
   }
 
-  getAllEstado(estado : boolean): Observable<Productor[]> {
+  getAllEstado(estado : number): Observable<Productor[]> {
       const url = `${this.baseUrl + 'api/Productor/Estado'}/${estado}`
      return this.http.get<Productor[]>(url)
       .pipe(

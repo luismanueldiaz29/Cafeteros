@@ -1,6 +1,6 @@
 export class AspectoEconomico{
     id : number;
-    TenenciaTierra : string;
-    Legalidad : string;
-    ProductorId : string;
+    tenenciaTierra : string;
+    legalidad : string;
+    productorId : string;
 }

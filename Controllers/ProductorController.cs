@@ -19,8 +19,8 @@ namespace Cafeteros.Controllers
         public ProductorController(ApplicationDbContext context){
             _context = context;
             if (_context.Productor.Count() == 0){
-                _context.Productor.Add(new Productor { id = "1",  Nombre = "Carlos ", CodigoCafetero = "12334", NombrePredio = "alskas", CodigoSica = "Productor", Municipio = "Valledupar", Vereda = "calle linda", NumeroTelefono = "123", AfiliacionSalud = "1", ActvidadesDedican = "1", Estado = false});
-                _context.Productor.Add(new Productor {  id = "2", Nombre = "Luis Manué", CodigoCafetero = "Dia1212z", NombrePredio = "sdfssdf", CodigoSica = "Productor", Municipio = "la paz", Vereda = "calle cuba", NumeroTelefono = "123", AfiliacionSalud = "1", ActvidadesDedican  = "1", Estado = true});
+                _context.Productor.Add(new Productor { id = "1",  Nombre = "Carlos ", CodigoCafetero = "12334", NombrePredio = "alskas", CodigoSica = "Productor", Municipio = "Valledupar", Vereda = "calle linda", NumeroTelefono = "123", AfiliacionSalud = "1", ActvidadesDedican = "1", Estado = 0});
+                _context.Productor.Add(new Productor {  id = "2", Nombre = "Luis Manué", CodigoCafetero = "Dia1212z", NombrePredio = "sdfssdf", CodigoSica = "Productor", Municipio = "la paz", Vereda = "calle cuba", NumeroTelefono = "123", AfiliacionSalud = "1", ActvidadesDedican  = "1", Estado = 0});
                 _context.SaveChanges();
             }
         }
@@ -45,7 +45,7 @@ namespace Cafeteros.Controllers
         //con este metodo puedo obtener los productores segun el estado ya sea aprobado en ese caso
         //el atributo Estado debe ser true y en caso de que no haya sido aprobado tendria que ser false
         [HttpGet("Estado/{Estado}")]
-        public async Task<ActionResult<IEnumerable<Productor>>> GetProductorEstado(bool Estado)
+        public async Task<ActionResult<IEnumerable<Productor>>> GetProductorEstado(int Estado)
         {
             var Productores = await _context.Productor.ToListAsync();
             List<Productor> productores = new List<Productor>();

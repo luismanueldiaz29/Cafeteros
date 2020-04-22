@@ -1,12 +1,12 @@
 export class Habitabilidad{
     id : number;
-    TipoVivienda : string;
-    NumeroHabitaciones : number;
-    MaterialPredominante : string;
-    MaterialTecho : string;
-    MaterialCosinar : string;
-    EnergiaCosinar : string;
-    ServicioSanitario : string;
-    TipoAlumbrado : string;
-    AspectoEconomicoId : number;
+    tipoVivienda : string;
+    numeroHabitaciones : number;
+    materialPredominante : string;
+    materialTecho : string;
+    materialCosinar : string;
+    energiaCosinar : string;
+    servicioSanitario : string;
+    tipoAlumbrado : string;
+    aspectoEconomicoId : number;
 }

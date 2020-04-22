@@ -1,3 +1,15 @@
 input{
     background-color: white;
 }
+
+.p{
+    width: auto;
+}
+
+.checkbox[ng-readonly="true"]{
+    z-index: -1;
+}
+
+.Imprimir{
+    text-align: center;
+}

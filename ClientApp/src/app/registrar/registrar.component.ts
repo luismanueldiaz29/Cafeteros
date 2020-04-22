@@ -12,6 +12,12 @@ import { PaticipacionComunitaria } from '../Models/PaticipacionComunitaria';
 import { AspectoEconomicoService } from '../services/aspectoEconomico.service';
 import { HabitabilidadService } from '../services/habitabilidad.service';
 import { PaticipacionComunitariaService } from '../services/participacionComunitaria';
+import { AlmacenamientoAgua } from '../Models/AlmacenamientoAgua';
+import { DisponibilidadAgua } from '../Models/DisponibilidadAgua';
+import { AlmacenamientoAguaService } from '../services/almacenamientoAgua.service';
+import { DisponibilidadAguaService } from '../services/disponibilidadAgua.service';
+import { UsoAgua } from '../Models/UsoAgua';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-registrar',
@@ -33,11 +39,13 @@ export class RegistrarComponent implements OnInit {
   aspectoEconomico : AspectoEconomico;
   habitabilidad : Habitabilidad;
   participacionComunitaria : PaticipacionComunitaria;
+  almacenamientoAgua : AlmacenamientoAgua;
+  disponibilidadAgua : DisponibilidadAgua;
 
   //formGroup
   firstFormGroup: FormGroup;
   secondFormGroup : FormGroup;
-
+  threeFormGroup : FormGroup;
 
   constructor(
     private _formBuilder: FormBuilder, //para formulario reactivo
@@ -45,7 +53,9 @@ export class RegistrarComponent implements OnInit {
     private familiarService : FamiliarService,
     private aspectoEconomicoService : AspectoEconomicoService,
     private habitabilidadService : HabitabilidadService,
-    private participacionComunitariaService : PaticipacionComunitariaService
+    private participacionComunitariaService : PaticipacionComunitariaService,
+    private almacenamientoSevice : AlmacenamientoAguaService,
+    private disponibilidadAguaService : DisponibilidadAguaService
   ) { }
 
   ngOnInit() {
@@ -72,11 +82,12 @@ export class RegistrarComponent implements OnInit {
   }
 
   incializarVariables(){
-    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : "", estado: false};
+    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : "", estado: 0};
     //this.familiar = {id : null,Nombre : "",NumeroDocumento : "",FechaNacimiento : "",Parentesco : "",TipoPoblacion : "",AfiliacionSalud : "",NivelEducativo : "",ProductorId : ""};
-    this.aspectoEconomico = {id : 0, TenenciaTierra : "",Legalidad : "",ProductorId : ""}
-    this.participacionComunitaria = {id : 0, AsistenteAsamblea : "",CargoAsamblea : "",AistenteTrabajos : "",CargoTrabajo : "",OrganizacionAparte : "",CualOrganizacion : "",AspectoEconomicoId : 0}
-    this.habitabilidad = {id : 0,TipoVivienda : "",NumeroHabitaciones : 0,MaterialPredominante : "",MaterialTecho : "",MaterialCosinar : "",EnergiaCosinar : "",ServicioSanitario : "",TipoAlumbrado : "",AspectoEconomicoId : 0}
+    this.aspectoEconomico = {id : 0, tenenciaTierra : "",legalidad : "",productorId : ""}
+    this.participacionComunitaria = {id : 0, asistenteAsamblea : "",cargoAsamblea : "",aistenteTrabajos : "",cargoTrabajo : "",organizacionAparte : "",cualOrganizacion : "",aspectoEconomicoId : 0}
+    this.habitabilidad = {id : 0,tipoVivienda : "",numeroHabitaciones : 0,materialPredominante : "",materialTecho : "",materialCosinar : "",energiaCosinar : "",servicioSanitario : "",tipoAlumbrado : "",aspectoEconomicoId : 0}
+    this.almacenamientoAgua = {id: 0,tipoAlmacenamiento: "",volumen: "",numeroUsuario: 0,estudioAgua: "",existeDesperdicio: "",mantenimiento: "",productorId: ""}
   }
 
   validarFromgroup(){
@@ -100,6 +111,8 @@ export class RegistrarComponent implements OnInit {
       AsistenteTrabajos : ['', Validators.required],
       OrganizacionAparte : ['', Validators.required],
       CargoAsamblea : [''],
+      CargoTrabajo : [''],
+      CualOrganizacion : [''],
       TipoVivienda : [''],
       NumeroHabitaciones : [''],
       MaterialPredominante : [''],
@@ -110,6 +123,20 @@ export class RegistrarComponent implements OnInit {
       ServicioSanitario : [''],
       estadoServicioSanitario : [''],
       TipoAlumbrado : ['']
+    });
+
+    this.threeFormGroup = this._formBuilder.group({
+      fuente : [''],
+      disponibilidad : [''],
+
+      //almacenamiento
+      tipoAlmacenamiento : [''],
+      volumen : [''],
+      numeroUsuario : [''],
+      estudioAgua : [''],
+      existeDesperdicio : [''],
+      mantenimiento : [''],
+      resultado : ['']
     });
   }
 
@@ -127,6 +154,22 @@ export class RegistrarComponent implements OnInit {
   //eliminar una fila de la tabla de familiares del prductor
   deleteFieldValue(index) {
       this.fieldArray.splice(index, 1);
+  }
+
+
+  private fieldArrayDisponibilidadAgua: Array<DisponibilidadAgua> = [];
+  private newAttributeDisponibilidadAgua: DisponibilidadAgua  = {id: 0,fuente: "",usoDomestico: null,usoAgricola: null,disponibilidad: "",productorId: ""};
+  //agregar filas de la tabla de diponibilidad de agua
+  addFieldValueDisponibilidadAgua() {
+    this.newAttributeDisponibilidadAgua.productorId = this.productor.id;
+    this.fieldArrayDisponibilidadAgua.push(this.newAttributeDisponibilidadAgua)
+    this.newAttributeDisponibilidadAgua = new DisponibilidadAgua;
+    this.newAttributeDisponibilidadAgua.productorId = this.productor.id;
+  }
+
+  //eliminar una fila de la tabla de disponibilidad de agua
+  deleteFieldValueDisponibilidadAgua(index) {
+      this.fieldArrayDisponibilidadAgua.splice(index, 1);
   }
 
   get f() { return this.firstFormGroup.controls; }
@@ -162,6 +205,8 @@ export class RegistrarComponent implements OnInit {
       });
       
       this.GuardarAspectoEconomico(id);
+      this.GuardarDisponibilidadAgua(id);
+      this.guardarAlmacenamientoAgua(id);
     }catch(error){
       Swal.fire(
         'Accion incorrecta!',
@@ -171,8 +216,27 @@ export class RegistrarComponent implements OnInit {
     }
   }
 
+  GuardarDisponibilidadAgua(productorId : string){
+    this.newAttributeDisponibilidadAgua.productorId = productorId;
+    this.disponibilidadAguaService.add(this.newAttributeDisponibilidadAgua).subscribe(
+    disponibilidadAgua => {
+      console.log(this.newAttribute.Nombre+' '+this.newAttribute.ProductorId)
+      disponibilidadAgua != null ? console.log(' SE AGREGO newAttributeDisponibilidadAgua '+this.newAttributeDisponibilidadAgua.fuente) : console.log(' ERROR newAttributeDisponibilidadAgua '+this.newAttributeDisponibilidadAgua.fuente+' productorId '+this.newAttributeDisponibilidadAgua.fuente)
+    });
+
+    this.fieldArrayDisponibilidadAgua.forEach(
+      element => {
+        this.disponibilidadAguaService.add(element).subscribe(
+          disponibilidadAgua => {
+            disponibilidadAgua != null ? console.log(' SE AGREGO fieldArrayDisponibilidadAgua '+this.newAttributeDisponibilidadAgua.fuente) : console.log(' ERROR fieldArrayDisponibilidadAgua '+element.fuente+' productorId '+element.fuente)
+          }
+        )
+      }
+    );
+  }
+
   GuardarAspectoEconomico(id : string){
-    this.aspectoEconomico.ProductorId =  id;
+    this.aspectoEconomico.productorId =  id;
     this.aspectoEconomicoService.add(this.aspectoEconomico).subscribe(
       aspectoEco => {
         aspectoEco != null ? this.guardarHabitabilidad(aspectoEco.id) : alert('No se pudo guardar aspecto economico')
@@ -181,7 +245,7 @@ export class RegistrarComponent implements OnInit {
   }
 
   guardarHabitabilidad(id : number){
-    this.habitabilidad.AspectoEconomicoId = id;
+    this.habitabilidad.aspectoEconomicoId = id;
     this.habitabilidadService.add(this.habitabilidad).subscribe(
       habitabilidad => {
         habitabilidad != null ? this.guardarParticipacionComunitaria(id) : alert('No se pudo guardar la habitabilidad')
@@ -190,10 +254,20 @@ export class RegistrarComponent implements OnInit {
   }
 
   guardarParticipacionComunitaria(id : number){
-    this.participacionComunitaria.AspectoEconomicoId = id;
+    this.participacionComunitaria.aspectoEconomicoId = id;
     this.participacionComunitariaService.add(this.participacionComunitaria).subscribe(
       participacion => {
-        participacion != null ? Swal.fire(
+        participacion != null ? console.log('Se guardo participacion comunitaria') : console.log('No se guardo participacion');
+      }
+    );
+  }
+
+  guardarAlmacenamientoAgua(productorId : string){
+    this.almacenamientoAgua.productorId = productorId;
+    this.almacenamientoSevice.add(this.almacenamientoAgua).subscribe(
+      almacenamientoAgua => {
+        almacenamientoAgua != null ?
+        Swal.fire(
           'Accion sastifactoria!',
           'Para saltar esto pulse ok!',
           'success'

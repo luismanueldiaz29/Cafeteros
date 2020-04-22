@@ -33,6 +33,12 @@ namespace Cafeteros.Models
         [JsonProperty("ProductorId")]
         public string ProductorId { get; set; }
 
+        [JsonProperty("Tecnico")]
+        public Tecnico Tecnico { get; set; }
+
+        [JsonProperty("TecnicoId")]
+        public string TecnicoId { get; set; }
+
         public List<LaboresProgramada> LaboresProgramadas = new List<LaboresProgramada>();  
 
         public List<LaboresRealizada> LaboresRealizadas = new List<LaboresRealizada>();  

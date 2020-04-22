@@ -19,8 +19,8 @@ namespace Cafeteros.Controllers
         public PaticipacionComunitariaController(ApplicationDbContext context){
             _context = context;
             if (_context.PaticipacionComunitaria.Count() == 0){
-                _context.PaticipacionComunitaria.Add(new PaticipacionComunitaria { AsistenteAsamblea = "NO", CargoAsamblea = "", AistenteTrabajos = "No", CargoTrabajo = "No", OrganizacionAparte = "No", CualOrganizacion = "", AspectoEconomicoId = 1});
-                _context.PaticipacionComunitaria.Add(new PaticipacionComunitaria { AsistenteAsamblea = "NO", CargoAsamblea = "", AistenteTrabajos = "No", CargoTrabajo = "No", OrganizacionAparte = "No", CualOrganizacion = "", AspectoEconomicoId = 2});
+                _context.PaticipacionComunitaria.Add(new PaticipacionComunitaria { AsistenteAsamblea = "NO", CargoAsamblea = "", AistenteTrabajos = "NO", CargoTrabajo = "NO", OrganizacionAparte = "NO", CualOrganizacion = "", AspectoEconomicoId = 1});
+                _context.PaticipacionComunitaria.Add(new PaticipacionComunitaria { AsistenteAsamblea = "SI", CargoAsamblea = "Presidente", AistenteTrabajos = "SI", CargoTrabajo = "Agricultura", OrganizacionAparte = "SI", CualOrganizacion = "UPC", AspectoEconomicoId = 2});
                 _context.SaveChanges();
             }
         }
@@ -40,6 +40,19 @@ namespace Cafeteros.Controllers
                 return NotFound();
             }
             return PaticipacionComunitaria;
+        }
+
+        [HttpGet("AspectoEconomico/{id}")]
+        public async Task<ActionResult<PaticipacionComunitaria>> GetAspectoParticipacionCom(int id)
+        {
+            var PaticipacionComunitarias = await _context.PaticipacionComunitaria.ToListAsync();
+            foreach (PaticipacionComunitaria item in PaticipacionComunitarias)
+            {
+                if(item.AspectoEconomicoId == id){
+                    return item;
+                }
+            }
+            return NotFound();
         }
 
         // POST: api/Task

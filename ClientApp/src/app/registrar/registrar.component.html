@@ -204,7 +204,7 @@
                                                         </tr>
                                                   </thead>
                                                   <tbody>
-                                                      <tr *ngFor="let field of fieldArray; let i = index">
+                                                      <tr *ngFor="let field of fieldArray; let i = index" >
                                                           
                                                         <td>
                                                             <input [(ngModel)]="field.Nombre" class="form-control" type="text" name="{{field.Nombre}}" />
@@ -227,11 +227,11 @@
                                                         <td>
                                                           <input [(ngModel)]="field.NivelEducativo" class="form-control" type="text" name="{{field.NivelEducativo}}" />
                                                         </td>
-                                                          <td>
-                                                            <button class="badge btn" (click)="deleteFieldValue(i)">
-                                                              <img src="assets/dejar.png" alt="">
-                                                            </button>
-                                                          </td>
+                                                        <td>
+                                                          <button class="badge btn" (click)="deleteFieldValue(i)">
+                                                            <img src="assets/dejar.png" alt="">
+                                                          </button>
+                                                        </td>
                                                           
                                                       </tr>
                                                       <tr>
@@ -257,12 +257,11 @@
                                                           <input class="form-control" type="text"  [(ngModel)]="newAttribute.NivelEducativo" name="newAttributeNivelEducativo" />
                                                         </td>
                                                           <td>
-                                                              <!-- <button class="btn btn-default" type="button" ">Add</button> -->
                                                               <button  class="badge btn" (click)="addFieldValue()">
                                                                 <img src="assets/comprobado.png" alt="">
                                                               </button>
                                                           </td>
-                                                      </tr>
+                                                      </tr> 
                                                   </tbody>
                                                 </table>
                                               </div>
@@ -342,10 +341,10 @@
                                             <div class="form-group">
                                               <Label>Asistente a la asamblea comunitarias</Label>
                                               <select [ngClass]="{ 'is-invalid': submitted && f2.AsistenteAsamblea.errors }" formControlName = "AsistenteAsamblea" aria-placeholder="seleccione una opcion" [(ngModel)] = "participacionComunitaria.AsistenteAsamblea" class="form-control">
-                                                <option value="no">NO</option>
-                                                <option value="si">SI</option>
+                                                <option value="NO">NO</option>
+                                                <option value="SI">SI</option>
                                               </select>
-                                              <div *ngIf = "participacionComunitaria.AsistenteAsamblea == 'si'">
+                                              <div *ngIf = "participacionComunitaria.AsistenteAsamblea == 'SI'">
                                                 <input class="form-control" formControlName="CargoAsamblea" [(ngModel)] = "participacionComunitaria.CargoAsamblea" placeholder="Cargo si desempeña" type="text">
                                               </div>
                                               <div *ngIf="submitted && f2.AsistenteAsamblea.errors " class="invalid-feedback">
@@ -358,10 +357,10 @@
                                             <div class="form-group">
                                               <Label>Asistente a trabajos tradicionales</Label>
                                               <select [ngClass]="{ 'is-invalid': submitted && f2.AsistenteTrabajos.errors }" class="form-control"  formControlName="AsistenteTrabajos" [(ngModel)] = "participacionComunitaria.AistenteTrabajos" placeholder="Elija una opción">
-                                                <option value="no">NO</option>
-                                                <option value="si">SI</option>
+                                                <option value="NO">NO</option>
+                                                <option value="SI">SI</option>
                                               </select>
-                                              <div *ngIf = "participacionComunitaria.AistenteTrabajos == 'si'">
+                                              <div *ngIf = "participacionComunitaria.AistenteTrabajos == 'SI'">
                                                 <input class="form-control"  formControlName="CargoTrabajo" [(ngModel)] = "participacionComunitaria.CargoTrabajo" placeholder="Cargo si desempeña" type="text">
                                               </div>
                                               <div *ngIf="submitted && f2.AsistenteTrabajos.errors" class="invalid-feedback">
@@ -374,10 +373,10 @@
                                             <div class="form-group">
                                               <Label>Pertenece a una organización aparte</Label>
                                               <select [ngClass]="{ 'is-invalid': submitted && f2.OrganizacionAparte.errors }" class="form-control" formControlName="OrganizacionAparte" [(ngModel)] = "participacionComunitaria.OrganizacionAparte" placeholder="Elija una opción">
-                                                <option value="no">NO</option>
-                                                <option value="si">SI</option>
+                                                <option value="NO">NO</option>
+                                                <option value="SI">SI</option>
                                               </select>
-                                              <div *ngIf = "participacionComunitaria.OrganizacionAparte == 'si'">
+                                              <div *ngIf = "participacionComunitaria.OrganizacionAparte == 'SI'">
                                                 <input class="form-control" formControlName="CualOrganizacion" [(ngModel)] = "participacionComunitaria.CualOrganizacion" placeholder="A cual ?" type="text">
                                               </div>
                                               <div *ngIf="submitted && f2.OrganizacionAparte.errors" class="invalid-feedback">
@@ -426,38 +425,6 @@
                                           <!-- fin row -->
                                         </div>
 
-                                        <!-- <div class="row"> -->
-                                          <!-- inicio row -->
-                                          <!-- <div class="col-md-4">
-                                            <div class="form-group">
-                                              <label>Material predominante</label>
-                                              <select class="form-control" formControlName="material">
-                                                <option value="Barro">Barro</option>
-                                                <option value="Adobe">Adobe</option>
-                                                <option value="Ladrillo">Ladrillo</option>
-                                                <option value="Bloque">Bloque</option>
-                                                <option value="Plastico">Plastico</option>
-                                                <option value="Otro">Otro</option>
-                                              </select>
-                                            </div>
-                                          </div> -->
-
-
-
-                                          <!-- <div class="col-md-4">
-                                            <div class="form-group">
-                                              <label>Cuenta con piso ?</label>
-                                              <select  formControlName = "CuentaPiso" class="form-control" >
-                                                <option value="Ceramica">Ceramica</option>
-                                                <option value="Cemento">Cemento</option>
-                                                <option value="Tierra">Tierra</option>
-                                              </select>
-                                            </div>
-                                          </div> -->
-
-                                          <!-- fin row -->
-                                        <!-- </div> -->
-
                                         <div class="row">
                                           <!-- inicio row -->
                                           <div class="col-md-4">
@@ -502,7 +469,7 @@
                                           <!-- fin row -->
                                         </div>
 
-                                        <!-- Botones sigientes y atras -->
+                                        
                                           <div class="row">
                                             <!-- Inicio row -->
                                             <div class="col-md-4">
@@ -534,9 +501,10 @@
                                               <!-- Fin row -->
                                           </div>
                                           
-                                          <div id="Guardar">
+                                          <!-- Botones sigientes y atras -->
+                                          <!-- <div id="Guardar">
                                             <button type="submit" class="btn btn-success btn-fill" (click) = "guardar()">Guardar</button>
-                                          </div>
+                                          </div> -->
                                           <div class="row pager">
                                               <div class="col pull-left">
                                                 <button type="submit" class="btn btn-info btn-fill"  matStepperPrevious>Atras</button>
@@ -555,147 +523,92 @@
                                   <!-- tercer step -->
                                     <ng-template matStepLabel></ng-template>
 
-                                    <form>
+                                    <form [formGroup] = "threeFormGroup" >
                                       <h5 class="title mb-4">Disponibilidad de agua para uso domestico u agrícola</h5>
 
                                       <!-- Table -->
-                                      <div class="table-responsive table-full-width">
-                                        <table class="table table-striped table-bordered">
-                                          <thead>
-                                            <tr>
-                                              <th class="title title-center">Fuente</th>
-                                              <th class="title title-center">Uso domestico</th>
-                                              <th class="title title-center">Uso agricola</th>
-                                              <th class="title title-center">Disponibilidad </th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                            <tr>
-                                              <td class="title">
-                                                Acueducto veredal
-                                              </td>
-                                              <td>
-                                                <div class="checkbox">
-                                                  <input id="checkbox1" type="checkbox">
-                                                  <label for="checkbox1"></label>
-                                                </div>
-                                              </td>
-                                              <td>
-                                                <div class="checkbox">
-                                                  <input id="checkbox2" type="checkbox">
-                                                  <label for="checkbox2"></label>
-                                                </div>
-                                              </td>
-                                              <td>
-                                                <div class="row">
-                                                  <div class="col-md-3"></div>
-                                                  <div class="col-md-6">
-                                                    <select name="select" class="form-control">
-                                                      <option value="Premanente">Premanente</option>
-                                                      <option value="Temporal">Temporal</option>
-                                                    </select>                                                    
-                                                  </div>
-                                                  <div class="col-md-3"></div>
-                                                </div>
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td class="title">
-                                                Quebrada-rio
-                                              </td>
-                                              <td>
-                                                <div class="checkbox">
-                                                  <input id="checkbox1" type="checkbox">
-                                                  <label for="checkbox1"></label>
-                                                </div>
-                                              </td>
-                                              <td>
-                                                <div class="checkbox">
-                                                  <input id="checkbox1" type="checkbox">
-                                                  <label for="checkbox1"></label>
-                                                </div>
-                                              </td>
-                                              <td>
-                                                <div class="row">
-                                                  <div class="col-md-3"></div>
-                                                  <div class="col-md-6">
-                                                    <select name="select" class="form-control">
-                                                      <option value="Premanente">Premanente</option>
-                                                      <option value="Temporal">Temporal</option>
-                                                    </select>                                                    
-                                                  </div>
-                                                  <div class="col-md-3"></div>
-                                                </div>
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td class="title">
-                                                Nacimiento
-                                              </td>
-                                              <td>
-                                                <div class="checkbox">
-                                                  <input id="checkbox1" type="checkbox">
-                                                  <label for="checkbox1"></label>
-                                                </div>
-                                              </td>
-                                              <td>
-                                                <div class="checkbox">
-                                                  <input id="checkbox1" type="checkbox">
-                                                  <label for="checkbox1"></label>
-                                                </div>
-                                              </td>
-                                              <td>
-                                                <div class="row">
-                                                  <div class="col-md-3"></div>
-                                                  <div class="col-md-6">
-                                                    <select name="select" class="form-control">
-                                                      <option value="Premanente">Premanente</option>
-                                                      <option value="Temporal">Temporal</option>
-                                                    </select>                                                    
-                                                  </div>
-                                                  <div class="col-md-3"></div>
-                                                </div>
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td class="title">
-                                                Otros
-                                              </td>
-                                              <td>
-                                                <div class="checkbox">
-                                                  <input id="checkbox1" type="checkbox">
-                                                  <label for="checkbox1"></label>
-                                                </div>
-                                              </td>
-                                              <td>
-                                                <div class="checkbox">
-                                                  <input id="checkbox1" type="checkbox">
-                                                  <label for="checkbox1"></label>
-                                                </div>
-                                              </td>
-                                              <td>
-                                                <div class="row">
-                                                  <div class="col-md-3"></div>
-                                                  <div class="col-md-6">
-                                                    <select name="select" class="form-control">
-                                                      <option value="Premanente">Premanente</option>
-                                                      <option value="Temporal">Temporal</option>
-                                                    </select>                                                    
-                                                  </div>
-                                                  <div class="col-md-3"></div>
-                                                </div>
-                                              </td>
-                                            </tr>
-                                          </tbody>
-                                        </table>
-                                      </div>
+                                      <form>
+                                        <div class="row">
+                                          <div class="col-md-12">
+                                            <div class="table-responsive table-full-width">
+                                              <table class="table table-striped table-bordered">
+                                                <thead>
+                                                  <tr>
+                                                    <th class="title title-center">Fuente</th>
+                                                    <th class="title title-center">Uso domestico</th>
+                                                    <th class="title title-center">Uso agricola</th>
+                                                    <th class="title title-center">Disponibilidad </th>
+                                                    <th class="title title-center">Accion</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr *ngFor="let field of fieldArrayDisponibilidadAgua; let i = index">
+                                                    <td>
+                                                      <select name="{{field.fuente}}+i" [(ngModel)]="field.fuente" class="form-control">
+                                                        <option value="Acueducto veredal">Acueducto veredal</option>
+                                                          <option value="Quebrada-rio">Quebrada-rio</option>
+                                                          <option value="Nacimiento">Nacimiento</option>
+                                                          <option value="Otros">Otros</option>
+                                                      </select>
+                                                    </td>
+                                                    <td class="title-center">
+                                                      <input type="checkbox" name="Checkbox+i" [(ngModel)]="field.usoDomestico">
+                                                    </td>
+                                                    <td class="title-center">
+                                                      <input  type="checkbox" name="Check+i" [(ngModel)]="field.usoAgricola">
+                                                    </td>
+                                                    <td>
+                                                      <select  name="{{field.disponibilidad}}+1" [(ngModel)]="field.disponibilidad"  class="form-control">
+                                                        <option value="Premanente">Premanente</option>
+                                                        <option value="Temporal">Temporal</option>
+                                                      </select> 
+                                                    </td>
+                                                    <td class="title-center">
+                                                      <button class="badge btn" (click)="deleteFieldValueDisponibilidadAgua(i)">
+                                                        <img src="assets/dejar.png" alt="">
+                                                      </button>
+                                                    </td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>
+                                                      <select name="{{newAttributeDisponibilidadAgua.fuente}}+index" [(ngModel)]="newAttributeDisponibilidadAgua.fuente" class="form-control">
+                                                        <option value="Acueducto veredal">Acueducto veredal</option>
+                                                          <option value="Quebrada-rio">Quebrada-rio</option>
+                                                          <option value="Nacimiento">Nacimiento</option>
+                                                          <option value="Otros">Otros</option>
+                                                      </select>
+                                                    </td>
+                                                    <td class="title-center">
+                                                      <input type="checkbox" [(ngModel)]="newAttributeDisponibilidadAgua.usoDomestico" name="index+checkbox">
+                                                    </td>
+                                                    <td class="title-center">
+                                                      <input  type="checkbox" [(ngModel)]="newAttributeDisponibilidadAgua.usoAgricola" name="index+check">
+                                                    </td>
+                                                    <td>
+                                                      <select  name="{{newAttributeDisponibilidadAgua.disponibilidad}}+index" [(ngModel)]="newAttributeDisponibilidadAgua.disponibilidad" class="form-control">
+                                                        <option value="Premanente">Premanente</option>
+                                                        <option value="Temporal">Temporal</option>
+                                                      </select> 
+                                                    </td>
+                                                    <td class="title-center">
+                                                      <button class="badge btn" (click)="addFieldValueDisponibilidadAgua()">
+                                                        <img src="assets/comprobado.png" alt="">
+                                                      </button>
+                                                    </td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </form> 
                                       <!-- end table -->
 
                                       <div class="row">
                                         <div class="col-md-3">
                                           <div class="form-group">
                                             <label>Tipo de almacenamiento</label>
-                                            <select name="select" class="form-control" placeholder="tipo de almacenamiento">
+                                            <select formControlName="tipoAlmacenamiento" [(ngModel)]="almacenamientoAgua.tipoAlmacenamiento" class="form-control" placeholder="tipo de almacenamiento">
                                               <option value="Tanque individual">Tanque individual</option>
                                               <option value="tanque comunitario">Tanque comunitario</option>
                                             </select>
@@ -704,25 +617,25 @@
                                         <div class="col-md-3">
                                           <div class="form-group">
                                             <label>Volumen (metros cubicos)</label>
-                                            <input type="text" class="form-control" placeholder="volumen">
+                                            <input type="text" class="form-control" formControlName="volumen" [(ngModel)]="almacenamientoAgua.volumen" placeholder="volumen">
                                           </div>
                                         </div>
                                         <div class="col-md-3">
                                           <div class="form-group">
                                             <label>Numero de usuarios</label>
-                                            <input type="number" class="form-control" placeholder="numero de usuarios">
+                                            <input type="number" formControlName="numeroUsuario" class="form-control" [(ngModel)]="almacenamientoAgua.numeroUsuario" placeholder="numero de usuarios">
                                           </div>
                                         </div>
 
                                         <div class="col-md-3">
                                           <div class="form-group">
                                             <label>Estudio de calidad del agua?</label>
-                                            <Select name="select" [(ngModel)]="CumpleEstudios" class="form-control">
-                                              <option value="NO">No</option>
-                                              <option value="SI">Si</option>
+                                            <Select formControlName="estudioAgua" [(ngModel)]="almacenamientoAgua.estudioAgua" class="form-control">
+                                              <option value="SI">SI</option>
+                                              <option value="NO">NO</option>
                                             </Select>
                                             <div *ngIf="CumpleEstudios == 'SI'">
-                                              <input type="text" placeholder="resultados del estudio" class="form-control">
+                                              <input type="text" formControlName="resultado" placeholder="resultados del estudio" class="form-control">
                                             </div>
                                           </div>
                                         </div>
@@ -732,8 +645,8 @@
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label>Se eviencia desperdicio y escape de agua en la unidad productiva?</label>
-                                            <select name="selct" class="form-control">
-                                              <option value="SI">No</option>
+                                            <select formControlName="existeDesperdicio" [(ngModel)]="almacenamientoAgua.existeDesperdicio" class="form-control">
+                                              <option value="SI">SI</option>
                                               <option value="NO">No</option>
                                             </select>
                                           </div>
@@ -742,16 +655,28 @@
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label>Se hace mantenimineto de las instalaciones para la conduccion del agua?</label>
-                                            <select name="selct" class="form-control">
-                                              <option value="SI">No</option>
-                                              <option value="NO">No</option>
+                                            <select formControlName="mantenimiento" [(ngModel)]="almacenamientoAgua.mantenimiento" class="form-control">
+                                              <option value="SI">SI</option>
+                                              <option value="NO">NO</option>
                                             </select>
                                           </div>
                                         </div>
                                       </div>
                                       <h5 class="title mt-md-3">Condiciones laborales: ¿Cuantas personas tranajan en la finca?</h5>
                                       <div>
-
+                                        <br>
+                                      </div>
+                                      <div id="Guardar">
+                                        <button type="submit" class="btn btn-success btn-fill" (click) = "guardar()">Guardar</button>
+                                      </div>
+                                      <div class="row pager">
+                                          <div class="col pull-left">
+                                            <button type="submit" class="btn btn-info btn-fill"  matStepperPrevious>Atras</button>
+                                          </div>
+                                          
+                                          <!-- <div class="col-ml-5 pull-right ">
+                                            <button type="submit" class="btn btn-info btn-fill " (click) = "onSubmit()" matStepperNext>siguiente</button>    
+                                          </div> -->
                                       </div>
                                     </form>
 

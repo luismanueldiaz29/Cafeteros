@@ -37,15 +37,22 @@ namespace Cafeteros.Models
         public string ActvidadesDedican {get; set;}
 
         [JsonProperty("Estado")]
-        public bool Estado {get; set;}
+        public int Estado {get; set;}
 
         [JsonProperty("Familiares")]
         public List<Familiar> Familiares = new List<Familiar>();
 
         [JsonProperty("VisitaPromotorias")]
-        public List<VisitaPromotoria> VisitaPromotorias = new List<VisitaPromotoria>();        
+        public List<VisitaPromotoria> VisitaPromotorias = new List<VisitaPromotoria>();     
+
+        [JsonProperty("DisponibilidadAgua")]
+        public List<DisponibilidadAgua> DisponibilidadAgua = new List<DisponibilidadAgua>();     
 
         [JsonProperty("AspectoEconomico")]
         public AspectoEconomico AspectoEconomico {get; set;}
+
+        [JsonProperty("AlmacenamientoAgua")]
+        public AlmacenamientoAgua AlmacenamientoAgua {get; set;}
+
     }
 }

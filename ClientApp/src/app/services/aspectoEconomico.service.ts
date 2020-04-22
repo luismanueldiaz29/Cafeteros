@@ -42,6 +42,14 @@ export class AspectoEconomicoService {
     );
   }
 
+  getAllAspectoEconomicoProdId(id: string): Observable<AspectoEconomico> {
+    const url = `${this.baseUrl + 'api/AspectoEconomico/Productor'}/${id}`;
+    return this.http.get<AspectoEconomico>(url).pipe(
+      tap(_ => this.log(`fetched AspectoEconomico id=${id}`)),
+      catchError(this.handleError<AspectoEconomico>(`AspectoEconomico id=${id}`))
+    );
+  }
+
   /** PUT: update the hero on the server */
   update (AspectoEconomico: AspectoEconomico): Observable<any> {
     const url = `${this.baseUrl + 'api/AspectoEconomico'}/${AspectoEconomico.id}`;

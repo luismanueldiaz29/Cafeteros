@@ -42,6 +42,13 @@ export class PaticipacionComunitariaService {
     );
   }
 
+  getPartiAspEconomico(id: number): Observable<PaticipacionComunitaria> {
+    const url = `${this.baseUrl + 'api/PaticipacionComunitaria/AspectoEconomico'}/${id}`;
+    return this.http.get<PaticipacionComunitaria>(url).pipe(
+      tap(_ => this.log(`fetched PaticipacionComunitaria id=${id}`)),
+      catchError(this.handleError<PaticipacionComunitaria>(`PaticipacionComunitaria id=${id}`))
+    );
+  }
   /** PUT: update the hero on the server */
   update (PaticipacionComunitaria: PaticipacionComunitaria): Observable<any> {
     const url = `${this.baseUrl + 'api/PaticipacionComunitaria'}/${PaticipacionComunitaria.id}`;

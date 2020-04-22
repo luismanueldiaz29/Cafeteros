@@ -63,6 +63,20 @@ namespace Cafeteros.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MesaDirectiva",
+                columns: table => new
+                {
+                    Correo = table.Column<string>(nullable: false),
+                    Identificacion = table.Column<string>(nullable: true),
+                    Contraseña = table.Column<string>(nullable: true),
+                    Nombre = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MesaDirectiva", x => x.Correo);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Productor",
                 columns: table => new
                 {
@@ -76,11 +90,25 @@ namespace Cafeteros.Migrations
                     NumeroTelefono = table.Column<string>(nullable: true),
                     AfiliacionSalud = table.Column<string>(nullable: true),
                     ActvidadesDedican = table.Column<string>(nullable: true),
-                    Estado = table.Column<bool>(nullable: false)
+                    Estado = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Productor", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tecnico",
+                columns: table => new
+                {
+                    Correo = table.Column<string>(nullable: false),
+                    Identificacion = table.Column<string>(nullable: true),
+                    Contraseña = table.Column<string>(nullable: true),
+                    Nombre = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tecnico", x => x.Correo);
                 });
 
             migrationBuilder.CreateTable(
@@ -190,6 +218,31 @@ namespace Cafeteros.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AlmacenamientoAgua",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TipoAlmacenamiento = table.Column<string>(nullable: true),
+                    Volumen = table.Column<string>(nullable: true),
+                    NumeroUsuario = table.Column<int>(nullable: false),
+                    EstudioAgua = table.Column<string>(nullable: true),
+                    ExisteDesperdicio = table.Column<string>(nullable: true),
+                    Mantenimiento = table.Column<string>(nullable: true),
+                    ProductorId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AlmacenamientoAgua", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_AlmacenamientoAgua_Productor_ProductorId",
+                        column: x => x.ProductorId,
+                        principalTable: "Productor",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspectoEconomico",
                 columns: table => new
                 {
@@ -204,6 +257,29 @@ namespace Cafeteros.Migrations
                     table.PrimaryKey("PK_AspectoEconomico", x => x.id);
                     table.ForeignKey(
                         name: "FK_AspectoEconomico_Productor_ProductorId",
+                        column: x => x.ProductorId,
+                        principalTable: "Productor",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DisponibilidadAgua",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Fuente = table.Column<string>(nullable: true),
+                    UsoDomestico = table.Column<bool>(nullable: false),
+                    UsoAgricola = table.Column<bool>(nullable: false),
+                    Disponibilidad = table.Column<string>(nullable: true),
+                    ProductorId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DisponibilidadAgua", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_DisponibilidadAgua_Productor_ProductorId",
                         column: x => x.ProductorId,
                         principalTable: "Productor",
                         principalColumn: "id",
@@ -248,7 +324,8 @@ namespace Cafeteros.Migrations
                     ObjetivoVisita = table.Column<string>(nullable: true),
                     SituacionEncontrada = table.Column<string>(nullable: true),
                     IntercambioSaberes = table.Column<string>(nullable: true),
-                    ProductorId = table.Column<string>(nullable: true)
+                    ProductorId = table.Column<string>(nullable: true),
+                    TecnicoId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -258,6 +335,12 @@ namespace Cafeteros.Migrations
                         column: x => x.ProductorId,
                         principalTable: "Productor",
                         principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_VisitaPromotoria_Tecnico_TecnicoId",
+                        column: x => x.TecnicoId,
+                        principalTable: "Tecnico",
+                        principalColumn: "Correo",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -356,6 +439,13 @@ namespace Cafeteros.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_AlmacenamientoAgua_ProductorId",
+                table: "AlmacenamientoAgua",
+                column: "ProductorId",
+                unique: true,
+                filter: "[ProductorId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AspectoEconomico_ProductorId",
                 table: "AspectoEconomico",
                 column: "ProductorId",
@@ -402,6 +492,11 @@ namespace Cafeteros.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_DisponibilidadAgua_ProductorId",
+                table: "DisponibilidadAgua",
+                column: "ProductorId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Familiar_ProductorId",
                 table: "Familiar",
                 column: "ProductorId");
@@ -432,10 +527,18 @@ namespace Cafeteros.Migrations
                 name: "IX_VisitaPromotoria_ProductorId",
                 table: "VisitaPromotoria",
                 column: "ProductorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VisitaPromotoria_TecnicoId",
+                table: "VisitaPromotoria",
+                column: "TecnicoId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AlmacenamientoAgua");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -450,6 +553,9 @@ namespace Cafeteros.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "DisponibilidadAgua");
 
             migrationBuilder.DropTable(
                 name: "Empleado");
@@ -467,6 +573,9 @@ namespace Cafeteros.Migrations
                 name: "LaboresRealizada");
 
             migrationBuilder.DropTable(
+                name: "MesaDirectiva");
+
+            migrationBuilder.DropTable(
                 name: "PaticipacionComunitaria");
 
             migrationBuilder.DropTable(
@@ -480,6 +589,9 @@ namespace Cafeteros.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspectoEconomico");
+
+            migrationBuilder.DropTable(
+                name: "Tecnico");
 
             migrationBuilder.DropTable(
                 name: "Productor");

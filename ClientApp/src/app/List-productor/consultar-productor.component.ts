@@ -5,7 +5,7 @@ import { Productor } from '../Models/Productor';
 import { MatMenuTrigger } from '@angular/material';
 import { PromotoriaComponent } from '../promotoria/promotoria.component';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
 // Declaramos las variables para jQuery
 declare var jQuery:any;
 declare var $:any;
@@ -20,8 +20,9 @@ export class ConsultarProductorComponent{
  
   imports : [MaterialModule];
 
-  private productoresAso : Productor[];
-  private productoresNoAso : Productor[];
+  private productoresAprobado : Productor[];
+  private productoresSolicitud : Productor[];
+  private productorNoAprobado : Productor[];
  titulo : string;
   private vTitulo : true;
   constructor(
@@ -30,23 +31,35 @@ export class ConsultarProductorComponent{
   ) { }
 
   ngOnInit() {
-    this.getProductorAsocido();
-    this.getProductorNoAsocido();
+    this.getProductorAprobado();
+    this.getProductorSolicitud();
+    this.getProductorNoAprobado();
     this.ponerTitulo();
   }
 
-  getProductorAsocido(){
-    this.productorService.getAllEstado(true).subscribe(
+  //estado reprobado
+  getProductorNoAprobado(){
+    this.productorService.getAllEstado(2).subscribe(
       productores => {
-        this.productoresAso = productores;
+        this.productorNoAprobado = productores;
       }
     ); 
   }
 
-  getProductorNoAsocido(){
-    this.productorService.getAllEstado(false).subscribe(
+  //estado aprobado
+  getProductorAprobado(){
+    this.productorService.getAllEstado(1).subscribe(
       productores => {
-        this.productoresNoAso = productores;
+        this.productoresAprobado = productores;
+      }
+    ); 
+  }
+
+  //estado solicitud
+  getProductorSolicitud(){
+    this.productorService.getAllEstado(0).subscribe(
+      productores => {
+        this.productoresSolicitud = productores;
       }
     ); 
   }
@@ -68,4 +81,11 @@ export class ConsultarProductorComponent{
     sessionStorage.setItem('productorId', productor.id);
     this.router.navigate(['/info_Productor']);
   }
+
+  // opcPromotoria(){
+  //   Swal.fire({
+  //     title : 'ELija una opcion'
+  //     button
+  //   })
+  // }
 }

@@ -19,8 +19,8 @@ namespace Cafeteros.Controllers
         public HabitabilidadController(ApplicationDbContext context){
             _context = context;
             if (_context.Habitabilidad.Count() == 0){
-                _context.Habitabilidad.Add(new Habitabilidad { TipoVivienda = "occidental", NumeroHabitaciones = 5, MaterialPredominante = "barro", MaterialTecho = "zinc", MaterialCosinar = "gas", EnergiaCosinar = "calle linda", ServicioSanitario = "123", TipoAlumbrado = "1", AspectoEconomicoId = 1});
-                _context.Habitabilidad.Add(new Habitabilidad { TipoVivienda = "occidental", NumeroHabitaciones = 5, MaterialPredominante = "ladrillo", MaterialTecho = "teja", MaterialCosinar = "leña", EnergiaCosinar = "calle cuba", ServicioSanitario = "123", TipoAlumbrado = "1", AspectoEconomicoId = 2});
+                _context.Habitabilidad.Add(new Habitabilidad { TipoVivienda = "occidental", NumeroHabitaciones = 5, MaterialPredominante = "barro", MaterialTecho = "zinc", MaterialCosinar = "gas", EnergiaCosinar = "calle linda", ServicioSanitario = "SI", TipoAlumbrado = "1", AspectoEconomicoId = 1});
+                _context.Habitabilidad.Add(new Habitabilidad { TipoVivienda = "occidental", NumeroHabitaciones = 5, MaterialPredominante = "ladrillo", MaterialTecho = "teja", MaterialCosinar = "leña", EnergiaCosinar = "calle cuba", ServicioSanitario = "NO", TipoAlumbrado = "1", AspectoEconomicoId = 2});
                 _context.SaveChanges();
             }
         }
@@ -40,6 +40,19 @@ namespace Cafeteros.Controllers
                 return NotFound();
             }
             return Habitabilidad;
+        }
+
+        [HttpGet("AspectoEconomico/{id}")]
+        public async Task<ActionResult<Habitabilidad>> GetAspectoHabitabilidad(int id)
+        {
+            var Habitabilidades = await _context.Habitabilidad.ToListAsync();
+            foreach (Habitabilidad item in Habitabilidades)
+            {
+                if(item.AspectoEconomicoId == id){
+                    return item;
+                }
+            }
+            return NotFound();
         }
 
         // POST: api/Task

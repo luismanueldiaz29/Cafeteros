@@ -8,6 +8,7 @@ import { AuditoriaComponent } from './auditoria/auditoria.component';
 import { PromotoriaComponent } from './promotoria/promotoria.component';
 import { ConsultarProductorComponent } from './List-productor/consultar-productor.component';
 import { InfoProductorComponent } from './info-productor/info-productor.component';
+import { ListPromotoriaComponent } from './list-promotoria/list-promotoria.component';
 
 const routes : Routes = [
   { 
@@ -37,6 +38,10 @@ const routes : Routes = [
   {
     path : 'info_Productor',
     component : InfoProductorComponent
+  },
+  {
+    path : 'List_Promotoria',
+    component : ListPromotoriaComponent
   }
   //angular7
   // {path:'',redirectTo:'/user/login',pathMatch:'full'},

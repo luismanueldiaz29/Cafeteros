@@ -42,6 +42,13 @@ export class HabitabilidadService {
     );
   }
 
+  getHabitabilidadAspecto(id: number): Observable<Habitabilidad> {
+    const url = `${this.baseUrl + 'api/Habitabilidad/AspectoEconomico'}/${id}`;
+    return this.http.get<Habitabilidad>(url).pipe(
+      tap(_ => this.log(`fetched Habitabilidad id=${id}`)),
+      catchError(this.handleError<Habitabilidad>(`Habitabilidad id=${id}`))
+    );
+  }
   /** PUT: update the hero on the server */
   update (Habitabilidad: Habitabilidad): Observable<any> {
     const url = `${this.baseUrl + 'api/Habitabilidad'}/${Habitabilidad.id}`;

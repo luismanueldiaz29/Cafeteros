@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from '../material/material';
 import { Router } from '@angular/router';
 
@@ -7,12 +7,17 @@ import { Router } from '@angular/router';
   templateUrl: './nav-menu.component.html',
   styleUrls: ['./nav-menu.component.css']
 })
-export class NavMenuComponent  {
+export class NavMenuComponent implements OnInit{
   imports : [MaterialModule];
-
+  private rol : string;
   constructor(private router : Router){  }
 
+  ngOnInit(){
+    this.rol = sessionStorage.getItem('User');
+  }
+
   Salir(){
+    sessionStorage.removeItem('User');
     this.router.navigate(['/']);
   }
 

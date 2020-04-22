@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cafeteros.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200419003448_Cafeteros")]
+    [Migration("20200421154558_Cafeteros")]
     partial class Cafeteros
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,43 @@ namespace Cafeteros.Migrations
                 .HasAnnotation("ProductVersion", "3.1.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Cafeteros.Models.AlmacenamientoAgua", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("EstudioAgua")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExisteDesperdicio")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mantenimiento")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NumeroUsuario")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("TipoAlmacenamiento")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Volumen")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("ProductorId")
+                        .IsUnique()
+                        .HasFilter("[ProductorId] IS NOT NULL");
+
+                    b.ToTable("AlmacenamientoAgua");
+                });
 
             modelBuilder.Entity("Cafeteros.Models.ApplicationUser", b =>
                 {
@@ -109,6 +146,35 @@ namespace Cafeteros.Migrations
                         .HasFilter("[ProductorId] IS NOT NULL");
 
                     b.ToTable("AspectoEconomico");
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.DisponibilidadAgua", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Disponibilidad")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fuente")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("UsoAgricola")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("UsoDomestico")
+                        .HasColumnType("bit");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("ProductorId");
+
+                    b.ToTable("DisponibilidadAgua");
                 });
 
             modelBuilder.Entity("Cafeteros.Models.Empleado", b =>
@@ -261,6 +327,25 @@ namespace Cafeteros.Migrations
                     b.ToTable("LaboresRealizada");
                 });
 
+            modelBuilder.Entity("Cafeteros.Models.MesaDirectiva", b =>
+                {
+                    b.Property<string>("Correo")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Contraseña")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Identificacion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Correo");
+
+                    b.ToTable("MesaDirectiva");
+                });
+
             modelBuilder.Entity("Cafeteros.Models.PaticipacionComunitaria", b =>
                 {
                     b.Property<int>("id")
@@ -314,8 +399,8 @@ namespace Cafeteros.Migrations
                     b.Property<string>("CodigoSica")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Estado")
-                        .HasColumnType("bit");
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
 
                     b.Property<string>("Municipio")
                         .HasColumnType("nvarchar(max)");
@@ -335,6 +420,25 @@ namespace Cafeteros.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Productor");
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.Tecnico", b =>
+                {
+                    b.Property<string>("Correo")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Contraseña")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Identificacion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Correo");
+
+                    b.ToTable("Tecnico");
                 });
 
             modelBuilder.Entity("Cafeteros.Models.VisitaPromotoria", b =>
@@ -365,9 +469,14 @@ namespace Cafeteros.Migrations
                     b.Property<string>("SituacionEncontrada")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("TecnicoId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("id");
 
                     b.HasIndex("ProductorId");
+
+                    b.HasIndex("TecnicoId");
 
                     b.ToTable("VisitaPromotoria");
                 });
@@ -503,11 +612,25 @@ namespace Cafeteros.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Cafeteros.Models.AlmacenamientoAgua", b =>
+                {
+                    b.HasOne("Cafeteros.Models.Productor", "Productor")
+                        .WithOne("AlmacenamientoAgua")
+                        .HasForeignKey("Cafeteros.Models.AlmacenamientoAgua", "ProductorId");
+                });
+
             modelBuilder.Entity("Cafeteros.Models.AspectoEconomico", b =>
                 {
                     b.HasOne("Cafeteros.Models.Productor", "Productor")
                         .WithOne("AspectoEconomico")
                         .HasForeignKey("Cafeteros.Models.AspectoEconomico", "ProductorId");
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.DisponibilidadAgua", b =>
+                {
+                    b.HasOne("Cafeteros.Models.Productor", "Productor")
+                        .WithMany()
+                        .HasForeignKey("ProductorId");
                 });
 
             modelBuilder.Entity("Cafeteros.Models.Familiar", b =>
@@ -558,6 +681,10 @@ namespace Cafeteros.Migrations
                     b.HasOne("Cafeteros.Models.Productor", "Productor")
                         .WithMany()
                         .HasForeignKey("ProductorId");
+
+                    b.HasOne("Cafeteros.Models.Tecnico", "Tecnico")
+                        .WithMany()
+                        .HasForeignKey("TecnicoId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -9,5 +9,5 @@ export class Productor{
     NumeroTelefono : string;
     AfiliacionSalud : string;
     ActvidadesDedican : string;
-    estado : boolean;
+    estado : number;
 }
