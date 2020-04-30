@@ -17,6 +17,7 @@ import { PromotoriaComponent } from './promotoria/promotoria.component';
 import { ConsultarProductorComponent } from './List-productor/consultar-productor.component';
 import { InfoProductorComponent } from './info-productor/info-productor.component';
 import { ListPromotoriaComponent } from './list-promotoria/list-promotoria.component';
+import { InfoPromotoriaComponent } from './info-promotoria/info-promotoria.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ListPromotoriaComponent } from './list-promotoria/list-promotoria.compo
     PromotoriaComponent,
     ConsultarProductorComponent,
     InfoProductorComponent,
-    ListPromotoriaComponent
+    ListPromotoriaComponent,
+    InfoPromotoriaComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

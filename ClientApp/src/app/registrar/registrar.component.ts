@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from '../material/material';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { ProductorService } from '../services/productor.service';
 import { FamiliarService } from '../services/familiar.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -47,6 +47,18 @@ export class RegistrarComponent implements OnInit {
   secondFormGroup : FormGroup;
   threeFormGroup : FormGroup;
 
+  //fecha de registro
+  date = new Date();
+  dia = this.date.getDate();
+  mes = this.date.getMonth();
+  ano = this.date.getFullYear();
+
+  //con esta variable capturo las horas del dia
+  hora = this.date.getHours()+' Horas ';
+  //en esta variable capturo el año de visita en la que se hara la promotoria
+  fechaRegistro : string =  this.fechaNum(this.dia)+'/'+this.fechaNum(this.mes+1)+'/'+this.ano;
+
+
   constructor(
     private _formBuilder: FormBuilder, //para formulario reactivo
     private productorService : ProductorService,
@@ -82,7 +94,7 @@ export class RegistrarComponent implements OnInit {
   }
 
   incializarVariables(){
-    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : "", estado: 0};
+    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : "",fechaAsociacion:"", fechaRegistro : this.fechaRegistro, fechaNoAsociacion : "", estado: 0};
     //this.familiar = {id : null,Nombre : "",NumeroDocumento : "",FechaNacimiento : "",Parentesco : "",TipoPoblacion : "",AfiliacionSalud : "",NivelEducativo : "",ProductorId : ""};
     this.aspectoEconomico = {id : 0, tenenciaTierra : "",legalidad : "",productorId : ""}
     this.participacionComunitaria = {id : 0, asistenteAsamblea : "",cargoAsamblea : "",aistenteTrabajos : "",cargoTrabajo : "",organizacionAparte : "",cualOrganizacion : "",aspectoEconomicoId : 0}
@@ -281,8 +293,14 @@ export class RegistrarComponent implements OnInit {
       }
     );
   }
+  
   onReset() {
     this.submitted = false;
     this.firstFormGroup.reset();
   }
+
+  fechaNum(num : number) : string{
+    if(num < 10){ return '0'+num; }else{ return num+'' }
+  }
+
 }

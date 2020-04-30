@@ -14,6 +14,7 @@ import { DisponibilidadAguaService } from '../services/disponibilidadAgua.servic
 import { DisponibilidadAgua } from '../Models/DisponibilidadAgua';
 import { AlmacenamientoAgua } from '../Models/AlmacenamientoAgua';
 import { AlmacenamientoAguaService } from '../services/almacenamientoAgua.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-info-productor',
@@ -22,6 +23,7 @@ import { AlmacenamientoAguaService } from '../services/almacenamientoAgua.servic
 })
 export class InfoProductorComponent implements OnInit {
 
+  estadoModificado : string;
   private productor : Productor;
   private familiares : Familiar[];
   private aspectoEconomico : AspectoEconomico;
@@ -30,6 +32,17 @@ export class InfoProductorComponent implements OnInit {
   private id : string;
   private disponibilidadAguas : DisponibilidadAgua[];
   private almacenamientoAgua : AlmacenamientoAgua;
+  private estado : string;
+  //fecha de registro
+  date = new Date();
+  dia = this.date.getDate();
+  mes = this.date.getMonth();
+  ano = this.date.getFullYear();
+
+  //con esta variable capturo las horas del dia
+  hora = this.date.getHours()+' Horas ';
+  //en esta variable capturo el año de visita en la que se hara la promotoria
+  fechaRegistro : string =  this.fechaNum(this.dia)+'/'+this.fechaNum(this.mes+1)+'/'+this.ano;
 
   constructor(
     private productorService : ProductorService,
@@ -39,7 +52,8 @@ export class InfoProductorComponent implements OnInit {
     private participacionComunitariaService : PaticipacionComunitariaService,
     private habitabilidadService : HabitabilidadService,
     private almacenamamientosAguaService : AlmacenamientoAguaService,
-    private disponibilidadAguaService : DisponibilidadAguaService
+    private disponibilidadAguaService : DisponibilidadAguaService,
+    private _Route : Router
   ) { }
 
   ngOnInit() {
@@ -57,12 +71,23 @@ export class InfoProductorComponent implements OnInit {
             this.getAspectosEconomicos(productor.id);
             this.getDisponibilidadAgua(productor.id);
             this.getAlamacenamientoAgua(productor.id);
+            this.estadoProductor(productor.estado);
             this.productor = productor;
             sessionStorage.removeItem('productorId');
         }
       );
     }else{
       this.volver();
+    }
+  }
+
+  estadoProductor(estado : number){
+    if(estado == 0){
+      this.estado = "Solicitud de asociacion";
+    }else if(estado == 1){
+      this.estado = "Aprobado";
+    }else{
+      this.estado = "No aprobado"
     }
   }
 
@@ -129,5 +154,35 @@ export class InfoProductorComponent implements OnInit {
     this._router.navigate(['/List-Productor']);
   }
 
+  fechaNum(num : number) : string{
+    if(num < 10){ return '0'+num; }else{ return num+'' }
+  }
+
+  modificar(){
+    alert(this.estadoModificado);
+    if(this.estadoModificado == null){
+      Swal.fire(
+        'Accion incorrecta!',
+        'Para saltar esto pulse ok!',
+        'error'
+      )
+      return 
+    }else if(this.estadoModificado == "Aprobado"){
+      this.productor.estado = 1;
+    }else if(this.estadoModificado == "Rechazado"){
+      this.productor.estado = 2;
+    }
+
+    this.productorService.update(this.productor).subscribe(
+      productorM => {
+        Swal.fire(
+          'Accion sastifactoria!',
+          'Para saltar esto pulse ok!',
+          'success'
+        );
+        this._Route.navigate(['/List-Productor']);
+      }
+    );
+  }
 
 }

@@ -400,6 +400,15 @@ namespace Cafeteros.Migrations
                     b.Property<int>("Estado")
                         .HasColumnType("int");
 
+                    b.Property<string>("FechaAsociacion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FechaNoAsociacion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FechaRegistro")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Municipio")
                         .HasColumnType("nvarchar(max)");
 

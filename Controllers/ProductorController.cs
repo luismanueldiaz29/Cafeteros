@@ -19,8 +19,8 @@ namespace Cafeteros.Controllers
         public ProductorController(ApplicationDbContext context){
             _context = context;
             if (_context.Productor.Count() == 0){
-                _context.Productor.Add(new Productor { id = "1",  Nombre = "Carlos ", CodigoCafetero = "12334", NombrePredio = "alskas", CodigoSica = "Productor", Municipio = "Valledupar", Vereda = "calle linda", NumeroTelefono = "123", AfiliacionSalud = "1", ActvidadesDedican = "1", Estado = 0});
-                _context.Productor.Add(new Productor {  id = "2", Nombre = "Luis Manué", CodigoCafetero = "Dia1212z", NombrePredio = "sdfssdf", CodigoSica = "Productor", Municipio = "la paz", Vereda = "calle cuba", NumeroTelefono = "123", AfiliacionSalud = "1", ActvidadesDedican  = "1", Estado = 0});
+                _context.Productor.Add(new Productor { id = "1",  Nombre = "Carlos ", CodigoCafetero = "12334", NombrePredio = "alskas", CodigoSica = "Productor", Municipio = "Valledupar", Vereda = "calle linda", NumeroTelefono = "123", AfiliacionSalud = "1", FechaRegistro="24/04/2020", FechaAsociacion="", FechaNoAsociacion = "",  ActvidadesDedican = "1", Estado = 0});
+                _context.Productor.Add(new Productor {  id = "2", Nombre = "Luis Manué", CodigoCafetero = "Dia1212z", NombrePredio = "sdfssdf", CodigoSica = "Productor", Municipio = "la paz", Vereda = "calle cuba", NumeroTelefono = "123", AfiliacionSalud = "1", FechaRegistro="23/04/2020", ActvidadesDedican  = "1", Estado = 0});
                 _context.SaveChanges();
             }
         }
@@ -77,7 +77,7 @@ namespace Cafeteros.Controllers
         {
             if (id != item.id)
             {
-            return BadRequest();
+                return BadRequest();
             }
             _context.Entry(item).State = EntityState.Modified;
             await _context.SaveChangesAsync();

@@ -42,6 +42,15 @@ export class LaboresRealizadaService {
     );
   }
 
+  /** este metodo me retorna todos los LaboresRealizadaes de los productores */
+  getAllVisitaLaboresRealizada(id: number): Observable<LaboresRealizada[]> {
+    const url = `${this.baseUrl + 'api/LaboresRealizada/VisitaPromotoria'}/${id}`;
+    return this.http.get<LaboresRealizada[]>(url).pipe(
+      tap(_ => this.log(`fetched LaboresRealizada id=${id}`)),
+      catchError(this.handleError<LaboresRealizada[]>(`LaboresRealizada id=${id}`))
+    );
+  }
+
   /** PUT: update the hero on the server */
   update (LaboresRealizada: LaboresRealizada): Observable<any> {
     const url = `${this.baseUrl + 'api/LaboresRealizada'}/${LaboresRealizada.id}`;

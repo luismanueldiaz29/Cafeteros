@@ -81,6 +81,22 @@ namespace Cafeteros.Controllers
             return NoContent();
         }
 
+        [HttpGet("VisitaPromotoria/{id}")]
+        public async Task<ActionResult<IEnumerable<LaboresRealizada>>> getVisitaLaboresRealizada(int id)
+        {
+            var laboresRealizadas = await _context.LaboresRealizada.ToListAsync();
+            List <LaboresRealizada> LaboresRealizadas = new List<LaboresRealizada>();
+            foreach (LaboresRealizada item in laboresRealizadas)
+            {
+                if(item.VisitaPromotoriaId == id){
+                    LaboresRealizadas.Add(item);
+                }
+            }
+            if(LaboresRealizadas == null){
+                return NotFound();
+            }
+            return LaboresRealizadas;
+        }
         
     }
 }

@@ -26,7 +26,7 @@ namespace Cafeteros.Controllers
         }
    
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<LaboresProgramada>>> GetLaboresProgramadas()
+        public async Task<ActionResult<IEnumerable<LaboresProgramada>>> GetlaboresProgramadas()
         {
             return await _context.LaboresProgramada.ToListAsync();
         }
@@ -81,6 +81,22 @@ namespace Cafeteros.Controllers
             return NoContent();
         }
 
+        [HttpGet("VisitaPromotoria/{id}")]
+        public async Task<ActionResult<IEnumerable<LaboresProgramada>>> getVisitaLaboresProgramada(int id)
+        {
+            var LaboresProgramada = await _context.LaboresProgramada.ToListAsync();
+            List <LaboresProgramada> laboresProgramadas = new List<LaboresProgramada>();
+            foreach (LaboresProgramada item in LaboresProgramada)
+            {
+                if(item.VisitaPromotoriaId == id){
+                    laboresProgramadas.Add(item);
+                }
+            }
+            if(laboresProgramadas == null){
+                return NotFound();
+            }
+            return laboresProgramadas;
+        }
         
     }
 }

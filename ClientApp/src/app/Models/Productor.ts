@@ -9,5 +9,8 @@ export class Productor{
     NumeroTelefono : string;
     AfiliacionSalud : string;
     ActvidadesDedican : string;
+    fechaRegistro: string;
+    fechaAsociacion: string;
+    fechaNoAsociacion: string;
     estado : number;
 }

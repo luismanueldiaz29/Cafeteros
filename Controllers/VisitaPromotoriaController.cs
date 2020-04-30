@@ -31,6 +31,24 @@ namespace Cafeteros.Controllers
             return await _context.VisitaPromotoria.ToListAsync();
         }
 
+        [HttpGet("Productor/{id}")]
+        public async Task<ActionResult<IEnumerable<VisitaPromotoria>>> GetProductorVisitaPromotorias(string id)
+        {
+            var visitas = await _context.VisitaPromotoria.ToListAsync();
+            List<VisitaPromotoria> visitaPromotorias  = new List<VisitaPromotoria>();
+
+            foreach(VisitaPromotoria item in visitas){
+                if(item.ProductorId == id){
+                    visitaPromotorias.Add(item);
+                }
+            }
+            if(visitaPromotorias == null){
+                return NotFound();
+            }
+
+            return visitaPromotorias;
+        }
+
         // GET: api/Task/5
         [HttpGet("{id}")]
         public async Task<ActionResult<VisitaPromotoria>> GetVisitaPromotoria(int id)

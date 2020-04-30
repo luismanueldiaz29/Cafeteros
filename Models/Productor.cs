@@ -28,7 +28,16 @@ namespace Cafeteros.Models
         public string Vereda {get; set;}
 
         [JsonProperty("NumeroTelefono")]
-        public string NumeroTelefono {get; set;}   
+        public string NumeroTelefono {get; set;}  
+
+        [JsonProperty("FechaRegistro")]
+        public string FechaRegistro {get; set;}  
+        
+        [JsonProperty("FechaAsociacion")]
+        public string FechaAsociacion {get; set;}  
+         
+        [JsonProperty("FechaNoAsociacion")]
+        public string FechaNoAsociacion {get; set;}  
 
         [JsonProperty("AfiliacionSalud")]
         public string AfiliacionSalud {get; set;}

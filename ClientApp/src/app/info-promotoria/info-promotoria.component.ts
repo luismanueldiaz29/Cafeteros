@@ -1,0 +1,94 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { VisitaPromotoria } from '../Models/VisitaPromotoria';
+import { MaterialModule } from '../material/material';
+import { Productor } from '../Models/Productor';
+import { LaboresProgramada } from '../Models/LaboresProgramada';
+import { LaboresRealizada } from '../Models/LaboresRealizada';
+import { ProductorService } from '../services/productor.service';
+import { VisitaPromotoriaService } from '../services/visitaPromotoria.service';
+import { LaboresProgramadaService } from '../services/laboresProgramada.service';
+import { LaboresRealizadaService } from '../services/laboresRealizada.service';
+
+@Component({
+  selector: 'app-info-promotoria',
+  templateUrl: './info-promotoria.component.html',
+  styleUrls: ['./info-promotoria.component.css']
+})
+export class InfoPromotoriaComponent implements OnInit {
+
+  
+  imports :  [MaterialModule];
+  Visita : VisitaPromotoria;
+  visitas : VisitaPromotoria[];
+  productores : Productor[];
+  public productor : Productor;
+  laboresProgramada : LaboresProgramada[];
+  LaboresRealizada : LaboresRealizada[];
+
+  private id : string;
+  
+
+  constructor(
+    private Router : Router,
+    private productorService : ProductorService,
+    private visitaService : VisitaPromotoriaService,
+    private laboresRealizadaService :LaboresRealizadaService,
+    private LaboresProgramadaService : LaboresProgramadaService
+  ) { }
+
+  ngOnInit() {
+    //this.intanciarVariables();
+    this.getVisita();
+  }
+
+
+  // intanciarVariables(){
+  //   this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : "",fechaAsociacion:"", fechaRegistro : "", fechaNoAsociacion : "", estado: 0};
+  //   this.Visita = { id : 0, fechaVisita : "" ,horaVisita : "",fechaProxVista : "",objetivoVisita : "",situacionEncontrada : "",intercambioSaberes : "",productorId : ""}
+  //   this.laboresProgramada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId : 0};
+  //   this.LaboresRealizada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId : 0};
+  // }
+
+  getProductor(productorId : string){
+      this.productorService.get(productorId).subscribe(
+        productor => {
+          this.productor = productor
+        }
+      );
+  }
+
+  getVisita(){
+    if(sessionStorage.getItem('visitaId') != null){  
+      this.id = sessionStorage.getItem('visitaId');
+      this.visitaService.get(parseInt(this.id)).subscribe(
+        visita => {
+          this.Visita = visita;
+          this.getProductor(visita.productorId);
+        }
+      );
+    }else{
+      this.volver();
+    }
+  }
+
+  getVisitaLaboresRealizadas(visitaId : number){
+    this.laboresRealizadaService.getAllVisitaLaboresRealizada(visitaId).subscribe(
+      laboresRealizada => {
+        this.LaboresRealizada = laboresRealizada;
+      }
+    );
+  }
+
+  getVisitaLaboresProgramada(visitaId : number){
+    this.LaboresProgramadaService.getAllVisitaLaboresProgramada(visitaId).subscribe(
+      laboresProgramada => {
+        this.laboresProgramada = laboresProgramada;
+      }
+    );
+  }
+
+  volver(){
+    this.Router.navigate(['/List-Productor']);
+  }
+}

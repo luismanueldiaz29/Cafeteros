@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
   private tecnicos : Tecnico[];
   private formGroup : FormGroup;
   private login : login;
-  acceso : number;
+  accesoTecnico : boolean;
+  accesoMesa : boolean;
   submitted = false;
 
   constructor(
@@ -72,66 +73,77 @@ export class LoginComponent implements OnInit {
     this.acceder();
   }
 
-  validarMesaDirectiva(){
+  validarMesaDirectiva() : boolean{
     this.mesaDirectivaService.get(this.login.Usuario).subscribe(
       mesa => {
         if(mesa != null){ 
           //si es  distinto a nul quiere decir que el usuario que se esta logeando
           //es de la mesa direcctiva
           if(mesa.contraseña == this.login.Password){
-            this._Router.navigate(['/Home']);
+            
+            this.accesoMesa = true;
             sessionStorage.setItem('User' , 'Mes');
+            sessionStorage.setItem('Id', mesa.contraseña); 
+            this._Router.navigate(['/Home']);
           }else{
-            this.acceso++;
             console.log('usuario de mesa directiva, la contraceña de no coincide con '+mesa.correo);
+            this.accesoMesa = false;
           }
         }else{
           //si es igual a null quiere decir que el usuario ingresado no pertenece a la mesa direcctiva
-          this.acceso++;
           console.log('usuario no pertenece a la mesa directiva');
+          this.accesoMesa = false;
         }
       }
     );
+    return this.accesoMesa;
   }
 
-  ValidarTecnico(){
+  ValidarTecnico(): boolean{
     this.tecnicoService.get(this.login.Usuario).subscribe(
       tecnico => {
         if(tecnico != null){ 
           //si es  distinto a nul quiere decir que el usuario que se esta logeando
           //es un tecnico
           if(tecnico.contraseña == this.login.Password){
-            this._Router.navigate(['/Home']);
+            this.accesoTecnico = true;
             sessionStorage.setItem("User" , "Tec");
+            sessionStorage.setItem("Id", tecnico.correo);
+            this._Router.navigate(['/Home']);
           }else{
-            this.acceso++
             console.log('usuario de mesa directiva, la contraceña de no coincide con '+tecnico.correo);
+            this.accesoTecnico = false;
           }
         }else{
           //si es igual a null quiere decir que el usuario ingresado no es tecnico
-          this.acceso++;
           console.log('usuario no es tecnico');
+          this.accesoTecnico = false;
         }
       }
     );
+    return this.accesoTecnico;
   }
 
   acceder(){
     //valido si es de la mesa directiva
     this.validarMesaDirectiva();
     //valido si es tecnico
-    this.ValidarTecnico();
+    this.ValidarTecnico()
     //envio un mensaje
-    this.mensaje();
+    //this.mensaje();
   }
 
   mensaje(){
-    if(this.acceso == 2){
-      Swal.fire(
-        'Accion incorrecta!',
-        'Para saltar esto pulse ok!',
-        'error'
-      )
-    }
+    
+    // if(!this.acceso){
+    //   Swal.fire(
+    //     'Accion incorrecta!',
+    //     'Para saltar esto pulse ok!',
+    //     'error'
+    //   )
+    // }else{
+    //   alert('accesos '+this.acceso)
+    //   this._Router.navigate(['/Home']);
+    // }
   }
 }

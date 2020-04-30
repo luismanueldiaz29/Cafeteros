@@ -34,6 +34,16 @@ export class VisitaPromotoriaService {
       );
   }
 
+     /** GET heroes from the server */
+     getProductorVisitas(id : string): Observable<VisitaPromotoria[]> {
+      const url = `${this.baseUrl + 'api/VisitaPromotoria/Productor'}/${id}`;
+      return this.http.get<VisitaPromotoria[]>(url)
+        .pipe(
+          tap(_ => this.log('fetched productor VisitaPromotoria')),
+          catchError(this.handleError<VisitaPromotoria[]>('getVisitaPromotoria', []))
+        );
+    }
+
   get(id: number): Observable<VisitaPromotoria> {
     const url = `${this.baseUrl + 'api/VisitaPromotoria'}/${id}`;
     return this.http.get<VisitaPromotoria>(url).pipe(

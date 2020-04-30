@@ -42,6 +42,15 @@ export class LaboresProgramadaService {
     );
   }
 
+    /** este metodo me retorna todos los LaboresProgramadaes de los productores */
+    getAllVisitaLaboresProgramada(id: number): Observable<LaboresProgramada[]> {
+      const url = `${this.baseUrl + 'api/LaboresProgramada/VisitaPromotoria'}/${id}`;
+      return this.http.get<LaboresProgramada[]>(url).pipe(
+        tap(_ => this.log(`fetched LaboresProgramada id=${id}`)),
+        catchError(this.handleError<LaboresProgramada[]>(`LaboresProgramada id=${id}`))
+      );
+    }
+
   /** PUT: update the hero on the server */
   update (LaboresProgramada: LaboresProgramada): Observable<any> {
     const url = `${this.baseUrl + 'api/LaboresProgramada'}/${LaboresProgramada.id}`;

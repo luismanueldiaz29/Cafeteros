@@ -88,6 +88,9 @@ namespace Cafeteros.Migrations
                     Municipio = table.Column<string>(nullable: true),
                     Vereda = table.Column<string>(nullable: true),
                     NumeroTelefono = table.Column<string>(nullable: true),
+                    FechaRegistro = table.Column<string>(nullable: true),
+                    FechaAsociacion = table.Column<string>(nullable: true),
+                    FechaNoAsociacion = table.Column<string>(nullable: true),
                     AfiliacionSalud = table.Column<string>(nullable: true),
                     ActvidadesDedican = table.Column<string>(nullable: true),
                     Estado = table.Column<int>(nullable: false)

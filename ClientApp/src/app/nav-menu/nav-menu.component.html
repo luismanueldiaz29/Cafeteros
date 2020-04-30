@@ -16,11 +16,11 @@
               <ul class="navbar-nav flex-column mt-4">
                 <li class="nav-item"><a routerLink = "/auditoria" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Auditoria</a></li>
                 <div *ngIf="rol == 'Tec'"><li class="nav-item"><a routerLink = "/Registrar" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Registrar</a></li></div>
-                <li class="nav-item"><a routerLink = "/Promotoria" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-envelope text-light fa-lg mr-3"></i>Promotoria</a></li>
+                <div *ngIf="rol == 'Tec'"><li class="nav-item"><a routerLink = "/Promotoria" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-envelope text-light fa-lg mr-3"></i>Promotoria</a></li></div>
                 <li class="nav-item"><a routerLink = "/List-Productor" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-shopping-cart text-light fa-lg mr-3"></i>Productores</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>Opcion 5</a></li>
+                <!-- <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>Opcion 5</a></li>
                 <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-chart-bar text-light fa-lg mr-3"></i>Opcion 6</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-table text-light fa-lg mr-3"></i>Opcion 7</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-table text-light fa-lg mr-3"></i>Opcion 7</a></li> -->
               </ul>
             </div>
             <!-- end of sidebar -->

@@ -72,7 +72,7 @@ export class ConsultarProductorComponent{
     }
   }  
 
-  promotoria(productor : Productor){
+  promotoriaNavigate(productor : Productor){
     sessionStorage.setItem('productorId', productor.id);
     this.router.navigate(['/Promotoria']);
   }
@@ -88,4 +88,34 @@ export class ConsultarProductorComponent{
   //     button
   //   })
   // }
+
+  promotoria(productor :  Productor){
+    Swal.fire({
+      title: 'Elejir opción',
+      text: "Quiere consultar o Registrar una nueva Promotoria ?",
+      icon: 'info',
+      showCancelButton: true,
+      cancelButtonText : 'Consultar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Registrar'
+    }).then((result) => {
+      if (result.value) {
+        // Swal.fire(
+        //   'registar!',
+        //   'Your file has been deleted.',
+        //   'success'
+        // )
+        this.promotoriaNavigate(productor);
+      }else{
+        // Swal.fire(
+        //   'Consultar!',
+        //   'Your file has been deleted.',
+        //   'success'
+        // )
+        sessionStorage.setItem('productorId', productor.id);
+        this.router.navigate(['/List_Promotoria']);
+      }
+    })
+  }
 }

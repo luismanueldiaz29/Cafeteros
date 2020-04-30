@@ -13,3 +13,11 @@ input{
 .Imprimir{
     text-align: center;
 }
+
+.modal-header{
+    background-color:  teal;
+    text-align: center;
+}
+.white-text{
+    color: #fff !important;
+}
