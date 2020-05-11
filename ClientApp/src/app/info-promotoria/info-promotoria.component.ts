@@ -25,6 +25,7 @@ export class InfoPromotoriaComponent implements OnInit {
   public productor : Productor;
   laboresProgramada : LaboresProgramada[];
   LaboresRealizada : LaboresRealizada[];
+  NoRegistrada = "Indefinida";
 
   private id : string;
   
@@ -40,6 +41,7 @@ export class InfoPromotoriaComponent implements OnInit {
   ngOnInit() {
     //this.intanciarVariables();
     this.getVisita();
+    //this.getProductorVisitas(sessionStorage.getItem);
   }
 
 
@@ -50,13 +52,13 @@ export class InfoPromotoriaComponent implements OnInit {
   //   this.LaboresRealizada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId : 0};
   // }
 
-  getProductor(productorId : string){
-      this.productorService.get(productorId).subscribe(
-        productor => {
-          this.productor = productor
-        }
-      );
-  }
+  // getProductor(productorId : string){
+  //     this.productorService.get(productorId).subscribe(
+  //       productor => {
+  //         this.productor = productor
+  //       }
+  //     );
+  // }
 
   getVisita(){
     if(sessionStorage.getItem('visitaId') != null){  
@@ -65,6 +67,8 @@ export class InfoPromotoriaComponent implements OnInit {
         visita => {
           this.Visita = visita;
           this.getProductor(visita.productorId);
+          this.getVisitaLaboresProgramada(visita.id);
+          this.getVisitaLaboresRealizadas(visita.id);
         }
       );
     }else{
@@ -91,4 +95,43 @@ export class InfoPromotoriaComponent implements OnInit {
   volver(){
     this.Router.navigate(['/List-Productor']);
   }
+
+  fecha(){
+    this.Router.navigate(['/List_Promotoria']);
+  }
+
+  visitaConsultar(visita : VisitaPromotoria){
+    this.visitaService.get(visita.id).subscribe(
+      visita => {
+        this.Visita = visita;
+        this.getProductor(visita.productorId);
+        this.getVisitaLaboresProgramada(visita.id);
+        this.getVisitaLaboresRealizadas(visita.id);
+      }
+    );
+  }
+
+  getProductor(ProductorId : string){
+    if(ProductorId != null){
+      this.productorService.get(ProductorId).subscribe(
+        productor => {
+          if(productor != null)
+            this.productor = productor;
+            this.getProductorVisitas(productor.id);
+            sessionStorage.removeItem('productorId');
+        }
+      );
+    }else{
+      this.volver();
+    }
+  }
+
+  getProductorVisitas(productorId : string){
+    this.visitaService.getProductorVisitas(productorId).subscribe(
+      visitas => {
+        this.visitas = visitas
+      }
+    );
+  }
+ 
 }

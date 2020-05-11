@@ -18,7 +18,7 @@ import {
   MatListModule,
   MatProgressBarModule,
   MatCardModule,
-  MatPaginatorModule
+  MatPaginatorModule,
 } from '@angular/material';
 
 

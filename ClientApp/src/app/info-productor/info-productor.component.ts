@@ -44,6 +44,7 @@ export class InfoProductorComponent implements OnInit {
   //en esta variable capturo el año de visita en la que se hara la promotoria
   fechaRegistro : string =  this.fechaNum(this.dia)+'/'+this.fechaNum(this.mes+1)+'/'+this.ano;
 
+  private usuario: string;
   constructor(
     private productorService : ProductorService,
     private _router : Router,
@@ -58,7 +59,7 @@ export class InfoProductorComponent implements OnInit {
 
   ngOnInit() {
     this.getProductor();
-    
+    this.usuario = sessionStorage.getItem('User');
   }
 
   getProductor(){

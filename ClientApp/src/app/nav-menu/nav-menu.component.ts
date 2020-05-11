@@ -18,6 +18,7 @@ export class NavMenuComponent implements OnInit{
 
   Salir(){
     sessionStorage.removeItem('User');
+    sessionStorage.removeItem('Id')
     this.router.navigate(['/']);
   }
 

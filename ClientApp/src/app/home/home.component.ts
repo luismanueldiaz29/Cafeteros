@@ -15,14 +15,14 @@ export class HomeComponent implements OnInit{
   constructor(private router : Router){}
 
   ngOnInit(){
-    if(sessionStorage.getItem('User')==null){
-      Swal.fire(
-        'Accion incorrecta!',
-        'Para saltar esto pulse ok!',
-        'error'
-      )
-      this.router.navigate(['/']);
-    }  
+  //   if(sessionStorage.getItem('User')==null){
+  //     Swal.fire(
+  //       'Accion incorrecta!',
+  //       'Para saltar esto pulse ok!',
+  //       'error'
+  //     )
+  //     this.router.navigate(['/']);
+  //   }  
   }
 
 }

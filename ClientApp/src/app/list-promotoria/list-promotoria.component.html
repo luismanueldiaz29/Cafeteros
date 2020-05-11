@@ -22,30 +22,30 @@
                                                         <div class="col-md-12">
                                                             <div class="mt-3 table-responsive table-full-width">
                                                                 <table class="table table-hover table-striped table-bordered">
-                                                                <thead>
-                                                                        <tr>
-                                                                            <th class="title">Fecha</th>
-                                                                            <th class="title">Hora</th>
-                                                                            <th class="title">Fecha proxima visita</th>
+                                                                    <thead>
+                                                                            <tr>
+                                                                                <th class="title">Fecha</th>
+                                                                                <th class="title">Hora</th>
+                                                                                <th class="title">Fecha proxima visita</th>
+                                                                            </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr *ngFor="let visita of visitas" (click)="visitaConsultar(visita)">
+                                                                            <td>
+                                                                                {{visita.fechaVisita}}
+                                                                            </td>
+                                                                            <td>
+                                                                                {{visita.horaVisita}}
+                                                                            </td>
+                                                                            <td>
+                                                                                <div *ngIf="visita.fechaProxVista == ''; else fechaprox">No registrada</div>
+                                                                                <ng-template #fechaprox>
+                                                                                    {{visita.fechaProxVista}}
+                                                                                </ng-template>
+                                                                            </td>
                                                                         </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                                                                                
-                                                                    <tr *ngFor="let visita of visitas" (click)="visitaConsultar(visita)">
-                                                                        <td>
-                                                                            {{visita.fechaVisita}}
-                                                                        </td>
-                                                                        <td>
-                                                                            {{visita.horaVisita}}
-                                                                        </td>
-                                                                        <td>
-                                                                            <div *ngIf="visita.fechaProxVista == ''; else fechaprox">No registrada</div>
-                                                                            <ng-template #fechaprox>
-                                                                                {{visita.fechaProxVista}}
-                                                                            </ng-template>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
+                                                                    </tbody>
+                                                                    <!-- <div *ngIf="visitas === null">No se han realizado promotorias</div> -->
                                                                 </table>
                                                             </div>
                                                             <div class="clearfix"></div>
