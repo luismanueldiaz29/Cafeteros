@@ -38,7 +38,7 @@ export class ListPromotoriaComponent implements OnInit {
 
   intanciarVariables(){
     this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : "",fechaAsociacion:"", fechaRegistro : "", fechaNoAsociacion : "", estado: 0};
-    this.Visita = { id : 0, fechaVisita : "" ,horaVisita : "",fechaProxVista : "",objetivoVisita : "",situacionEncontrada : "",intercambioSaberes : "",productorId : ""}
+    this.Visita = { id : 0, fechaVisita : "" ,horaVisita : "",fechaProxVista : "",objetivoVisita : "",situacionEncontrada : "",intercambioSaberes : "",productorId : "", tecnicoId : ""}
     this.laboresProgramada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId : 0};
     this.LaboresRealizada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId : 0};
   }

@@ -7,4 +7,5 @@ export class VisitaPromotoria{
     situacionEncontrada : string;
     intercambioSaberes : string;
     productorId : string;
+    tecnicoId : string;
 }

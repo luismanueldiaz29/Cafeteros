@@ -9,6 +9,8 @@ import { ProductorService } from '../services/productor.service';
 import { VisitaPromotoriaService } from '../services/visitaPromotoria.service';
 import { LaboresProgramadaService } from '../services/laboresProgramada.service';
 import { LaboresRealizadaService } from '../services/laboresRealizada.service';
+import { Tecnico } from '../Models/Tecnico';
+import { TecnicoService } from '../services/tecnico.service';
 
 @Component({
   selector: 'app-info-promotoria',
@@ -25,6 +27,7 @@ export class InfoPromotoriaComponent implements OnInit {
   public productor : Productor;
   laboresProgramada : LaboresProgramada[];
   LaboresRealizada : LaboresRealizada[];
+  tecnico : Tecnico;
   NoRegistrada = "Indefinida";
 
   private id : string;
@@ -35,7 +38,8 @@ export class InfoPromotoriaComponent implements OnInit {
     private productorService : ProductorService,
     private visitaService : VisitaPromotoriaService,
     private laboresRealizadaService :LaboresRealizadaService,
-    private LaboresProgramadaService : LaboresProgramadaService
+    private LaboresProgramadaService : LaboresProgramadaService,
+    private tecnicoService : TecnicoService
   ) { }
 
   ngOnInit() {
@@ -69,6 +73,7 @@ export class InfoPromotoriaComponent implements OnInit {
           this.getProductor(visita.productorId);
           this.getVisitaLaboresProgramada(visita.id);
           this.getVisitaLaboresRealizadas(visita.id);
+          this.getTecnico(visita.tecnicoId);
         }
       );
     }else{
@@ -100,13 +105,23 @@ export class InfoPromotoriaComponent implements OnInit {
     this.Router.navigate(['/List_Promotoria']);
   }
 
-  visitaConsultar(visita : VisitaPromotoria){
-    this.visitaService.get(visita.id).subscribe(
-      visita => {
-        this.Visita = visita;
-        this.getProductor(visita.productorId);
-        this.getVisitaLaboresProgramada(visita.id);
-        this.getVisitaLaboresRealizadas(visita.id);
+  // visitaConsultar(visita : VisitaPromotoria){
+  //   this.visitaService.get(visita.id).subscribe(
+  //     visita => {
+  //       this.Visita = visita;
+        
+  //       this.getProductor(visita.productorId);
+  //       this.getVisitaLaboresProgramada(visita.id);
+  //       this.getVisitaLaboresRealizadas(visita.id);
+        
+  //     }
+  //   );
+  // }
+
+  getTecnico(id : string){
+    this.tecnicoService.get(id).subscribe(
+      tecnico => {
+        tecnico == null ? alert('No se hayo el tecnico') : this.tecnico = tecnico
       }
     );
   }
