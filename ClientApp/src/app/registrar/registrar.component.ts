@@ -86,6 +86,7 @@ export class RegistrarComponent implements OnInit {
   }
 
   guardarProductor(){
+    this.productor.tecnicoId = sessionStorage.getItem("Id");
     this.productorService.add(this.productor).subscribe(
       productor => {
         if(productor != null) this.GuardarFamiliar(productor.id)
@@ -94,7 +95,7 @@ export class RegistrarComponent implements OnInit {
   }
 
   incializarVariables(){
-    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : "",fechaAsociacion:"", fechaRegistro : this.fechaRegistro, fechaNoAsociacion : "", estado: 0};
+    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : "",fechaAsociacion:"", fechaRegistro : this.fechaRegistro, fechaNoAsociacion : "", estado: 0, tecnicoId : ""};
     //this.familiar = {id : null,Nombre : "",NumeroDocumento : "",FechaNacimiento : "",Parentesco : "",TipoPoblacion : "",AfiliacionSalud : "",NivelEducativo : "",ProductorId : ""};
     this.aspectoEconomico = {id : 0, tenenciaTierra : "",legalidad : "",productorId : ""}
     this.participacionComunitaria = {id : 0, asistenteAsamblea : "",cargoAsamblea : "",aistenteTrabajos : "",cargoTrabajo : "",organizacionAparte : "",cualOrganizacion : "",aspectoEconomicoId : 0}

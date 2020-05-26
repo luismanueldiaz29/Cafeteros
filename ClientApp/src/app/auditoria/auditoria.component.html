@@ -1,33 +1,952 @@
 <mat-progress-bar mode="query" *ngIf = "showSpinner"></mat-progress-bar>
 <app-nav-menu></app-nav-menu>
 
-    <section>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
-            <div class="row pt-md-5 mt-md-3 mb-5">
-              <div class="col-md-12">
-                <div class="content">
-                    <div class="content animated fadeInUp">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="card">
-                                        <div class="header">
-                                            <h4 class="title">Registro de Auditoria</h4>
-                                        </div>
-                                        <div class="content">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus vero dicta, voluptatem nam consequatur totam! Praesentium repellat saepe et reiciendis facere minus. Odit possimus necessitatibus cupiditate quidem quae atque sequi dolor nam obcaecati, amet ipsa modi sit enim velit facere explicabo incidunt ea nisi assumenda. Amet totam vel similique voluptatum architecto dolor unde quidem blanditiis minima voluptates dolore, dolorem, iusto cupiditate earum exercitationem vero hic provident ad obcaecati facere. Provident maxime ipsum in cum, praesentium totam nemo ipsa quibusdam beatae molestias labore natus? Dolore, voluptates aspernatur, cupiditate sit aut dolorum voluptatem iusto autem nemo exercitationem suscipit? Saepe similique suscipit placeat consequuntur, voluptate voluptas dignissimos, blanditiis fuga provident facere quam, quisquam sunt alias. Praesentium maiores quibusdam at impedit minus quasi a ullam rem, cupiditate iste possimus recusandae veritatis molestias hic deserunt explicabo asperiores? Excepturi eaque fuga blanditiis placeat nam, tempore, laborum exercitationem animi cum incidunt natus quasi tenetur quidem, libero pariatur architecto dignissimos quam magni. Animi ut perferendis recusandae, accusamus nobis nihil quis quam saepe? Magnam voluptatibus sapiente ratione illum quam eos animi eveniet accusamus, perferendis tempora, repellendus ut! Suscipit voluptatum ab placeat sequi exercitationem cupiditate laboriosam modi repellendus quia ipsa laborum omnis in, iste eveniet illo neque corrupti laudantium quos incidunt maiores culpa? Soluta doloremque doloribus ipsum enim nemo quaerat impedit unde laborum explicabo non quasi, atque velit accusamus voluptas illo animi consequuntur eius rerum mollitia facilis possimus cum itaque ullam! Ea temporibus excepturi nisi maiores fugiat similique, iste eos eveniet aliquam accusantium mollitia animi repellendus perferendis. Quaerat, enim asperiores ut voluptatum amet nulla aut debitis quo cupiditate? Ad, sunt pariatur a id sapiente, eligendi deleniti necessitatibus cum aperiam aliquam repudiandae maiores eaque accusamus consequatur vitae non? Quibusdam illo saepe, dolorem libero voluptatum maiores sint sed quos aliquid deleniti facilis voluptates aut. Nobis ad doloribus perspiciatis distinctio hic cupiditate voluptate accusamus officia enim veritatis voluptates dolorem temporibus sed illo exercitationem architecto doloremque laudantium, eum tempore fugit debitis, omnis itaque? Totam, molestiae pariatur quas recusandae at sit. Perferendis, quasi quos autem dolores officiis quas maiores minus perspiciatis tempora ut expedita repudiandae quia dolor voluptas, numquam, reprehenderit deserunt sed. Aliquam praesentium labore corporis laudantium dignissimos iste excepturi aliquid fugit enim! Quis nulla, laboriosam explicabo ratione voluptas ipsa harum debitis qui est eum temporibus facere rem iure sequi ipsum, sint amet officiis facilis blanditiis eveniet illum, placeat autem ducimus error! At facere quis rem ipsa laudantium consectetur consequuntur architecto laboriosam nam animi doloremque provident aspernatur quo reiciendis, soluta voluptas perspiciatis aut commodi, neque repellendus, voluptatum quibusdam repellat qui alias. Quis non unde quod incidunt? Corrupti magni, fugiat dolores optio atque placeat incidunt, ducimus maiores ipsa aut distinctio laudantium sunt maxime ut? Exercitationem molestias at modi suscipit odio veritatis voluptatum, blanditiis veniam iure autem delectus excepturi, commodi ipsam dolores dolor reiciendis rerum fugit quo. Dolorum aliquam minima aliquid ex doloremque ad illo facere adipisci delectus sapiente doloribus, ea earum repellendus repudiandae culpa voluptas corporis placeat quo facilis! Dignissimos fuga necessitatibus quos amet eius facilis molestias dolorum accusamus tempora officiis! Cumque illo dolor mollitia consequatur.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+        <div class="row pt-md-5 mt-md-3 mb-5">
+          <div class="col-md-12">
+            <div class="content">
+              <div class="content animated fadeInUp">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="card">
+                        <div class="header">
+                          <h4 class="title">Registro de Auditoria</h4>
                         </div>
+
+                        <div class="content">
+
+                          <mat-horizontal-stepper>
+
+                          <!-- mat-step first -->
+                          <mat-step>
+
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label>Nombre del auditor</label>
+                                    <input type="text" class="form-control" name="nombre" [(ngModel)]="tecnico.nombre" placeholder="Nombre del auditor" readonly>
+                                  </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label>Fecha de control</label>
+                                    <input type="text" class="form-control" name="fechaVisita" [(ngModel)]="fechaVisita" placeholder="fecha de control interno" readonly>
+                                  </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label>Hora de inicio</label>
+                                    <input type="text" class="form-control" name="hora" [(ngModel)]="hora" placeholder="hora de inicio" readonly>
+                                  </div>
+                                </div>
+                                
+                                <!-- <div class="col-md-3">
+                                  <div class="form-group">
+                                    <label>Hora final</label>
+                                    <input type="text" class="form-control" placeholder="Hora final">
+                                  </div>
+                                </div> -->
+                              </div>
+                              <!--  -->
+
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label>Código Asoseynekun</label>
+                                    <input type="text" class="form-control" name="codigoCafetero" [(ngModel)]="productor.codigoCafetero" placeholder="Código Asoseynekun" readonly>
+                                  </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label>Productor</label>
+                                    <input type="text" class="form-control" name="nombre" [(ngModel)]="productor.nombre" placeholder="Productor" readonly>
+                                  </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label>Cedula</label>
+                                    <input type="text" class="form-control" name="id" [(ngModel)]="productor.id" placeholder="Cedula" readonly>
+                                  </div>
+                                </div>
+                              </div>
+                              <!--  -->
+
+                              <div class="row">
+                                <div class="col-md-5">
+                                  <div class="form-group">
+                                    <label>Celular del Productor y/o contacto</label>
+                                    <input type="text" class="form-control" name="NumeroTelefono" [(ngModel)]="productor.numeroTelefono" placeholder="Celular del Productor y/o contacto" readonly>
+                                  </div>
+                                </div>
+                                
+                                <div class="col-md-5">
+                                  <div class="form-group">
+                                    <label>Vereda, Municipio:</label>
+                                    <input type="text" class="form-control" name="municipio" [(ngModel)]="veredaMunicipio" placeholder="Vereda, Municipio:" readonly>
+                                  </div>
+                                </div>
+                              </div>
+                              <!--  -->
+
+                              <div class="row">
+                                <div class="col-md-5">
+                                  <div class="form-group">
+                                    <label>Fecha de ingreso</label>
+                                    <input type="text" class="form-control" name="fechaRegistro" [(ngModel)]="productor.fechaRegistro" placeholder="Fecha de ingreso" readonly>
+                                  </div>
+                                </div>
+                                
+                                <div class="col-md-5">
+                                  <div class="form-group">
+                                    <label>Nombre Finca</label>
+                                    <input type="text" class="form-control" name="nombrePredio" [(ngModel)]="productor.nombrePredio" placeholder="Nombre Finca" readonly>
+                                  </div>
+                                </div>
+                              </div>
+                              <!--  -->
+
+                              <div class="row">
+                                <div class="col-md-11">
+                                  <div class="form-group">
+                                    <label>Nombre y parentesco de quien recibe la visita</label>
+                                    <input type="text" class="form-control" placeholder="Nombre y parentesco de quien recibe la visita">
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              <div class="pt-3">
+                                <h5 class="title-center title">Cultivos presentados para la certificacion</h5>
+                              </div>
+                              
+                              <div class="table-responsive table-full-width">
+                                <table class="table table-striped table-bordered">
+                                  <thead>
+                                        <tr>
+                                            <th class="title">Nombre</th>
+                                            <th class="title">Documento</th>
+                                            <th class="title">Fecha Nacimiento</th>
+                                            <th class="title">Parentesco</th>
+                                            <th class="title">Tipo Poblacion</th>
+                                            <th class="title">Afiliacion salud</th>
+                                            <th class="title">Nivel Educativo</th>
+                                            <th class="title">Accion</th>
+                                        </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                          <button class="badge btn" (click)="deleteFieldValue(i)">
+                                            <img src="assets/dejar.png" alt="">
+                                          </button>
+                                        </td>
+                                          
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                            <button  class="badge btn" (click)="addFieldValue()">
+                                              <img src="assets/comprobado.png" alt="">
+                                            </button>
+                                        </td>
+                                      </tr> 
+                                  </tbody>
+                                </table>
+                              </div>
+                              
+
+                              <div class="pt-3">
+                                <h5 class="title title-center">Otros usos del suelo en la finca</h5>
+                              </div>
+
+                              <div class="table-responsive table-full-width">
+                                <table class="table table-striped table-bordered">
+                                  <thead>
+                                        <tr>
+                                            <th class="title">Nombre</th>
+                                            <th class="title">Documento</th>
+                                            <th class="title">Fecha Nacimiento</th>
+                                            <th class="title">Parentesco</th>
+                                            <th class="title">Tipo Poblacion</th>
+                                            <th class="title">Afiliacion salud</th>
+                                            <th class="title">Nivel Educativo</th>
+                                            <th class="title">Accion</th>
+                                        </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                          <button class="badge btn" (click)="deleteFieldValue(i)">
+                                            <img src="assets/dejar.png" alt="">
+                                          </button>
+                                        </td>
+                                          
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                            <button  class="badge btn" (click)="addFieldValue()">
+                                              <img src="assets/comprobado.png" alt="">
+                                            </button>
+                                        </td>
+                                      </tr> 
+                                  </tbody>
+                                </table>
+                              </div>
+
+                              <div class="pt-3">
+                                <h5 class="title title-center">Evaluacion compromisos de mejoramiento ultima visita</h5>
+                              </div>
+
+                              <div class="table-responsive table-full-width">
+                                <table class="table table-striped table-bordered">
+                                  <thead>
+                                        <tr>
+                                            <th class="title">Nombre</th>
+                                            <th class="title">Documento</th>
+                                            <th class="title">Fecha Nacimiento</th>
+                                            <th class="title">Parentesco</th>
+                                            <th class="title">Tipo Poblacion</th>
+                                            <th class="title">Afiliacion salud</th>
+                                            <th class="title">Nivel Educativo</th>
+                                            <th class="title">Accion</th>
+                                        </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                          <button class="badge btn" (click)="deleteFieldValue(i)">
+                                            <img src="assets/dejar.png" alt="">
+                                          </button>
+                                        </td>
+                                          
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                        <td>
+                                            <button  class="badge btn" (click)="addFieldValue()">
+                                              <img src="assets/comprobado.png" alt="">
+                                            </button>
+                                        </td>
+                                      </tr> 
+                                  </tbody>
+                                </table>
+                              </div>
+                          </mat-step>
+                          <!-- end mat-step first -->
+
+                          <!-- mat-step second -->
+                          <mat-step>
+                            <!-- CONSERVACIÓN DE LA BIODIVERSIDAD -->
+                            <div class="form-group">
+                              <div class="pb-3">
+                                <h4 class="title">Punto de evaluación</h4>
+                              </div>
+                              <div class="title title-center">
+                                CONSERVACIÓN DE LA BIODIVERSIDAD
+                              </div>
+                              <div class="table-responsive table-full-width">
+                                <table class="table table-striped table-bordered">
+                                  <thead>
+                                    <th class="title">
+                                      Pregunta
+                                    </th>
+                                    <th class="title">
+                                      Respuesta
+                                    </th>
+                                    <th class="title">
+                                      JUSTIFICACION/COMENTARIOS
+                                    </th>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td class="title">
+                                        CB1. No se amplió las áreas de cultivo en zonas dedicadas a la conservación de bosques
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        CB2. El café y otros cultivos son cultivados en forma asociada entre si o con árboles de sombra.
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        Comentario/Otras prácticas de conservación de la biodiversidad observadas:
+                                      </td>
+                                      <td colspan="2">
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+
+                            <!-- MANEJO Y CONSERVACIÓN DEL AGUA -->
+                            <div class="form-group">
+                              <div class="title title-center">
+                                MANEJO Y CONSERVACIÓN DEL AGUA
+                              </div>
+                              <div class="table-responsive table-full-width">
+                                <table class="table table-striped table-bordered">
+                                  <thead>
+                                    <th class="title">
+                                      Pregunta
+                                    </th>
+                                    <th class="title">
+                                      Respuesta
+                                    </th>
+                                    <th class="title">
+                                      JUSTIFICACION/COMENTARIOS
+                                    </th>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td class="title">
+                                        MA1. Se realizan prácticas que reducen el consumo de agua. Menciónelas en "comentarios".
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        MA2.Se respetan zonas de protección de nacimientos y quebradas.
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        MA3. El origen del agua utilizada para labores agrícolas es apropiado y conocido. Mencione las fuentes de agua usadas en “comentarios”
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        MA4. Existen estudios o evaluaciones del estado de las aguas en la unidad productiva o de la cuenca regional de captación en los últimos cuatro años, No es un riesgo para el producto.
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        Comentario/Otras prácticas de manejo y conservación del agua observadas:
+                                      </td>
+                                      <td colspan="2">
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+
+                            <!-- MANEJO DE SEMILLAS Y MATERIAL DE PROPAGACIÓN -->
+                            <div class="form-group">
+                              <div class="title title-center">
+                                MANEJO DE SEMILLAS Y MATERIAL DE PROPAGACIÓN
+                              </div>
+                              <div class="table-responsive table-full-width">
+                                <table class="table table-striped table-bordered">
+                                  <thead>
+                                    <th class="title">
+                                      Pregunta
+                                    </th>
+                                    <th class="title">
+                                      Respuesta
+                                    </th>
+                                    <th class="title">
+                                      JUSTIFICACION/COMENTARIOS
+                                    </th>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td class="title">
+                                        MSE1. Indique en &quot;comentarios&quot; para cuales cultivos se usa semilla y/o material de propagación obtenido en la propia
+                                        finca
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        MSE2. Indique en &quot;comentarios&quot; para cuales cultivos se compra semilla y/o material de propagación de origen
+                                          comercial, sin tratamiento con sustancias químicas, no OGM
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        MSE3. Si se realizan viveros en la finca, se utiliza sustrato e insumos permitidos durante su producción.
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        Comentario/Otras prácticas de manejo de semillas y material de propagación:
+                                      </td>
+                                      <td colspan="2">
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+
+                            <!-- MANEJO DE INSECTOS, ENFERMEDADES Y ARVENSES -->
+                            <div class="form-group">
+                              <div class="title title-center">
+                                MANEJO DE INSECTOS, ENFERMEDADES Y ARVENSES
+                              </div>
+                              <div class="table-responsive table-full-width">
+                                <table class="table table-striped table-bordered">
+                                  <thead>
+                                    <th class="title">
+                                      Pregunta
+                                    </th>
+                                    <th class="title">
+                                      Respuesta
+                                    </th>
+                                    <th class="title">
+                                      JUSTIFICACION/COMENTARIOS
+                                    </th>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td class="title">
+                                        MIES1. Las principales plagas y enfermedades son conocidas y observadas en los cultivos principales. Indique las plagas
+                                        y enfermedades relevantes en &quot;comentarios&quot;
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        MIES2. Las principales plagas y enfermedades son conocidas y observadas en los cultivos secundarios. Indique las
+                                        plagas y enfermedades relevantes en &quot;comentarios&quot;
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        MIES3. Se aplican prácticas de prevención como el uso de variedades adaptadas y locales, cercas vivas, asociación e
+                                        intercalado de cultivo, entre otras son aplicadas. Indicar cuales en &quot;comentarios&quot;.
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        MIES4. Se aplica control cultural y/o mecánico de arvenses. Indicar en &quot;comentarios&quot; el tipo de control cultural
+                                        (machete, azadón, quema controlada, otros)
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        MIES5. En caso de usar insumos para el control de plagas, enfermedades y arvenses, los insumos utilizados hacen parte
+                                        de la lista de &quot;insumos permitidos&quot; y se utilizan adecuadamente según el caso. Indicar en &quot;comentarios&quot; los insumos
+                                        usados en los últimos 12 meses
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        Comentario/Otras prácticas de manejo de insectos, enfermedades y arvenses:
+                                      </td>
+                                      <td colspan="2">
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+
+                            <!-- MANEJO DEL SUELO -->
+
+                            <div class="form-group">
+                              <div class="title title-center">
+                                MANEJO DEL SUELO
+                              </div>
+                              <div class="table-responsive table-full-width">
+                                <table class="table table-striped table-bordered">
+                                  <thead>
+                                    <th class="title">
+                                      Pregunta
+                                    </th>
+                                    <th class="title">
+                                      Respuesta
+                                    </th>
+                                    <th class="title">
+                                      JUSTIFICACION/COMENTARIOS
+                                    </th>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td class="title">
+                                        MS1. Se tiene un plan de fertilidad (escrito o verbal) que contribuya al mejoramiento del suelo basado en la experiencia
+                                        del productor o en análisis de suelos. Especifique en &quot;comentarios&quot;.
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        MS2. Acciones como curvas a nivel, terrazas, barreras vivas, estacones, entre otros se están aplicando para la
+                                        prevención y control de la erosión.
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        MS3. Al realizar las desyerbas del cultivo, se cuida de dejar el suelo cubierto de coberturas vivas y/o muertas
+                                        favoreciendo el control de la erosión y la protección del suelo.
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        MS4. Los abonos utilizados hacen parte de la lista de &quot;insumos permitidos&quot; y se utilizan adecuadamente, según el caso.
+                                        Indique cuales insumos fueron usados en los últimos 12 meses en &quot;comentarios&quot;
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        MS5. Si es utilizado estiércol como abono, este es compostado, manteniendo una temperatura entre 55 °C y 66 °C
+                                        durante mínimo 3 meses y se volteo como mínimo cada semana. Favor indique en &quot;comentarios&quot; el origen (misma finca,
+                                        vecinos, comercial)
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                          <option value="NA">NA</option>
+                                          <option value="CUM">CUM</option>
+                                          <option value="NO CUM">NO CUM</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="title">
+                                        Comentario/Otras prácticas de manejo del suelo, preparación de abonos, control de temperaturas:
+                                      </td>
+                                      <td colspan="2">
+                                        <input type="text" class="form-control">
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+
+                          </mat-step>
+                          <!-- end mat-step second -->
+
+                          <!-- mat-step three -->
+                          <mat-step>
+                            <div class="form-group">
+                              <h5 class="title mb-3">RESULTADOS DE LA EVALUACION ACTUAL</h5>
+                              <div class="table-responsive table-full-width">
+                                <table class="table table-striped table-bordered">
+                                  <thead>
+                                        <tr>
+                                            <th class="title">Código Criterio</th>
+                                            <th class="title">Hallazgos Relevantes Observados</th>
+                                            <th class="title">Plan de Acción Propuesto</th>
+                                            <th class="title title-center">
+                                              Aceptado/Entendido <br>
+                                              tiempo de cumplimiento <br>
+                                              acordado
+                                            </th>
+                                            <th>
+                                              accion
+                                            </th>
+                                        </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                        <td>
+                                          <input type="text" class="form-control">
+                                        </td>
+
+                                        <td>
+                                          <input type="text" class="form-control">
+                                        </td>
+
+                                        <td>
+                                          <input type="text" class="form-control">
+                                        </td>
+
+                                        <td>
+                                          <input type="text" class="form-control">
+                                        </td>
+
+                                        <td>
+                                          <button class="badge btn" (click)="deleteFieldValue(i)">
+                                            <img src="assets/dejar.png" alt="">
+                                          </button>
+                                        </td>
+                                          
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <input type="text" class="form-control">
+                                        </td>
+
+                                        <td>
+                                          <input type="text" class="form-control">
+                                        </td>
+
+                                        <td>
+                                          <input type="text" class="form-control">
+                                        </td>
+
+                                        <td>
+                                          <input type="text" class="form-control">
+                                        </td>
+
+                                        <td>
+                                            <button  class="badge btn" (click)="addFieldValue()">
+                                              <img src="assets/comprobado.png" alt="">
+                                            </button>
+                                        </td>
+                                      </tr> 
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-11">
+                                <div class="form-group">
+                                  <label>OPORTUNIDADES DE MEJORA IDENTIFICADAS.</label>
+                                  <input type="text" class="form-control">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <label>DECISIÓN FINAL</label>
+                                <select class="form-control">
+                                  <option value="Aprobado">Aprobado</option>
+                                  <option value="Aprobado con condiciones 1er vez">Aprobado con condiciones 1er vez</option>
+                                  <option value="Aprobado con condiciones 2da vez">Aprobado con condiciones 2da vez</option>
+                                  <option value="Aprobado con condiciones 3er vez No Aprobado">Aprobado con condiciones 3er vez No Aprobado</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div id="Guardar">
+                              <button type="submit" class="btn btn-success btn-fill" (click) = "guardar()">Guardar</button>
+                            </div>
+                            
+                          </mat-step>
+                          <!-- end mat-step three -->
+                          </mat-horizontal-stepper>
+                          
+                        </div>
+                      </div>
                     </div>
-              </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>

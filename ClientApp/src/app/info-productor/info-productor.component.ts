@@ -15,6 +15,8 @@ import { DisponibilidadAgua } from '../Models/DisponibilidadAgua';
 import { AlmacenamientoAgua } from '../Models/AlmacenamientoAgua';
 import { AlmacenamientoAguaService } from '../services/almacenamientoAgua.service';
 import Swal from 'sweetalert2';
+import { TecnicoService } from '../services/tecnico.service';
+import { Tecnico } from '../Models/Tecnico';
 
 @Component({
   selector: 'app-info-productor',
@@ -33,6 +35,8 @@ export class InfoProductorComponent implements OnInit {
   private disponibilidadAguas : DisponibilidadAgua[];
   private almacenamientoAgua : AlmacenamientoAgua;
   private estado : string;
+  private tecnico : Tecnico;
+
   //fecha de registro
   date = new Date();
   dia = this.date.getDate();
@@ -54,6 +58,7 @@ export class InfoProductorComponent implements OnInit {
     private habitabilidadService : HabitabilidadService,
     private almacenamamientosAguaService : AlmacenamientoAguaService,
     private disponibilidadAguaService : DisponibilidadAguaService,
+    private tecnicoService : TecnicoService,
     private _Route : Router
   ) { }
 
@@ -73,6 +78,7 @@ export class InfoProductorComponent implements OnInit {
             this.getDisponibilidadAgua(productor.id);
             this.getAlamacenamientoAgua(productor.id);
             this.estadoProductor(productor.estado);
+            this.getTecnico(productor.tecnicoId);
             this.productor = productor;
             sessionStorage.removeItem('productorId');
         }
@@ -80,6 +86,14 @@ export class InfoProductorComponent implements OnInit {
     }else{
       this.volver();
     }
+  }
+
+  getTecnico(id : string){
+    this.tecnicoService.get(id).subscribe(
+      tecnico => {
+        tecnico == null ? alert('No se hayo el tecnico') : this.tecnico = tecnico
+      }
+    );
   }
 
   estadoProductor(estado : number){

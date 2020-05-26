@@ -36,5 +36,23 @@ namespace Cafeteros.Models
         public DbSet<MesaDirectiva> MesaDirectiva { get; set; }
 
         public DbSet<Tecnico> Tecnico { get; set; }
+
+        public DbSet<VisitaAuditoria> VisitaAuditoria { get; set; }
+
+        public DbSet<OtrosCultivos> OtrosCultivos { get; set; }
+
+        public DbSet<CultivosPresentandos> CultivosPresentandos { get; set; }
+
+        public DbSet<EvaluacionCompromiso> EvaluacionCompromiso { get; set; }
+
+        public DbSet<CB> CB { get; set; }
+
+        public DbSet<MA> MA { get; set; }
+
+        public DbSet<MSE> MSE { get; set; }
+
+        public DbSet<MIES> MIES { get; set; }
+
+        public DbSet<MS> MS { get; set; }
     }
 }

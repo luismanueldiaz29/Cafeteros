@@ -13,4 +13,5 @@ export class Productor{
     fechaAsociacion: string;
     fechaNoAsociacion: string;
     estado : number;
+    tecnicoId : string;
 }

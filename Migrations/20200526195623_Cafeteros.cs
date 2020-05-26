@@ -77,30 +77,6 @@ namespace Cafeteros.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Productor",
-                columns: table => new
-                {
-                    id = table.Column<string>(nullable: false),
-                    Nombre = table.Column<string>(nullable: true),
-                    CodigoCafetero = table.Column<string>(nullable: true),
-                    NombrePredio = table.Column<string>(nullable: true),
-                    CodigoSica = table.Column<string>(nullable: true),
-                    Municipio = table.Column<string>(nullable: true),
-                    Vereda = table.Column<string>(nullable: true),
-                    NumeroTelefono = table.Column<string>(nullable: true),
-                    FechaRegistro = table.Column<string>(nullable: true),
-                    FechaAsociacion = table.Column<string>(nullable: true),
-                    FechaNoAsociacion = table.Column<string>(nullable: true),
-                    AfiliacionSalud = table.Column<string>(nullable: true),
-                    ActvidadesDedican = table.Column<string>(nullable: true),
-                    Estado = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Productor", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Tecnico",
                 columns: table => new
                 {
@@ -112,6 +88,22 @@ namespace Cafeteros.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tecnico", x => x.Correo);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VisitaAuditoria",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RecibeVisita = table.Column<string>(nullable: true),
+                    OportunidadMejora = table.Column<string>(nullable: true),
+                    DecicionFinal = table.Column<string>(nullable: true),
+                    FechaFinal = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VisitaAuditoria", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -217,6 +209,246 @@ namespace Cafeteros.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Productor",
+                columns: table => new
+                {
+                    id = table.Column<string>(nullable: false),
+                    Nombre = table.Column<string>(nullable: true),
+                    CodigoCafetero = table.Column<string>(nullable: true),
+                    NombrePredio = table.Column<string>(nullable: true),
+                    CodigoSica = table.Column<string>(nullable: true),
+                    Municipio = table.Column<string>(nullable: true),
+                    Vereda = table.Column<string>(nullable: true),
+                    NumeroTelefono = table.Column<string>(nullable: true),
+                    FechaRegistro = table.Column<string>(nullable: true),
+                    FechaAsociacion = table.Column<string>(nullable: true),
+                    FechaNoAsociacion = table.Column<string>(nullable: true),
+                    AfiliacionSalud = table.Column<string>(nullable: true),
+                    ActvidadesDedican = table.Column<string>(nullable: true),
+                    Estado = table.Column<int>(nullable: false),
+                    TecnicoId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Productor", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Productor_Tecnico_TecnicoId",
+                        column: x => x.TecnicoId,
+                        principalTable: "Tecnico",
+                        principalColumn: "Correo",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CB",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RespuestaCB1 = table.Column<string>(nullable: true),
+                    JustificacionCB1 = table.Column<string>(nullable: true),
+                    RespuestaCB2 = table.Column<string>(nullable: true),
+                    JustificacionCB2 = table.Column<string>(nullable: true),
+                    ComentarioCB = table.Column<string>(nullable: true),
+                    VisitaAuditoriaId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CB", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_CB_VisitaAuditoria_VisitaAuditoriaId",
+                        column: x => x.VisitaAuditoriaId,
+                        principalTable: "VisitaAuditoria",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CultivosPresentandos",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Cultivo = table.Column<string>(nullable: true),
+                    Area = table.Column<int>(nullable: false),
+                    ProduccionObtenida = table.Column<string>(nullable: true),
+                    ProduccionEstimada = table.Column<string>(nullable: true),
+                    SustanciaNoPermitida = table.Column<string>(nullable: true),
+                    VisitaAuditoriaId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CultivosPresentandos", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_CultivosPresentandos_VisitaAuditoria_VisitaAuditoriaId",
+                        column: x => x.VisitaAuditoriaId,
+                        principalTable: "VisitaAuditoria",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EvaluacionCompromiso",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Codigo = table.Column<string>(nullable: true),
+                    AccionCorrectiva = table.Column<string>(nullable: true),
+                    Completado = table.Column<string>(nullable: true),
+                    Razones = table.Column<string>(nullable: true),
+                    VisitaAuditoriaId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EvaluacionCompromiso", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_EvaluacionCompromiso_VisitaAuditoria_VisitaAuditoriaId",
+                        column: x => x.VisitaAuditoriaId,
+                        principalTable: "VisitaAuditoria",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MA",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RespuestaCB1 = table.Column<string>(nullable: true),
+                    JustificacionCB1 = table.Column<string>(nullable: true),
+                    RespuestaMA2 = table.Column<string>(nullable: true),
+                    JustificacionMA2 = table.Column<string>(nullable: true),
+                    RespuestaMA3 = table.Column<string>(nullable: true),
+                    JustificacionMA3 = table.Column<string>(nullable: true),
+                    RespuestaMA4 = table.Column<string>(nullable: true),
+                    JustificacionMA4 = table.Column<string>(nullable: true),
+                    ComentarioMA = table.Column<string>(nullable: true),
+                    VisitaAuditoriaId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MA", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_MA_VisitaAuditoria_VisitaAuditoriaId",
+                        column: x => x.VisitaAuditoriaId,
+                        principalTable: "VisitaAuditoria",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MIES",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RespuestaMIES1 = table.Column<string>(nullable: true),
+                    JustificacionMIES1 = table.Column<string>(nullable: true),
+                    RespuestaMIES2 = table.Column<string>(nullable: true),
+                    JustificacionMIES2 = table.Column<string>(nullable: true),
+                    RespuestaMIES3 = table.Column<string>(nullable: true),
+                    JustificacionMIES3 = table.Column<string>(nullable: true),
+                    RespuestaMIES4 = table.Column<string>(nullable: true),
+                    JustificacionMIES4 = table.Column<string>(nullable: true),
+                    RespuestaMIES5 = table.Column<string>(nullable: true),
+                    JustificacionMIES5 = table.Column<string>(nullable: true),
+                    ComentarioMIES = table.Column<string>(nullable: true),
+                    VisitaAuditoriaId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MIES", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_MIES_VisitaAuditoria_VisitaAuditoriaId",
+                        column: x => x.VisitaAuditoriaId,
+                        principalTable: "VisitaAuditoria",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MS",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RespuestaMS1 = table.Column<string>(nullable: true),
+                    JustificacionMS1 = table.Column<string>(nullable: true),
+                    RespuestaMS2 = table.Column<string>(nullable: true),
+                    JustificacionMS2 = table.Column<string>(nullable: true),
+                    RespuestaMS3 = table.Column<string>(nullable: true),
+                    JustificacionMS3 = table.Column<string>(nullable: true),
+                    RespuestaMS4 = table.Column<string>(nullable: true),
+                    JustificacionMS4 = table.Column<string>(nullable: true),
+                    RespuestaMS5 = table.Column<string>(nullable: true),
+                    JustificacionMS5 = table.Column<string>(nullable: true),
+                    ComentarioMS = table.Column<string>(nullable: true),
+                    VisitaAuditoriaId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MS", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_MS_VisitaAuditoria_VisitaAuditoriaId",
+                        column: x => x.VisitaAuditoriaId,
+                        principalTable: "VisitaAuditoria",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MSE",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RespuestaMSE1 = table.Column<string>(nullable: true),
+                    JustificacionMSE1 = table.Column<string>(nullable: true),
+                    RespuestaMSE2 = table.Column<string>(nullable: true),
+                    JustificacionMSE3 = table.Column<string>(nullable: true),
+                    RespuestaMSE3 = table.Column<string>(nullable: true),
+                    JustificacionMA3 = table.Column<string>(nullable: true),
+                    ComentarioMSE = table.Column<string>(nullable: true),
+                    VisitaAuditoriaId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MSE", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_MSE_VisitaAuditoria_VisitaAuditoriaId",
+                        column: x => x.VisitaAuditoriaId,
+                        principalTable: "VisitaAuditoria",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OtrosCultivos",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Cultivo = table.Column<string>(nullable: true),
+                    Area = table.Column<int>(nullable: false),
+                    TipoOrganico = table.Column<string>(nullable: true),
+                    Uso = table.Column<string>(nullable: true),
+                    Riesgo = table.Column<string>(nullable: true),
+                    VisitaAuditoriaId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OtrosCultivos", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_OtrosCultivos_VisitaAuditoria_VisitaAuditoriaId",
+                        column: x => x.VisitaAuditoriaId,
+                        principalTable: "VisitaAuditoria",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -495,9 +727,25 @@ namespace Cafeteros.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CB_VisitaAuditoriaId",
+                table: "CB",
+                column: "VisitaAuditoriaId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CultivosPresentandos_VisitaAuditoriaId",
+                table: "CultivosPresentandos",
+                column: "VisitaAuditoriaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DisponibilidadAgua_ProductorId",
                 table: "DisponibilidadAgua",
                 column: "ProductorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EvaluacionCompromiso_VisitaAuditoriaId",
+                table: "EvaluacionCompromiso",
+                column: "VisitaAuditoriaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Familiar_ProductorId",
@@ -521,10 +769,44 @@ namespace Cafeteros.Migrations
                 column: "VisitaPromotoriaId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_MA_VisitaAuditoriaId",
+                table: "MA",
+                column: "VisitaAuditoriaId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MIES_VisitaAuditoriaId",
+                table: "MIES",
+                column: "VisitaAuditoriaId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MS_VisitaAuditoriaId",
+                table: "MS",
+                column: "VisitaAuditoriaId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MSE_VisitaAuditoriaId",
+                table: "MSE",
+                column: "VisitaAuditoriaId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OtrosCultivos_VisitaAuditoriaId",
+                table: "OtrosCultivos",
+                column: "VisitaAuditoriaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PaticipacionComunitaria_AspectoEconomicoId",
                 table: "PaticipacionComunitaria",
                 column: "AspectoEconomicoId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Productor_TecnicoId",
+                table: "Productor",
+                column: "TecnicoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_VisitaPromotoria_ProductorId",
@@ -558,10 +840,19 @@ namespace Cafeteros.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "CB");
+
+            migrationBuilder.DropTable(
+                name: "CultivosPresentandos");
+
+            migrationBuilder.DropTable(
                 name: "DisponibilidadAgua");
 
             migrationBuilder.DropTable(
                 name: "Empleado");
+
+            migrationBuilder.DropTable(
+                name: "EvaluacionCompromiso");
 
             migrationBuilder.DropTable(
                 name: "Familiar");
@@ -576,7 +867,22 @@ namespace Cafeteros.Migrations
                 name: "LaboresRealizada");
 
             migrationBuilder.DropTable(
+                name: "MA");
+
+            migrationBuilder.DropTable(
                 name: "MesaDirectiva");
+
+            migrationBuilder.DropTable(
+                name: "MIES");
+
+            migrationBuilder.DropTable(
+                name: "MS");
+
+            migrationBuilder.DropTable(
+                name: "MSE");
+
+            migrationBuilder.DropTable(
+                name: "OtrosCultivos");
 
             migrationBuilder.DropTable(
                 name: "PaticipacionComunitaria");
@@ -591,13 +897,16 @@ namespace Cafeteros.Migrations
                 name: "VisitaPromotoria");
 
             migrationBuilder.DropTable(
+                name: "VisitaAuditoria");
+
+            migrationBuilder.DropTable(
                 name: "AspectoEconomico");
 
             migrationBuilder.DropTable(
-                name: "Tecnico");
+                name: "Productor");
 
             migrationBuilder.DropTable(
-                name: "Productor");
+                name: "Tecnico");
         }
     }
 }

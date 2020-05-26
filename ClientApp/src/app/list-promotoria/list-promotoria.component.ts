@@ -37,7 +37,7 @@ export class ListPromotoriaComponent implements OnInit {
 
 
   intanciarVariables(){
-    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : "",fechaAsociacion:"", fechaRegistro : "", fechaNoAsociacion : "", estado: 0};
+    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : "",fechaAsociacion:"", fechaRegistro : "", fechaNoAsociacion : "", estado: 0, tecnicoId : ""};
     this.Visita = { id : 0, fechaVisita : "" ,horaVisita : "",fechaProxVista : "",objetivoVisita : "",situacionEncontrada : "",intercambioSaberes : "",productorId : "", tecnicoId : ""}
     this.laboresProgramada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId : 0};
     this.LaboresRealizada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId : 0};
@@ -68,7 +68,7 @@ export class ListPromotoriaComponent implements OnInit {
   }
 
   visitaConsultar(visita : VisitaPromotoria){
-    alert(visita.id);
+    //alert(visita.id);
     sessionStorage.setItem('visitaId', visita.id.toString());
     this.Router.navigate(['/info_Promotoria']);
   }

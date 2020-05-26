@@ -140,7 +140,7 @@ export class InfoPromotoriaComponent implements OnInit {
       this.volver();
     }
   }
-
+  
   getProductorVisitas(productorId : string){
     this.visitaService.getProductorVisitas(productorId).subscribe(
       visitas => {

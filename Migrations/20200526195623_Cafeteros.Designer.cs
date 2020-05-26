@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cafeteros.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200513153108_Cafeteros")]
+    [Migration("20200526195623_Cafeteros")]
     partial class Cafeteros
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -148,6 +148,71 @@ namespace Cafeteros.Migrations
                     b.ToTable("AspectoEconomico");
                 });
 
+            modelBuilder.Entity("Cafeteros.Models.CB", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ComentarioCB")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionCB1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionCB2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaCB1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaCB2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VisitaAuditoriaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("VisitaAuditoriaId")
+                        .IsUnique();
+
+                    b.ToTable("CB");
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.CultivosPresentandos", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Area")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Cultivo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProduccionEstimada")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProduccionObtenida")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SustanciaNoPermitida")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VisitaAuditoriaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("VisitaAuditoriaId");
+
+                    b.ToTable("CultivosPresentandos");
+                });
+
             modelBuilder.Entity("Cafeteros.Models.DisponibilidadAgua", b =>
                 {
                     b.Property<int>("id")
@@ -199,6 +264,35 @@ namespace Cafeteros.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Empleado");
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.EvaluacionCompromiso", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AccionCorrectiva")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Codigo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Completado")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Razones")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VisitaAuditoriaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("VisitaAuditoriaId");
+
+                    b.ToTable("EvaluacionCompromiso");
                 });
 
             modelBuilder.Entity("Cafeteros.Models.Familiar", b =>
@@ -327,6 +421,192 @@ namespace Cafeteros.Migrations
                     b.ToTable("LaboresRealizada");
                 });
 
+            modelBuilder.Entity("Cafeteros.Models.MA", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ComentarioMA")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionCB1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionMA2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionMA3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionMA4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaCB1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaMA2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaMA3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaMA4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VisitaAuditoriaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("VisitaAuditoriaId")
+                        .IsUnique();
+
+                    b.ToTable("MA");
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.MIES", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ComentarioMIES")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionMIES1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionMIES2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionMIES3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionMIES4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionMIES5")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaMIES1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaMIES2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaMIES3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaMIES4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaMIES5")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VisitaAuditoriaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("VisitaAuditoriaId")
+                        .IsUnique();
+
+                    b.ToTable("MIES");
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.MS", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ComentarioMS")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionMS1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionMS2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionMS3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionMS4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionMS5")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaMS1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaMS2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaMS3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaMS4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaMS5")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VisitaAuditoriaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("VisitaAuditoriaId")
+                        .IsUnique();
+
+                    b.ToTable("MS");
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.MSE", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ComentarioMSE")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionMA3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionMSE1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JustificacionMSE3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaMSE1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaMSE2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RespuestaMSE3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VisitaAuditoriaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("VisitaAuditoriaId")
+                        .IsUnique();
+
+                    b.ToTable("MSE");
+                });
+
             modelBuilder.Entity("Cafeteros.Models.MesaDirectiva", b =>
                 {
                     b.Property<string>("Correo")
@@ -344,6 +624,38 @@ namespace Cafeteros.Migrations
                     b.HasKey("Correo");
 
                     b.ToTable("MesaDirectiva");
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.OtrosCultivos", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Area")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Cultivo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Riesgo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TipoOrganico")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Uso")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VisitaAuditoriaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("VisitaAuditoriaId");
+
+                    b.ToTable("OtrosCultivos");
                 });
 
             modelBuilder.Entity("Cafeteros.Models.PaticipacionComunitaria", b =>
@@ -423,10 +735,15 @@ namespace Cafeteros.Migrations
                     b.Property<string>("NumeroTelefono")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("TecnicoId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Vereda")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
+
+                    b.HasIndex("TecnicoId");
 
                     b.ToTable("Productor");
                 });
@@ -448,6 +765,30 @@ namespace Cafeteros.Migrations
                     b.HasKey("Correo");
 
                     b.ToTable("Tecnico");
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.VisitaAuditoria", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("DecicionFinal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FechaFinal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OportunidadMejora")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RecibeVisita")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("VisitaAuditoria");
                 });
 
             modelBuilder.Entity("Cafeteros.Models.VisitaPromotoria", b =>
@@ -635,11 +976,38 @@ namespace Cafeteros.Migrations
                         .HasForeignKey("Cafeteros.Models.AspectoEconomico", "ProductorId");
                 });
 
+            modelBuilder.Entity("Cafeteros.Models.CB", b =>
+                {
+                    b.HasOne("Cafeteros.Models.VisitaAuditoria", "VisitaAuditoria")
+                        .WithOne("CB")
+                        .HasForeignKey("Cafeteros.Models.CB", "VisitaAuditoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.CultivosPresentandos", b =>
+                {
+                    b.HasOne("Cafeteros.Models.VisitaAuditoria", "VisitaAuditoria")
+                        .WithMany()
+                        .HasForeignKey("VisitaAuditoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Cafeteros.Models.DisponibilidadAgua", b =>
                 {
                     b.HasOne("Cafeteros.Models.Productor", "Productor")
                         .WithMany()
                         .HasForeignKey("ProductorId");
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.EvaluacionCompromiso", b =>
+                {
+                    b.HasOne("Cafeteros.Models.VisitaAuditoria", "VisitaAuditoria")
+                        .WithMany()
+                        .HasForeignKey("VisitaAuditoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Cafeteros.Models.Familiar", b =>
@@ -676,6 +1044,51 @@ namespace Cafeteros.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Cafeteros.Models.MA", b =>
+                {
+                    b.HasOne("Cafeteros.Models.VisitaAuditoria", "VisitaAuditoria")
+                        .WithOne("MA")
+                        .HasForeignKey("Cafeteros.Models.MA", "VisitaAuditoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.MIES", b =>
+                {
+                    b.HasOne("Cafeteros.Models.VisitaAuditoria", "VisitaAuditoria")
+                        .WithOne("MIES")
+                        .HasForeignKey("Cafeteros.Models.MIES", "VisitaAuditoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.MS", b =>
+                {
+                    b.HasOne("Cafeteros.Models.VisitaAuditoria", "VisitaAuditoria")
+                        .WithOne("MS")
+                        .HasForeignKey("Cafeteros.Models.MS", "VisitaAuditoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.MSE", b =>
+                {
+                    b.HasOne("Cafeteros.Models.VisitaAuditoria", "VisitaAuditoria")
+                        .WithOne("MSE")
+                        .HasForeignKey("Cafeteros.Models.MSE", "VisitaAuditoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.OtrosCultivos", b =>
+                {
+                    b.HasOne("Cafeteros.Models.VisitaAuditoria", "VisitaAuditoria")
+                        .WithMany()
+                        .HasForeignKey("VisitaAuditoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Cafeteros.Models.PaticipacionComunitaria", b =>
                 {
                     b.HasOne("Cafeteros.Models.AspectoEconomico", "AspectoEconomico")
@@ -683,6 +1096,13 @@ namespace Cafeteros.Migrations
                         .HasForeignKey("Cafeteros.Models.PaticipacionComunitaria", "AspectoEconomicoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.Productor", b =>
+                {
+                    b.HasOne("Cafeteros.Models.Tecnico", "Tecnico")
+                        .WithMany()
+                        .HasForeignKey("TecnicoId");
                 });
 
             modelBuilder.Entity("Cafeteros.Models.VisitaPromotoria", b =>

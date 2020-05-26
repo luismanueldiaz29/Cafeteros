@@ -48,6 +48,12 @@ namespace Cafeteros.Models
         [JsonProperty("Estado")]
         public int Estado {get; set;}
 
+        [JsonProperty("Tecnico")]
+        public Tecnico Tecnico {get; set;}
+
+        [JsonProperty("TecnicoId")]
+        public string TecnicoId {get; set;}
+
         [JsonProperty("Familiares")]
         public List<Familiar> Familiares = new List<Familiar>();
 

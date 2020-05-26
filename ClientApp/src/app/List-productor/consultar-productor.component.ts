@@ -118,4 +118,9 @@ export class ConsultarProductorComponent{
       }
     })
   }
+
+  auditoria(productor : Productor){
+    sessionStorage.setItem('productorId', productor.id);
+    this.router.navigate(['/auditoria']);
+  }
 }
