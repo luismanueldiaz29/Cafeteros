@@ -14,6 +14,10 @@
                     <div class="col-md-12">
                       <div class="card">
                         <div class="header">
+                          <button class="navbar-toggler bg-light" class="close" aria-label="Close" type="button" data-toggle="modal" data-target="#modalCart">
+                            <img src="assets/que-hacer.png" alt="Consulta de productores">
+                          </button>
+                          
                           <h4 class="title">Registro de Auditoria</h4>
                         </div>
 
@@ -364,6 +368,12 @@
                                       </tr> 
                                   </tbody>
                                 </table>
+                              </div>
+                              <div class="row pager mt-3">
+                                <div class="col"></div>
+                                <div class="col-ml-5 pull-right ">
+                                  <button type="submit" class="btn btn-info btn-fill " (click)="onSubmit()" matStepperNext>siguiente</button>    
+                                </div>
                               </div>
                           </mat-step>
                           <!-- end mat-step first -->
@@ -832,7 +842,15 @@
                                 </table>
                               </div>
                             </div>
-
+                            <div class="row pager">
+                              <div class="col pull-left">
+                                <button type="submit" class="btn btn-info btn-fill"  matStepperPrevious>Atras</button>
+                              </div>
+                              
+                              <div class="col-ml-5 pull-right ">
+                                <button type="submit" class="btn btn-info btn-fill " (click) = "onSubmit()" matStepperNext>siguiente</button>    
+                              </div>
+                          </div>
                           </mat-step>
                           <!-- end mat-step second -->
 
@@ -950,3 +968,58 @@
     </div>
   </div>
 </section>
+
+<!-- Modal: modalCart -->
+<div class="modal fade fadebd-example-modal-lg" data-backdrop="static" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h4 class="title white-text">Lista de productores</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text title">X</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+
+        <h5 class="title title-center"> Selecionar Productor</h5>
+
+        <!-- Table -->
+        <div class="table-responsive table-full-width">
+        <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+                <th class="title title-center">Cedula</th>
+                <th class="title title-center">Nombre</th>
+                <th class="title title-center">Codigo</th>
+                <th class="title title-center">Finca</th>
+                <th class="title title-center">Municipio</th>
+                <th class="title title-center">Vereda</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor = "let productor of productores" (click)="getProductor(productor.id)" (contextmenu)="onRightClick(productor)" data-dismiss="modal" aria-label="Close">
+                <td>{{productor.id}}</td>
+                <td>{{productor.nombre}}</td>
+                <td>{{productor.codigoCafetero}}</td>
+                <td>{{productor.nombrePredio}}</td>
+                <td>{{productor.municipio}}</td>
+                <td>{{productor.vereda}}</td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+        <!-- end table -->
+
+      </div>
+      <!--Footer-->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal: modalCart -->
+<!-- end of modal -->

@@ -18,7 +18,7 @@ export class AuditoriaComponent implements OnInit {
   private productor : Productor;
   private tecnicoId : string;
   private tecnico : Tecnico;
-
+  productores : Productor[];
   //fecha
     
   date = new Date();
@@ -39,6 +39,7 @@ export class AuditoriaComponent implements OnInit {
   ngOnInit() {
     this.initVar();
     this.setProductor();
+    this.getProductores();
   }
     
   fechaNum(num : number) : string{
@@ -81,6 +82,18 @@ export class AuditoriaComponent implements OnInit {
     this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : "",fechaAsociacion:"", fechaRegistro : "", fechaNoAsociacion : "", estado: 0, tecnicoId : ""};
   }
 
-  
+    //metodo con el que capturo los productores
+    getProductores(){
+      this.productorService.getAllEstado(1).subscribe(
+        productores => {
+          this.productores = productores;
+        }
+      ); 
+    }
 
+  onSubmit(){
+    if(this.productor.id == ""){
+      
+    }
+  }
 }
