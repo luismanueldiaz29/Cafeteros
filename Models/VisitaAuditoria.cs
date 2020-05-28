@@ -22,6 +22,13 @@ namespace Cafeteros.Models
         [JsonProperty("FechaFinal")]
         public string FechaFinal { get; set; }
 
+        
+        [JsonProperty("Productor")]
+        public Productor Productor { get; set; }
+
+        [JsonProperty("ProductorId")]
+        public string ProductorId { get; set; }
+
         [JsonProperty("CultivosPresentandos")]
         public List<CultivosPresentandos> CultivosPresentandos = new List<CultivosPresentandos>();     
 

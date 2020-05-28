@@ -23,30 +23,40 @@
 
                         <div class="content">
 
-                          <mat-horizontal-stepper>
+                          <mat-horizontal-stepper linear #stepper>
 
                           <!-- mat-step first -->
-                          <mat-step>
+                          <mat-step [stepControl]="firstFormGroup">
+                            <form [formGroup]="firstFormGroup">
 
                               <div class="row">
                                 <div class="col-md-4">
                                   <div class="form-group">
                                     <label>Nombre del auditor</label>
-                                    <input type="text" class="form-control" name="nombre" [(ngModel)]="tecnico.nombre" placeholder="Nombre del auditor" readonly>
+                                    <input type="text" class="form-control" formControlName="nombre" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" [(ngModel)]="tecnico.nombre" placeholder="Nombre del auditor" readonly>
+                                    <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                                      <div *ngIf="f.nombre.errors.required">Campo requerido</div>
+                                    </div>
                                   </div>
                                 </div>
                                 
                                 <div class="col-md-4">
                                   <div class="form-group">
                                     <label>Fecha de control</label>
-                                    <input type="text" class="form-control" name="fechaVisita" [(ngModel)]="fechaVisita" placeholder="fecha de control interno" readonly>
+                                    <input type="text" class="form-control" formControlName="fechaVisita" [ngClass]="{ 'is-invalid': submitted && f.fechaVisita.errors }" [(ngModel)]="fechaVisita" placeholder="fecha de control interno" readonly>
+                                    <div *ngIf="submitted && f.fechaVisita.errors" class="invalid-feedback">
+                                      <div *ngIf="f.fechaVisita.errors.required">Campo requerido</div>
+                                    </div>
                                   </div>
                                 </div>
                                 
                                 <div class="col-md-4">
                                   <div class="form-group">
                                     <label>Hora de inicio</label>
-                                    <input type="text" class="form-control" name="hora" [(ngModel)]="hora" placeholder="hora de inicio" readonly>
+                                    <input type="text" class="form-control" formControlName="hora" [(ngModel)]="hora" [ngClass]="{ 'is-invalid': submitted && f.hora.errors }" placeholder="hora de inicio" readonly>
+                                    <div *ngIf="submitted && f.hora.errors" class="invalid-feedback">
+                                      <div *ngIf="f.hora.errors.required">Campo requerido</div>
+                                    </div>
                                   </div>
                                 </div>
                                 
@@ -63,21 +73,30 @@
                                 <div class="col-md-4">
                                   <div class="form-group">
                                     <label>Código Asoseynekun</label>
-                                    <input type="text" class="form-control" name="codigoCafetero" [(ngModel)]="productor.codigoCafetero" placeholder="Código Asoseynekun" readonly>
+                                    <input type="text" class="form-control" formControlName="codigoCafetero" [ngClass]="{ 'is-invalid': submitted && f.codigoCafetero.errors }" [(ngModel)]="productor.codigoCafetero" placeholder="Código Asoseynekun" readonly>
+                                    <div *ngIf="submitted && f.codigoCafetero.errors" class="invalid-feedback">
+                                      <div *ngIf="f.codigoCafetero.errors.required">Campo requerido</div>
+                                    </div>
                                   </div>
                                 </div>
                                 
                                 <div class="col-md-4">
                                   <div class="form-group">
                                     <label>Productor</label>
-                                    <input type="text" class="form-control" name="nombre" [(ngModel)]="productor.nombre" placeholder="Productor" readonly>
+                                    <input type="text" class="form-control" formControlName="nombreP" [ngClass]="{ 'is-invalid': submitted && f.nombreP.errors }" [(ngModel)]="productor.nombre" placeholder="Productor" readonly>
+                                    <div *ngIf="submitted && f.nombreP.errors" class="invalid-feedback">
+                                      <div *ngIf="f.nombreP.errors.required">Campo requerido</div>
+                                    </div>
                                   </div>
                                 </div>
                                 
                                 <div class="col-md-4">
                                   <div class="form-group">
                                     <label>Cedula</label>
-                                    <input type="text" class="form-control" name="id" [(ngModel)]="productor.id" placeholder="Cedula" readonly>
+                                    <input type="text" class="form-control" formControlName="id" [ngClass]="{ 'is-invalid': submitted && f.id.errors }" [(ngModel)]="productor.id" placeholder="Cedula" readonly>
+                                    <div *ngIf="submitted && f.id.errors" class="invalid-feedback">
+                                      <div *ngIf="f.id.errors.required">Campo requerido</div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -87,14 +106,20 @@
                                 <div class="col-md-5">
                                   <div class="form-group">
                                     <label>Celular del Productor y/o contacto</label>
-                                    <input type="text" class="form-control" name="NumeroTelefono" [(ngModel)]="productor.numeroTelefono" placeholder="Celular del Productor y/o contacto" readonly>
+                                    <input type="text" class="form-control" formControlName="NumeroTelefono" [ngClass]="{ 'is-invalid': submitted && f.NumeroTelefono.errors }" [(ngModel)]="productor.numeroTelefono" placeholder="Celular del Productor y/o contacto" readonly>
+                                    <div *ngIf="submitted && f.NumeroTelefono.errors" class="invalid-feedback">
+                                      <div *ngIf="f.NumeroTelefono.errors.required">Campo requerido</div>
+                                    </div>
                                   </div>
                                 </div>
                                 
                                 <div class="col-md-5">
                                   <div class="form-group">
                                     <label>Vereda, Municipio:</label>
-                                    <input type="text" class="form-control" name="municipio" [(ngModel)]="veredaMunicipio" placeholder="Vereda, Municipio:" readonly>
+                                    <input type="text" class="form-control" formControlName="municipio" [ngClass]="{ 'is-invalid': submitted && f.municipio.errors }" [(ngModel)]="veredaMunicipio" placeholder="Vereda, Municipio:" readonly>
+                                    <div *ngIf="submitted && f.municipio.errors" class="invalid-feedback">
+                                      <div *ngIf="f.municipio.errors.required">Campo requerido</div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -104,7 +129,7 @@
                                 <div class="col-md-5">
                                   <div class="form-group">
                                     <label>Fecha de ingreso</label>
-                                    <input type="text" class="form-control" name="fechaRegistro" [(ngModel)]="productor.fechaRegistro" placeholder="Fecha de ingreso" readonly>
+                                    <input type="text" class="form-control" formControlName="fechaRegistro" [(ngModel)]="productor.fechaRegistro" placeholder="Fecha de ingreso" readonly>
                                   </div>
                                 </div>
                                 
@@ -369,17 +394,23 @@
                                   </tbody>
                                 </table>
                               </div>
+
                               <div class="row pager mt-3">
                                 <div class="col"></div>
                                 <div class="col-ml-5 pull-right ">
                                   <button type="submit" class="btn btn-info btn-fill " (click)="onSubmit()" matStepperNext>siguiente</button>    
                                 </div>
                               </div>
+
+                            </form>
                           </mat-step>
                           <!-- end mat-step first -->
 
-                          <!-- mat-step second -->
-                          <mat-step>
+                          
+                          <mat-step [stepControl]="secondFormGroup">
+                            <!-- segundo step -->
+                              <ng-template matStepLabel></ng-template>
+                              <form [formGroup] = "secondFormGroup">
                             <!-- CONSERVACIÓN DE LA BIODIVERSIDAD -->
                             <div class="form-group">
                               <div class="pb-3">
@@ -851,11 +882,16 @@
                                 <button type="submit" class="btn btn-info btn-fill " (click) = "onSubmit()" matStepperNext>siguiente</button>    
                               </div>
                           </div>
-                          </mat-step>
+                          </form>
+                        </mat-step>
                           <!-- end mat-step second -->
-
+                          
                           <!-- mat-step three -->
-                          <mat-step>
+                          <mat-step [stepControl]="threeFormGroup">
+                            <!-- tercer step -->
+                              <ng-template matStepLabel></ng-template>
+
+                              <form [formGroup] = "threeFormGroup" >
                             <div class="form-group">
                               <h5 class="title mb-3">RESULTADOS DE LA EVALUACION ACTUAL</h5>
                               <div class="table-responsive table-full-width">
@@ -950,7 +986,7 @@
                             <div id="Guardar">
                               <button type="submit" class="btn btn-success btn-fill" (click) = "guardar()">Guardar</button>
                             </div>
-                            
+                              </form>
                           </mat-step>
                           <!-- end mat-step three -->
                           </mat-horizontal-stepper>

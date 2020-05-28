@@ -54,6 +54,9 @@ namespace Cafeteros.Models
         [JsonProperty("TecnicoId")]
         public string TecnicoId {get; set;}
 
+        [JsonProperty("VisitaAuditorias")]
+        public List<VisitaAuditoria> VisitaAuditorias = new List<VisitaAuditoria>();
+
         [JsonProperty("Familiares")]
         public List<Familiar> Familiares = new List<Familiar>();
 

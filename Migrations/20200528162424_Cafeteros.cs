@@ -91,22 +91,6 @@ namespace Cafeteros.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VisitaAuditoria",
-                columns: table => new
-                {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RecibeVisita = table.Column<string>(nullable: true),
-                    OportunidadMejora = table.Column<string>(nullable: true),
-                    DecicionFinal = table.Column<string>(nullable: true),
-                    FechaFinal = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_VisitaAuditoria", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -241,6 +225,208 @@ namespace Cafeteros.Migrations
                         principalTable: "Tecnico",
                         principalColumn: "Correo",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AlmacenamientoAgua",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TipoAlmacenamiento = table.Column<string>(nullable: true),
+                    Volumen = table.Column<string>(nullable: true),
+                    NumeroUsuario = table.Column<int>(nullable: false),
+                    EstudioAgua = table.Column<string>(nullable: true),
+                    ExisteDesperdicio = table.Column<string>(nullable: true),
+                    Mantenimiento = table.Column<string>(nullable: true),
+                    ProductorId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AlmacenamientoAgua", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_AlmacenamientoAgua_Productor_ProductorId",
+                        column: x => x.ProductorId,
+                        principalTable: "Productor",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspectoEconomico",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TenenciaTierra = table.Column<string>(nullable: true),
+                    Legalidad = table.Column<string>(nullable: true),
+                    ProductorId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspectoEconomico", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_AspectoEconomico_Productor_ProductorId",
+                        column: x => x.ProductorId,
+                        principalTable: "Productor",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DisponibilidadAgua",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Fuente = table.Column<string>(nullable: true),
+                    UsoDomestico = table.Column<bool>(nullable: false),
+                    UsoAgricola = table.Column<bool>(nullable: false),
+                    Disponibilidad = table.Column<string>(nullable: true),
+                    ProductorId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DisponibilidadAgua", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_DisponibilidadAgua_Productor_ProductorId",
+                        column: x => x.ProductorId,
+                        principalTable: "Productor",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Familiar",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(nullable: true),
+                    NumeroDocumento = table.Column<string>(nullable: true),
+                    FechaNacimiento = table.Column<string>(nullable: true),
+                    Parentesco = table.Column<string>(nullable: true),
+                    TipoPoblacion = table.Column<string>(nullable: true),
+                    AfiliacionSalud = table.Column<string>(nullable: true),
+                    NivelEducativo = table.Column<string>(nullable: true),
+                    ProductorId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Familiar", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Familiar_Productor_ProductorId",
+                        column: x => x.ProductorId,
+                        principalTable: "Productor",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VisitaAuditoria",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RecibeVisita = table.Column<string>(nullable: true),
+                    OportunidadMejora = table.Column<string>(nullable: true),
+                    DecicionFinal = table.Column<string>(nullable: true),
+                    FechaFinal = table.Column<string>(nullable: true),
+                    ProductorId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VisitaAuditoria", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_VisitaAuditoria_Productor_ProductorId",
+                        column: x => x.ProductorId,
+                        principalTable: "Productor",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VisitaPromotoria",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FechaVisita = table.Column<string>(nullable: true),
+                    HoraVisita = table.Column<string>(nullable: true),
+                    FechaProxVista = table.Column<string>(nullable: true),
+                    ObjetivoVisita = table.Column<string>(nullable: true),
+                    SituacionEncontrada = table.Column<string>(nullable: true),
+                    IntercambioSaberes = table.Column<string>(nullable: true),
+                    ProductorId = table.Column<string>(nullable: true),
+                    TecnicoId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VisitaPromotoria", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_VisitaPromotoria_Productor_ProductorId",
+                        column: x => x.ProductorId,
+                        principalTable: "Productor",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_VisitaPromotoria_Tecnico_TecnicoId",
+                        column: x => x.TecnicoId,
+                        principalTable: "Tecnico",
+                        principalColumn: "Correo",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Habitabilidad",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TipoVivienda = table.Column<string>(nullable: true),
+                    NumeroHabitaciones = table.Column<int>(nullable: false),
+                    MaterialPredominante = table.Column<string>(nullable: true),
+                    MaterialTecho = table.Column<string>(nullable: true),
+                    MaterialCosinar = table.Column<string>(nullable: true),
+                    EnergiaCosinar = table.Column<string>(nullable: true),
+                    ServicioSanitario = table.Column<string>(nullable: true),
+                    TipoAlumbrado = table.Column<string>(nullable: true),
+                    AspectoEconomicoId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Habitabilidad", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Habitabilidad_AspectoEconomico_AspectoEconomicoId",
+                        column: x => x.AspectoEconomicoId,
+                        principalTable: "AspectoEconomico",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PaticipacionComunitaria",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AsistenteAsamblea = table.Column<string>(nullable: true),
+                    CargoAsamblea = table.Column<string>(nullable: true),
+                    AistenteTrabajos = table.Column<string>(nullable: true),
+                    CargoTrabajo = table.Column<string>(nullable: true),
+                    OrganizacionAparte = table.Column<string>(nullable: true),
+                    CualOrganizacion = table.Column<string>(nullable: true),
+                    AspectoEconomicoId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PaticipacionComunitaria", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_PaticipacionComunitaria_AspectoEconomico_AspectoEconomicoId",
+                        column: x => x.AspectoEconomicoId,
+                        principalTable: "AspectoEconomico",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -453,185 +639,6 @@ namespace Cafeteros.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AlmacenamientoAgua",
-                columns: table => new
-                {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TipoAlmacenamiento = table.Column<string>(nullable: true),
-                    Volumen = table.Column<string>(nullable: true),
-                    NumeroUsuario = table.Column<int>(nullable: false),
-                    EstudioAgua = table.Column<string>(nullable: true),
-                    ExisteDesperdicio = table.Column<string>(nullable: true),
-                    Mantenimiento = table.Column<string>(nullable: true),
-                    ProductorId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AlmacenamientoAgua", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_AlmacenamientoAgua_Productor_ProductorId",
-                        column: x => x.ProductorId,
-                        principalTable: "Productor",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspectoEconomico",
-                columns: table => new
-                {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TenenciaTierra = table.Column<string>(nullable: true),
-                    Legalidad = table.Column<string>(nullable: true),
-                    ProductorId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspectoEconomico", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_AspectoEconomico_Productor_ProductorId",
-                        column: x => x.ProductorId,
-                        principalTable: "Productor",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "DisponibilidadAgua",
-                columns: table => new
-                {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Fuente = table.Column<string>(nullable: true),
-                    UsoDomestico = table.Column<bool>(nullable: false),
-                    UsoAgricola = table.Column<bool>(nullable: false),
-                    Disponibilidad = table.Column<string>(nullable: true),
-                    ProductorId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DisponibilidadAgua", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_DisponibilidadAgua_Productor_ProductorId",
-                        column: x => x.ProductorId,
-                        principalTable: "Productor",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Familiar",
-                columns: table => new
-                {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(nullable: true),
-                    NumeroDocumento = table.Column<string>(nullable: true),
-                    FechaNacimiento = table.Column<string>(nullable: true),
-                    Parentesco = table.Column<string>(nullable: true),
-                    TipoPoblacion = table.Column<string>(nullable: true),
-                    AfiliacionSalud = table.Column<string>(nullable: true),
-                    NivelEducativo = table.Column<string>(nullable: true),
-                    ProductorId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Familiar", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Familiar_Productor_ProductorId",
-                        column: x => x.ProductorId,
-                        principalTable: "Productor",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "VisitaPromotoria",
-                columns: table => new
-                {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FechaVisita = table.Column<string>(nullable: true),
-                    HoraVisita = table.Column<string>(nullable: true),
-                    FechaProxVista = table.Column<string>(nullable: true),
-                    ObjetivoVisita = table.Column<string>(nullable: true),
-                    SituacionEncontrada = table.Column<string>(nullable: true),
-                    IntercambioSaberes = table.Column<string>(nullable: true),
-                    ProductorId = table.Column<string>(nullable: true),
-                    TecnicoId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_VisitaPromotoria", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_VisitaPromotoria_Productor_ProductorId",
-                        column: x => x.ProductorId,
-                        principalTable: "Productor",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_VisitaPromotoria_Tecnico_TecnicoId",
-                        column: x => x.TecnicoId,
-                        principalTable: "Tecnico",
-                        principalColumn: "Correo",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Habitabilidad",
-                columns: table => new
-                {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TipoVivienda = table.Column<string>(nullable: true),
-                    NumeroHabitaciones = table.Column<int>(nullable: false),
-                    MaterialPredominante = table.Column<string>(nullable: true),
-                    MaterialTecho = table.Column<string>(nullable: true),
-                    MaterialCosinar = table.Column<string>(nullable: true),
-                    EnergiaCosinar = table.Column<string>(nullable: true),
-                    ServicioSanitario = table.Column<string>(nullable: true),
-                    TipoAlumbrado = table.Column<string>(nullable: true),
-                    AspectoEconomicoId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Habitabilidad", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Habitabilidad_AspectoEconomico_AspectoEconomicoId",
-                        column: x => x.AspectoEconomicoId,
-                        principalTable: "AspectoEconomico",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PaticipacionComunitaria",
-                columns: table => new
-                {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AsistenteAsamblea = table.Column<string>(nullable: true),
-                    CargoAsamblea = table.Column<string>(nullable: true),
-                    AistenteTrabajos = table.Column<string>(nullable: true),
-                    CargoTrabajo = table.Column<string>(nullable: true),
-                    OrganizacionAparte = table.Column<string>(nullable: true),
-                    CualOrganizacion = table.Column<string>(nullable: true),
-                    AspectoEconomicoId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PaticipacionComunitaria", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_PaticipacionComunitaria_AspectoEconomico_AspectoEconomicoId",
-                        column: x => x.AspectoEconomicoId,
-                        principalTable: "AspectoEconomico",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "LaboresProgramada",
                 columns: table => new
                 {
@@ -807,6 +814,11 @@ namespace Cafeteros.Migrations
                 name: "IX_Productor_TecnicoId",
                 table: "Productor",
                 column: "TecnicoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VisitaAuditoria_ProductorId",
+                table: "VisitaAuditoria",
+                column: "ProductorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_VisitaPromotoria_ProductorId",

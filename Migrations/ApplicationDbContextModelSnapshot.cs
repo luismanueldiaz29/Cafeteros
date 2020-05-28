@@ -781,10 +781,15 @@ namespace Cafeteros.Migrations
                     b.Property<string>("OportunidadMejora")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ProductorId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("RecibeVisita")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
+
+                    b.HasIndex("ProductorId");
 
                     b.ToTable("VisitaAuditoria");
                 });
@@ -1101,6 +1106,13 @@ namespace Cafeteros.Migrations
                     b.HasOne("Cafeteros.Models.Tecnico", "Tecnico")
                         .WithMany()
                         .HasForeignKey("TecnicoId");
+                });
+
+            modelBuilder.Entity("Cafeteros.Models.VisitaAuditoria", b =>
+                {
+                    b.HasOne("Cafeteros.Models.Productor", "Productor")
+                        .WithMany()
+                        .HasForeignKey("ProductorId");
                 });
 
             modelBuilder.Entity("Cafeteros.Models.VisitaPromotoria", b =>

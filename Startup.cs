@@ -35,24 +35,24 @@ namespace Cafeteros
            services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-              .AddEntityFrameworkStores<ApplicationDbContext>()
-              .AddDefaultTokenProviders();
+            // services.AddIdentity<ApplicationUser, IdentityRole>()
+            //   .AddEntityFrameworkStores<ApplicationDbContext>()
+            //   .AddDefaultTokenProviders();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                 options.TokenValidationParameters = new TokenValidationParameters
-                 {
-                     ValidateIssuer = true,
-                     ValidateAudience = true,
-                     ValidateLifetime = true,
-                     ValidateIssuerSigningKey = true,
-                     ValidIssuer = "yourdomain.com",
-                     ValidAudience = "yourdomain.com",
-                     IssuerSigningKey = new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes(Configuration["ApplicationSettings : SecretKey"])),
-                     ClockSkew = TimeSpan.Zero
-                 });
+            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //     .AddJwtBearer(options =>
+            //      options.TokenValidationParameters = new TokenValidationParameters
+            //      {
+            //          ValidateIssuer = true,
+            //          ValidateAudience = true,
+            //          ValidateLifetime = true,
+            //          ValidateIssuerSigningKey = true,
+            //          ValidIssuer = "yourdomain.com",
+            //          ValidAudience = "yourdomain.com",
+            //          IssuerSigningKey = new SymmetricSecurityKey(
+            //         Encoding.UTF8.GetBytes(Configuration["ApplicationSettings : SecretKey"])),
+            //          ClockSkew = TimeSpan.Zero
+            //      });
 
             services.AddMvc();
 
