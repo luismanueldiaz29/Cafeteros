@@ -1,7 +1,7 @@
 export class CultivosPresentandos{
     id : number;
     cultivo : string;
-    area : string;
+    area : number;
     produccionObtenida : string;
     produccionEstimada : string;
     sustanciaNoPermitida : string;

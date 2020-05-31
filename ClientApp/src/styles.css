@@ -4,6 +4,22 @@ body {
   background-color: #eee;
 }
 
+.modal-header {
+  background-color:  #212529;
+  text-align: center;
+}
+
+.alig{
+  text-align: center;
+}
+
+.modal{
+border-radius: 0px;
+}
+.white-text{
+  color: #fff !important;
+}
+
 /* ocultar parte de pantalla */
 @media print
 {    

@@ -10,11 +10,13 @@ import { ConsultarProductorComponent } from './List-productor/consultar-producto
 import { InfoProductorComponent } from './info-productor/info-productor.component';
 import { ListPromotoriaComponent } from './list-promotoria/list-promotoria.component';
 import { InfoPromotoriaComponent } from './info-promotoria/info-promotoria.component';
+import { ListAuditoriaComponent } from './list-auditoria/list-auditoria.component';
+import { InfoAuditoriaComponent } from './info-auditoria/info-auditoria.component';
 
 const routes : Routes = [
-  { 
-    path: '', 
-    component: LoginComponent 
+  {
+    path: '',
+    component: LoginComponent
   },
   {
     path : 'Home',
@@ -26,7 +28,7 @@ const routes : Routes = [
   },
   {
     path : "auditoria",
-    component : AuditoriaComponent    
+    component : AuditoriaComponent
   },
   {
     path : 'Promotoria',
@@ -47,17 +49,15 @@ const routes : Routes = [
   {
     path : 'info_Promotoria',
     component : InfoPromotoriaComponent
+  },
+  {
+    path : 'List_Auditoria',
+    component : ListAuditoriaComponent
+  },
+  {
+    path : 'info_Auditoria',
+    component : InfoAuditoriaComponent
   }
-  //angular7
-  // {path:'',redirectTo:'/user/login',pathMatch:'full'},
-  // {
-  //   path: 'user', component: UserComponent,
-  //   children: [
-  //     { path: 'registration', component: RegistrationComponent },
-  //     { path: 'login', component: LoginComponent }
-  //   ]
-  // },
-  // {path:'home',component:HomeComponent,canActivate:[AuthGuard]}
 ]
 
 @NgModule({

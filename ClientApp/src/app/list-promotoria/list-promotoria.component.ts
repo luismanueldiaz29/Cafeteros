@@ -23,7 +23,7 @@ export class ListPromotoriaComponent implements OnInit {
   laboresProgramada : LaboresProgramada;
   LaboresRealizada : LaboresRealizada;
   private id : string;
-  
+
   constructor(
     private Router : Router,
     private productorService : ProductorService,
@@ -37,7 +37,7 @@ export class ListPromotoriaComponent implements OnInit {
 
 
   intanciarVariables(){
-    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : "",fechaAsociacion:"", fechaRegistro : "", fechaNoAsociacion : "", estado: 0, tecnicoId : ""};
+    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",numeroTelefono : "",afiliacionSalud : "",actvidadesDedican : "",fechaAsociacion:"", fechaRegistro : "", fechaNoAsociacion : "", estado: 0, tecnicoId : ""};
     this.Visita = { id : 0, fechaVisita : "" ,horaVisita : "",fechaProxVista : "",objetivoVisita : "",situacionEncontrada : "",intercambioSaberes : "",productorId : "", tecnicoId : ""}
     this.laboresProgramada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId : 0};
     this.LaboresRealizada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId : 0};

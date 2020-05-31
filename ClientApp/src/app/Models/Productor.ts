@@ -6,9 +6,9 @@ export class Productor{
     codigoSica : string;
     municipio : string;
     vereda : string;
-    NumeroTelefono : string;
-    AfiliacionSalud : string;
-    ActvidadesDedican : string;
+    numeroTelefono : string;
+    afiliacionSalud : string;
+    actvidadesDedican : string;
     fechaRegistro: string;
     fechaAsociacion: string;
     fechaNoAsociacion: string;

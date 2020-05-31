@@ -332,7 +332,10 @@ namespace Cafeteros.Migrations
                     OportunidadMejora = table.Column<string>(nullable: true),
                     DecicionFinal = table.Column<string>(nullable: true),
                     FechaFinal = table.Column<string>(nullable: true),
-                    ProductorId = table.Column<string>(nullable: true)
+                    ProductorId = table.Column<string>(nullable: true),
+                    FechaVisita = table.Column<string>(nullable: true),
+                    HoraVisita = table.Column<string>(nullable: true),
+                    TecnicoId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -342,6 +345,12 @@ namespace Cafeteros.Migrations
                         column: x => x.ProductorId,
                         principalTable: "Productor",
                         principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_VisitaAuditoria_Tecnico_TecnicoId",
+                        column: x => x.TecnicoId,
+                        principalTable: "Tecnico",
+                        principalColumn: "Correo",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -639,6 +648,29 @@ namespace Cafeteros.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ResultadoEvaluacion",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Codigo = table.Column<string>(nullable: true),
+                    Hallazgo = table.Column<string>(nullable: true),
+                    AccionPropuesta = table.Column<string>(nullable: true),
+                    TiempoAcordado = table.Column<string>(nullable: true),
+                    VisitaAuditoriaId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ResultadoEvaluacion", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_ResultadoEvaluacion_VisitaAuditoria_VisitaAuditoriaId",
+                        column: x => x.VisitaAuditoriaId,
+                        principalTable: "VisitaAuditoria",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "LaboresProgramada",
                 columns: table => new
                 {
@@ -816,9 +848,19 @@ namespace Cafeteros.Migrations
                 column: "TecnicoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ResultadoEvaluacion_VisitaAuditoriaId",
+                table: "ResultadoEvaluacion",
+                column: "VisitaAuditoriaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_VisitaAuditoria_ProductorId",
                 table: "VisitaAuditoria",
                 column: "ProductorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VisitaAuditoria_TecnicoId",
+                table: "VisitaAuditoria",
+                column: "TecnicoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_VisitaPromotoria_ProductorId",
@@ -900,6 +942,9 @@ namespace Cafeteros.Migrations
                 name: "PaticipacionComunitaria");
 
             migrationBuilder.DropTable(
+                name: "ResultadoEvaluacion");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
@@ -909,10 +954,10 @@ namespace Cafeteros.Migrations
                 name: "VisitaPromotoria");
 
             migrationBuilder.DropTable(
-                name: "VisitaAuditoria");
+                name: "AspectoEconomico");
 
             migrationBuilder.DropTable(
-                name: "AspectoEconomico");
+                name: "VisitaAuditoria");
 
             migrationBuilder.DropTable(
                 name: "Productor");

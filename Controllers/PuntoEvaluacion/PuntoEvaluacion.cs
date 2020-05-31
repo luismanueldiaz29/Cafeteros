@@ -37,6 +37,20 @@ namespace Cafeteros.Controllers
             return CB;
         }
 
+        [HttpGet("VisitaAuditoria/{id}")]
+        public async Task<ActionResult<CB>> GetCBPresentandoVisita(int id)
+        {
+            var CB = await _context.CB.ToListAsync();
+            List <CB> cBs = new List<CB>();
+            foreach (CB item in CB)
+            {
+                if(item.VisitaAuditoriaId == id){
+                    return item;
+                }
+            }
+            return null;
+        }
+
         // POST: api/Task
         [HttpPost]
         public async Task<ActionResult<CB>> PostCB(CB item)
@@ -74,9 +88,22 @@ namespace Cafeteros.Controllers
             return MA;
         }
 
+        [HttpGet("VisitaAuditoria/{id}")]
+        public async Task<ActionResult<MA>> GetMAPresentandoVisita(int id)
+        {
+            var MA = await _context.MA.ToListAsync();
+            List <MA> MAs = new List<MA>();
+            foreach (MA item in MA)
+            {
+                if(item.VisitaAuditoriaId == id){
+                    return item;
+                }
+            }
+            return null;
+        }
         // POST: api/Task
         [HttpPost]
-        public async Task<ActionResult<CB>> PostMA(MA item)
+        public async Task<ActionResult<MA>> PostMA(MA item)
         {
             _context.MA.Add(item);
             await _context.SaveChangesAsync();
@@ -109,6 +136,19 @@ namespace Cafeteros.Controllers
                 return NotFound();
             }
             return MSE;
+        }
+
+        [HttpGet("VisitaAuditoria/{id}")]
+        public async Task<ActionResult<MSE>> GetMSEPresentandoVisita(int id)
+        {
+            var MSE = await _context.MSE.ToListAsync();
+            foreach (MSE item in MSE)
+            {
+                if(item.VisitaAuditoriaId == id){
+                    return item;
+                }
+            }
+            return null;
         }
 
         // POST: api/Task
@@ -148,6 +188,19 @@ namespace Cafeteros.Controllers
             return MIES;
         }
 
+       [HttpGet("VisitaAuditoria/{id}")]
+        public async Task<ActionResult<MIES>> GetMIESPresentandoVisita(int id)
+        {
+            var MIES = await _context.MIES.ToListAsync();
+            foreach (MIES item in MIES)
+            {
+                if(item.VisitaAuditoriaId == id){
+                    return item;
+                }
+            }
+            return null;
+        }
+
         // POST: api/Task
         [HttpPost]
         public async Task<ActionResult<MIES>> PostCB(MIES item)
@@ -183,6 +236,19 @@ namespace Cafeteros.Controllers
                 return NotFound();
             }
             return MS;
+        }
+
+               [HttpGet("VisitaAuditoria/{id}")]
+        public async Task<ActionResult<MS>> GetMSPresentandoVisita(int id)
+        {
+            var MS = await _context.MS.ToListAsync();
+            foreach (MS item in MS)
+            {
+                if(item.VisitaAuditoriaId == id){
+                    return item;
+                }
+            }
+            return null;
         }
 
         // POST: api/Task

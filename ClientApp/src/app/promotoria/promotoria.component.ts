@@ -12,6 +12,7 @@ import Swal from 'sweetalert2'
 import { element } from 'protractor';
 import { MaterialModule } from '../material/material';
 import { stringify } from 'querystring';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-promotoria',
   templateUrl: './promotoria.component.html',
@@ -28,7 +29,7 @@ export class PromotoriaComponent implements OnInit {
 
   //Este Array me sirve para obtener el mes porque this.date.getMonth() me retorna el mes en numero
   //meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-  
+
   date = new Date();
   dia = this.date.getDate();
   mes = this.date.getMonth();
@@ -40,6 +41,7 @@ export class PromotoriaComponent implements OnInit {
   fechaVisita : string =  this.fechaNum(this.dia)+'/'+this.fechaNum(this.mes+1)+'/'+this.ano;
 
   constructor(
+    private router : Router,
     private productorService : ProductorService,
     private visitaService : VisitaPromotoriaService,
     private laboresRealizadaService : LaboresRealizadaService,
@@ -55,7 +57,7 @@ export class PromotoriaComponent implements OnInit {
     this.getPromotoria();
   }
 
-  
+
   getPromotoria(){
     this.id = sessionStorage.getItem('productorId');
     if(this.id != null){
@@ -66,7 +68,7 @@ export class PromotoriaComponent implements OnInit {
           sessionStorage.removeItem('productorId');
         }
       );
-      
+
     }
   }
 
@@ -79,10 +81,10 @@ export class PromotoriaComponent implements OnInit {
       productores => {
         this.productores = productores;
       }
-    ); 
+    );
   }
 
-  
+
   fechaNum(num : number) : string{
     if(num < 10){ return '0'+num; }else{ return num+'' }
   }
@@ -92,8 +94,8 @@ export class PromotoriaComponent implements OnInit {
   }
 
   // inicio Labores realizadas
-    private fieldArrayLabores: Array<LaboresRealizada> = [];
-    private newAttributeLabores: LaboresRealizada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId: null};
+    fieldArrayLabores: Array<LaboresRealizada> = [];
+    newAttributeLabores: LaboresRealizada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId: null};
 
     addFieldValueLabores() {
         this.fieldArrayLabores.push(this.newAttributeLabores)
@@ -105,8 +107,8 @@ export class PromotoriaComponent implements OnInit {
   // fin labores realizadas
 
   //inicio compromiso de labores
-  private fieldArrayCompromiso: Array<LaboresProgramada> = [];
-  private newAttributeCompromiso: LaboresProgramada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId: null};
+  fieldArrayCompromiso: Array<LaboresProgramada> = [];
+  newAttributeCompromiso: LaboresProgramada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId: null};
 
   addFieldValueCompromiso(){
     this.fieldArrayCompromiso.push(this.newAttributeCompromiso);
@@ -120,7 +122,7 @@ export class PromotoriaComponent implements OnInit {
 
 
   intanciarVariables(){
-    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : "",fechaAsociacion:"", fechaRegistro : "", fechaNoAsociacion : "", estado: 0, tecnicoId : ""};
+    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",numeroTelefono : "",afiliacionSalud : "",actvidadesDedican : "",fechaAsociacion:"", fechaRegistro : "", fechaNoAsociacion : "", estado: 0, tecnicoId : ""};
     this.Visita = { id : 0, fechaVisita : this.fechaVisita ,horaVisita : this.hora ,fechaProxVista : "",objetivoVisita : "",situacionEncontrada : "",intercambioSaberes : "",productorId : "", tecnicoId : ""}
     this.laboresProgramada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId : 0};
     this.LaboresRealizada = {id : 0, actividad : "", fecha : "", visitaPromotoriaId : 0};
@@ -133,6 +135,7 @@ export class PromotoriaComponent implements OnInit {
       this.mensajeConfirmacion();
     }
   }
+
   mensajeConfirmacion(){
     Swal.fire({
       title: 'Mensaje de confirmación',
@@ -147,6 +150,7 @@ export class PromotoriaComponent implements OnInit {
         //regitro la visita de promotoria
         try {
           this.addVisita();
+          this.router.navigate(['/List-Productor']);
         } catch (error) {
          this.mensajeError()
         }
@@ -183,14 +187,14 @@ export class PromotoriaComponent implements OnInit {
     this.Visita.tecnicoId = sessionStorage.getItem("Id");
     this.visitaService.add(this.Visita).subscribe(
       visita => {
-        visita != null ? this.addLabores(visita.id) 
+        visita != null ? this.addLabores(visita.id)
         : console.log('No se guardo la visita de promotoria')
       }
     );
   }
 
   addLabores(VisitaId : number){
-    
+
     if(this.newAttributeLabores != null){
       this.newAttributeLabores.visitaPromotoriaId = VisitaId;
       this.laboresRealizadaService.add(this.newAttributeLabores).subscribe(

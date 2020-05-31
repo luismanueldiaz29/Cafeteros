@@ -42,7 +42,22 @@ namespace Cafeteros.Controllers
             return EvaluacionCompromiso;
         }
 
-
+       [HttpGet("VisitaAuditoria/{id}")]
+        public async Task<ActionResult<IEnumerable<EvaluacionCompromiso>>> GetCultivosPresentandoVisita(int id)
+        {
+            var EvaluacionCompromiso = await _context.EvaluacionCompromiso.ToListAsync();
+            List <EvaluacionCompromiso> evaluacionCompromisos = new List<EvaluacionCompromiso>();
+            foreach (EvaluacionCompromiso item in EvaluacionCompromiso)
+            {
+                if(item.VisitaAuditoriaId == id){
+                    evaluacionCompromisos.Add(item);
+                }
+            }
+            if(evaluacionCompromisos == null){
+                return NotFound();
+            }
+            return evaluacionCompromisos;
+        }
 
         // POST: api/Task
         [HttpPost]

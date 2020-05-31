@@ -21,13 +21,25 @@ namespace Cafeteros.Models
 
         [JsonProperty("FechaFinal")]
         public string FechaFinal { get; set; }
-
         
         [JsonProperty("Productor")]
         public Productor Productor { get; set; }
 
         [JsonProperty("ProductorId")]
         public string ProductorId { get; set; }
+
+        [JsonProperty("Tecnico")]
+        public Tecnico Tecnico { get; set; }
+
+        [JsonProperty("FechaVisita")]
+        public string FechaVisita { get; set; }
+
+        [JsonProperty("HoraVisita")]
+        public string HoraVisita { get; set; }
+
+
+        [JsonProperty("TecnicoId")]
+        public string TecnicoId { get; set; }
 
         [JsonProperty("CultivosPresentandos")]
         public List<CultivosPresentandos> CultivosPresentandos = new List<CultivosPresentandos>();     
@@ -37,6 +49,10 @@ namespace Cafeteros.Models
         
         [JsonProperty("EvaluacionCompromiso")]
         public List<EvaluacionCompromiso> EvaluacionCompromiso = new List<EvaluacionCompromiso>();     
+
+        
+        [JsonProperty("ResultadoEvaluaciones")]
+        public List<ResultadoEvaluacion> ResultadoEvaluaciones = new List<ResultadoEvaluacion>();     
 
         //punto de evaluacion
 

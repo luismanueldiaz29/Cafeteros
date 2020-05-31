@@ -19,7 +19,7 @@
                                 <div class="content table-responsive table-full-width"> -->
                   <!-- <h5>Datos generales</h5>
                   <div class="content tabla">
-                    
+
                     <table>
                       <tr>
                         <td rowspan="7"><button type="file">Adjuntar</button></td>
@@ -28,7 +28,7 @@
                         <td></td>
                         <td>Nombre productor</td>
                         <td colspan="5"><input type="text" class="intput-largo"></td>
-                        
+
                       </tr>
                       <tr>
                         <td></td>
@@ -78,7 +78,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Nombre del productor</label>
-                                                    <input type="text" class="form-control" formControlName = "Nombre"  [ngClass]="{ 'is-invalid': submitted && f.Nombre.errors }" [(ngModel)]="productor.Nombre" placeholder="nombre del productor">
+                                                    <input type="text" class="form-control" formControlName = "Nombre"  [ngClass]="{ 'is-invalid': submitted && f.Nombre.errors }" [(ngModel)]="productor.nombre" placeholder="nombre del productor">
                                                     <div *ngIf="submitted && f.Nombre.errors" class="invalid-feedback">
                                                       <div *ngIf="f.Nombre.errors.required">Campo requerido</div>
                                                     </div>
@@ -97,19 +97,19 @@
                                             <div class="col-md-4">
                                               <div class="form-group">
                                                   <label>Codigo cafetero</label>
-                                                  <input type="text" class="form-control" formControlName = "CodigoCafetero" [ngClass]="{ 'is-invalid': submitted && f.CodigoCafetero.errors }" [(ngModel)] = "productor.CodigoCafetero" placeholder="Codigo cafetero">
+                                                  <input type="text" class="form-control" formControlName = "CodigoCafetero" [ngClass]="{ 'is-invalid': submitted && f.CodigoCafetero.errors }" [(ngModel)] = "productor.codigoCafetero" placeholder="Codigo cafetero">
                                                   <div *ngIf="submitted && f.CodigoCafetero.errors" class="invalid-feedback">
                                                     <div *ngIf="f.CodigoCafetero.errors.required">Campo requerido</div>
                                                   </div>
                                               </div>
                                           </div>
                                         </div>
-    
+
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Nombre del predio</label>
-                                                    <input type="text" class="form-control" formControlName="NombrePredio" [ngClass]="{ 'is-invalid': submitted && f.NombrePredio.errors }" [(ngModel)] = "productor.NombrePredio" placeholder="Nombre del predio">
+                                                    <input type="text" class="form-control" formControlName="NombrePredio" [ngClass]="{ 'is-invalid': submitted && f.NombrePredio.errors }" [(ngModel)] = "productor.nombrePredio" placeholder="Nombre del predio">
                                                     <div *ngIf="submitted && f.NombrePredio.errors" class="invalid-feedback">
                                                       <div *ngIf="f.NombrePredio.errors.required">Campo requerido</div>
                                                     </div>
@@ -124,7 +124,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Codigo SICA</label>
-                                                    <input type="text" class="form-control" formControlName="CodigoSica" [ngClass]="{ 'is-invalid': submitted && f.CodigoSica.errors }" [(ngModel)] = "productor.CodigoSica" placeholder="Ingrece el codigo">
+                                                    <input type="text" class="form-control" formControlName="CodigoSica" [ngClass]="{ 'is-invalid': submitted && f.CodigoSica.errors }" [(ngModel)] = "productor.codigoSica" placeholder="Ingrece el codigo">
                                                     <div *ngIf="submitted && f.CodigoSica.errors" class="invalid-feedback">
                                                       <div *ngIf="f.CodigoSica.errors.required">Campo requerido</div>
                                                     </div>
@@ -135,7 +135,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Municipio</label>
-                                                    <input type="text" class="form-control"  formControlName="Municipio" [ngClass]="{ 'is-invalid': submitted && f.Municipio.errors }" [(ngModel)] = "productor.Municipio" placeholder="Municipio">
+                                                    <input type="text" class="form-control"  formControlName="Municipio" [ngClass]="{ 'is-invalid': submitted && f.Municipio.errors }" [(ngModel)] = "productor.municipio" placeholder="Municipio">
                                                     <div *ngIf="submitted && f.Municipio.errors" class="invalid-feedback">
                                                       <div *ngIf="f.Municipio.errors.required">Campo requerido</div>
                                                     </div>
@@ -144,7 +144,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Vereda</label>
-                                                    <input type="text" class="form-control" formControlName="Vereda" [ngClass]="{ 'is-invalid': submitted && f.Vereda.errors }" [(ngModel)] = "productor.Vereda" placeholder="Vereda">
+                                                    <input type="text" class="form-control" formControlName="Vereda" [ngClass]="{ 'is-invalid': submitted && f.Vereda.errors }" [(ngModel)] = "productor.vereda" placeholder="Vereda">
                                                     <div *ngIf="submitted && f.Vereda.errors" class="invalid-feedback">
                                                       <div *ngIf="f.Vereda.errors.required">Campo requerido</div>
                                                     </div>
@@ -153,7 +153,7 @@
                                             <div class="col-md-4">
                                               <div class="form-group">
                                                   <label>Numero de telefono</label>
-                                                  <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.NumeroTelefono.errors }" formControlName="NumeroTelefono" [(ngModel)] = "productor.NumeroTelefono" placeholder="Numero de telefono">
+                                                  <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.NumeroTelefono.errors }" formControlName="NumeroTelefono" [(ngModel)] = "productor.numeroTelefono" placeholder="Numero de telefono">
                                                   <div *ngIf="submitted && f.NumeroTelefono.errors" class="invalid-feedback">
                                                     <div *ngIf="f.NumeroTelefono.errors.required">Campo requerido</div>
                                                   </div>
@@ -162,11 +162,11 @@
                                         </div>
 
                                         <div class="row">
-                                          
+
                                           <div class="col-md-4">
                                               <div class="form-group">
                                                   <label>Afiniacion a salud</label>
-                                                  <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.AfiliacionSalud.errors }" formControlName="AfiliacionSalud" [(ngModel)] = "productor.AfiliacionSalud" placeholder="Afiniacion a salud">
+                                                  <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.AfiliacionSalud.errors }" formControlName="AfiliacionSalud" [(ngModel)] = "productor.afiliacionSalud" placeholder="Afiniacion a salud">
                                                   <div *ngIf="submitted && f.AfiliacionSalud.errors" class="invalid-feedback">
                                                     <div *ngIf="f.AfiliacionSalud.errors.required">Campo requerido</div>
                                                   </div>
@@ -176,7 +176,7 @@
                                           <div class="col-md-7">
                                             <div class="form-group">
                                               <label>Actividad(es) principal de ingreso</label>
-                                              <input type="text" class="form-control" formControlName="ActvidadesDedican" [ngClass]="{ 'is-invalid': submitted && f.ActvidadesDedican.errors }" [(ngModel)] = "productor.ActvidadesDedican" placeholder="Actividad a la que se dedica">
+                                              <input type="text" class="form-control" formControlName="ActvidadesDedican" [ngClass]="{ 'is-invalid': submitted && f.ActvidadesDedican.errors }" [(ngModel)] = "productor.actvidadesDedican" placeholder="Actividad a la que se dedica">
                                               <div *ngIf="submitted && f.ActvidadesDedican.errors" class="invalid-feedback">
                                                 <div *ngIf="f.ActvidadesDedican.errors.required">Campo requerido</div>
                                               </div>
@@ -205,7 +205,7 @@
                                                   </thead>
                                                   <tbody>
                                                       <tr *ngFor="let field of fieldArray; let i = index" >
-                                                          
+
                                                         <td>
                                                             <input [(ngModel)]="field.Nombre" class="form-control" type="text" name="{{field.Nombre}}" />
                                                         </td>
@@ -232,7 +232,7 @@
                                                             <img src="assets/dejar.png" alt="">
                                                           </button>
                                                         </td>
-                                                          
+
                                                       </tr>
                                                       <tr>
                                                           <td>
@@ -261,23 +261,23 @@
                                                                 <img src="assets/comprobado.png" alt="">
                                                               </button>
                                                           </td>
-                                                      </tr> 
+                                                      </tr>
                                                   </tbody>
                                                 </table>
                                               </div>
-                                              
+
                                               <!-- <div class="row">
                                                 <div class="col-md-2">
                                                   <button type="submit" class="btn btn-info btn-fill pull-left" matStepperPrevious>Atras</button>
                                                 </div>
                                                 <div class="col-md-8">
-                                                  
+
                                                 </div>
                                                 <div class="col-md-2">
-                                                  <button type="submit" class="btn btn-info btn-fill pull-right" matStepperNext>siguiente</button>    
+                                                  <button type="submit" class="btn btn-info btn-fill pull-right" matStepperNext>siguiente</button>
                                                 </div>
                                               </div>   -->
-                                              
+
                                               <div class="clearfix"></div>
                                             </div>
                                           </div>
@@ -287,7 +287,7 @@
                                           <div class="row pager mt-3">
                                             <div class="col"></div>
                                             <div class="col-ml-5 pull-right ">
-                                              <button type="submit" class="btn btn-info btn-fill " (click)="onSubmit()" matStepperNext>siguiente</button>    
+                                              <button type="submit" class="btn btn-info btn-fill " (click)="onSubmit()" matStepperNext>siguiente</button>
                                             </div>
                                           </div>
                                         <!-- fin boton siguiente -->
@@ -308,7 +308,7 @@
                                           <div class="col-md-4">
                                             <div class="form-group">
                                               <label>Tenencia de tierra</label>
-                                              <select  formControlName = "TenenciaTierra" [ngClass]="{ 'is-invalid': submitted && f2.TenenciaTierra.errors }" aria-placeholder="seleccione una opcion" [(ngModel)] = "aspectoEconomico.TenenciaTierra" class="form-control">
+                                              <select  formControlName = "TenenciaTierra" [ngClass]="{ 'is-invalid': submitted && f2.TenenciaTierra.errors }" aria-placeholder="seleccione una opcion" [(ngModel)] = "aspectoEconomico.tenenciaTierra" class="form-control">
                                                   <option value="Propia">Propia</option>
                                                   <option value="Comunitaria">Comunitaria</option>
                                                   <option value="Otra">Otra</option>
@@ -322,14 +322,14 @@
                                           <div class="col-md-4">
                                             <div class="form-group">
                                               <label>Legalidad</label>
-                                              <select formControlName = "Legalidad" [ngClass]="{ 'is-invalid': submitted && f2.Legalidad.errors }" aria-placeholder="seleccione una opcion" [(ngModel)] = "aspectoEconomico.Legalidad" class="form-control">
+                                              <select formControlName = "Legalidad" [ngClass]="{ 'is-invalid': submitted && f2.Legalidad.errors }" aria-placeholder="seleccione una opcion" [(ngModel)] = "aspectoEconomico.legalidad" class="form-control">
                                                 <option value="Escritura">Escritura</option>
                                                 <option value="Certificado autoridad">Certificado autoridad</option>
                                                 <option value="Carta venta">Carta venta</option>
                                               </select>
                                               <div *ngIf="submitted && f2.Legalidad.errors" class="invalid-feedback">
                                                 <div *ngIf="f2.Legalidad.errors.required">Campo requerido</div>
-                                              </div>                                          
+                                              </div>
                                             </div>
                                           </div>
                                         </div>
@@ -340,12 +340,12 @@
                                           <div class="col-md-4">
                                             <div class="form-group">
                                               <Label>Asistente a la asamblea comunitarias</Label>
-                                              <select [ngClass]="{ 'is-invalid': submitted && f2.AsistenteAsamblea.errors }" formControlName = "AsistenteAsamblea" aria-placeholder="seleccione una opcion" [(ngModel)] = "participacionComunitaria.AsistenteAsamblea" class="form-control">
+                                              <select [ngClass]="{ 'is-invalid': submitted && f2.AsistenteAsamblea.errors }" formControlName = "AsistenteAsamblea" aria-placeholder="seleccione una opcion" [(ngModel)] = "participacionComunitaria.asistenteAsamblea" class="form-control">
                                                 <option value="NO">NO</option>
                                                 <option value="SI">SI</option>
                                               </select>
-                                              <div *ngIf = "participacionComunitaria.AsistenteAsamblea == 'SI'">
-                                                <input class="form-control" formControlName="CargoAsamblea" [(ngModel)] = "participacionComunitaria.CargoAsamblea" placeholder="Cargo si desempeña" type="text">
+                                              <div *ngIf = "participacionComunitaria.asistenteAsamblea == 'SI'">
+                                                <input class="form-control" formControlName="CargoAsamblea" [(ngModel)] = "participacionComunitaria.cargoAsamblea" placeholder="Cargo si desempeña" type="text">
                                               </div>
                                               <div *ngIf="submitted && f2.AsistenteAsamblea.errors " class="invalid-feedback">
                                                 <div *ngIf="f2.AsistenteAsamblea.errors.required">Campo requerido</div>
@@ -356,12 +356,12 @@
                                           <div class="col-md-4">
                                             <div class="form-group">
                                               <Label>Asistente a trabajos tradicionales</Label>
-                                              <select [ngClass]="{ 'is-invalid': submitted && f2.AsistenteTrabajos.errors }" class="form-control"  formControlName="AsistenteTrabajos" [(ngModel)] = "participacionComunitaria.AistenteTrabajos" placeholder="Elija una opción">
+                                              <select [ngClass]="{ 'is-invalid': submitted && f2.AsistenteTrabajos.errors }" class="form-control"  formControlName="AsistenteTrabajos" [(ngModel)] = "participacionComunitaria.aistenteTrabajos" placeholder="Elija una opción">
                                                 <option value="NO">NO</option>
                                                 <option value="SI">SI</option>
                                               </select>
-                                              <div *ngIf = "participacionComunitaria.AistenteTrabajos == 'SI'">
-                                                <input class="form-control"  formControlName="CargoTrabajo" [(ngModel)] = "participacionComunitaria.CargoTrabajo" placeholder="Cargo si desempeña" type="text">
+                                              <div *ngIf = "participacionComunitaria.aistenteTrabajos == 'SI'">
+                                                <input class="form-control"  formControlName="CargoTrabajo" [(ngModel)] = "participacionComunitaria.cargoTrabajo" placeholder="Cargo si desempeña" type="text">
                                               </div>
                                               <div *ngIf="submitted && f2.AsistenteTrabajos.errors" class="invalid-feedback">
                                                 <div *ngIf="f2.AsistenteTrabajos.errors.required">Campo requerido</div>
@@ -372,12 +372,12 @@
                                           <div class="col-md-4">
                                             <div class="form-group">
                                               <Label>Pertenece a una organización aparte</Label>
-                                              <select [ngClass]="{ 'is-invalid': submitted && f2.OrganizacionAparte.errors }" class="form-control" formControlName="OrganizacionAparte" [(ngModel)] = "participacionComunitaria.OrganizacionAparte" placeholder="Elija una opción">
+                                              <select [ngClass]="{ 'is-invalid': submitted && f2.OrganizacionAparte.errors }" class="form-control" formControlName="OrganizacionAparte" [(ngModel)] = "participacionComunitaria.organizacionAparte" placeholder="Elija una opción">
                                                 <option value="NO">NO</option>
                                                 <option value="SI">SI</option>
                                               </select>
-                                              <div *ngIf = "participacionComunitaria.OrganizacionAparte == 'SI'">
-                                                <input class="form-control" formControlName="CualOrganizacion" [(ngModel)] = "participacionComunitaria.CualOrganizacion" placeholder="A cual ?" type="text">
+                                              <div *ngIf = "participacionComunitaria.organizacionAparte == 'SI'">
+                                                <input class="form-control" formControlName="CualOrganizacion" [(ngModel)] = "participacionComunitaria.cualOrganizacion" placeholder="A cual ?" type="text">
                                               </div>
                                               <div *ngIf="submitted && f2.OrganizacionAparte.errors" class="invalid-feedback">
                                                 <div *ngIf="f2.OrganizacionAparte.errors.required">Campo requerido</div>
@@ -386,7 +386,7 @@
                                           </div>
                                           <!-- fin row -->
                                         </div>
-                                        
+
                                         <!-- Habitabilidad -->
                                         <h5 class="title mt-2 mb-2">Aspecto de habitabilidad</h5>
 
@@ -395,31 +395,31 @@
                                           <div class="col-md-4">
                                             <div class="form-group">
                                               <label>Tipo de vivienda</label>
-                                              <select   class="form-control" formControlName="TipoVivienda" [(ngModel)] = "habitabilidad.TipoVivienda" placeholder="Elija una opción">
+                                              <select   class="form-control" formControlName="TipoVivienda" [(ngModel)] = "habitabilidad.tipoVivienda" placeholder="Elija una opción">
                                                 <option value="Tradicional">Tradicional</option>
                                                 <option value="Occidental">Occidental</option>
-                                              </select>                                          
+                                              </select>
                                             </div>
                                           </div>
 
                                           <div class="col-md-4">
                                             <div class="form-group">
                                               <label>Numero de habitaciones</label>
-                                              <input type="number" class="form-control"formControlName="NumeroHabitaciones" [(ngModel)] = "habitabilidad.NumeroHabitaciones" placeholder="Ingrece el numero de habitaciones">
+                                              <input type="number" class="form-control"formControlName="NumeroHabitaciones" [(ngModel)] = "habitabilidad.numeroHabitaciones" placeholder="Ingrece el numero de habitaciones">
                                             </div>
                                           </div>
 
                                           <div class="col-md-4">
                                             <div class="form-group">
                                               <label>Material predominante</label>
-                                              <select  class="form-control" formControlName="MaterialPredominante" [(ngModel)] = "habitabilidad.MaterialPredominante" placeholder="Elija una opción">
+                                              <select  class="form-control" formControlName="MaterialPredominante" [(ngModel)] = "habitabilidad.materialPredominante" placeholder="Elija una opción">
                                                 <option value="Barro">Barro</option>
                                                 <option value="Adobe">Adobe</option>
                                                 <option value="Ladrillo">Ladrillo</option>
                                                 <option value="Bloque">Bloque</option>
                                                 <option value="Plastico">Plastico</option>
                                                 <option value="Otro">Otro</option>
-                                              </select>   
+                                              </select>
                                             </div>
                                           </div>
                                           <!-- fin row -->
@@ -430,7 +430,7 @@
                                           <div class="col-md-4">
                                             <div class="form-group">
                                               <label>Tipo de cosina</label>
-                                              <select  class="form-control" formControlName="TipoCosina" [(ngModel)] = "habitabilidad.MaterialCosinar" placeholder="Elija una opción">
+                                              <select  class="form-control" formControlName="TipoCosina" [(ngModel)] = "habitabilidad.materialCosinar" placeholder="Elija una opción">
                                                 <option value="Barro">Barro</option>
                                                 <option value="Adobe">Adobe</option>
                                                 <option value="Enramada">Ladrillo</option>
@@ -445,7 +445,7 @@
                                           <div class="col-md-4">
                                             <div class="form-group">
                                               <label>Material para cosinar</label>
-                                              <select  class="form-control" formControlName="EnergiaCosinar" [(ngModel)] = "habitabilidad.EnergiaCosinar" placeholder="Elija una opción">
+                                              <select  class="form-control" formControlName="EnergiaCosinar" [(ngModel)] = "habitabilidad.energiaCosinar" placeholder="Elija una opción">
                                                 <option value="Leña">Leña</option>
                                                 <option value="Pipeta de gas">Pipeta de gas</option>
                                                 <option value="Petroleo">Petroleo</option>
@@ -456,7 +456,7 @@
                                           <div class="col-md-4">
                                             <div class="form-group">
                                               <label>Material del techo</label>
-                                              <select  class="form-control" formControlName="MaterialTecho" [(ngModel)] = "habitabilidad.MaterialTecho" placeholder="Elija una opción">
+                                              <select  class="form-control" formControlName="MaterialTecho" [(ngModel)] = "habitabilidad.materialTecho" placeholder="Elija una opción">
                                                 <option value="Paja">Paja</option>
                                                 <option value="Zinc">Zinc</option>
                                                 <option value="Palma">Palma</option>
@@ -469,17 +469,17 @@
                                           <!-- fin row -->
                                         </div>
 
-                                        
+
                                           <div class="row">
                                             <!-- Inicio row -->
                                             <div class="col-md-4">
                                               <div class="form-group">
                                                 <label>Servicio sanitario</label>
-                                                <select  class="form-control" formControlName="ServicioSanitario" [(ngModel)] = "habitabilidad.ServicioSanitario" placeholder="Elija una opción">
+                                                <select  class="form-control" formControlName="ServicioSanitario" [(ngModel)] = "habitabilidad.servicioSanitario" placeholder="Elija una opción">
                                                   <option value="SI">SI</option>
                                                   <option value="NO">NO</option>
                                                 </select>
-                                                <div *ngIf="habitabilidad.ServicioSanitario == 'SI'">
+                                                <div *ngIf="habitabilidad.servicioSanitario == 'SI'">
                                                   <input type="text" class="form-control" formControlName = "estadoServicioSanitario" placeholder="Estado">
                                                 </div>
                                               </div>
@@ -487,7 +487,7 @@
                                               <div class="col-md-4">
                                                 <div class="form-group">
                                                   <label>Tipo Alumbrado</label>
-                                                  <select  class="form-control" formControlName="TipoAlumbrado" [(ngModel)] = "habitabilidad.TipoAlumbrado" placeholder="Elija una opción">
+                                                  <select  class="form-control" formControlName="TipoAlumbrado" [(ngModel)] = "habitabilidad.tipoAlumbrado" placeholder="Elija una opción">
                                                     <option value="Mechon">Mechon</option>
                                                     <option value="Vela">Vela</option>
                                                     <option value="Solar">Solar</option>
@@ -500,7 +500,7 @@
 
                                               <!-- Fin row -->
                                           </div>
-                                          
+
                                           <!-- Botones sigientes y atras -->
                                           <!-- <div id="Guardar">
                                             <button type="submit" class="btn btn-success btn-fill" (click) = "guardar()">Guardar</button>
@@ -509,9 +509,9 @@
                                               <div class="col pull-left">
                                                 <button type="submit" class="btn btn-info btn-fill"  matStepperPrevious>Atras</button>
                                               </div>
-                                              
+
                                               <div class="col-ml-5 pull-right ">
-                                                <button type="submit" class="btn btn-info btn-fill " (click) = "onSubmit()" matStepperNext>siguiente</button>    
+                                                <button type="submit" class="btn btn-info btn-fill " (click) = "onSubmit()" matStepperNext>siguiente</button>
                                               </div>
                                           </div>
                                         <!-- fin Botones sigientes y atras -->
@@ -561,7 +561,7 @@
                                                       <select  name="{{field.disponibilidad}}+1" [(ngModel)]="field.disponibilidad"  class="form-control">
                                                         <option value="Premanente">Premanente</option>
                                                         <option value="Temporal">Temporal</option>
-                                                      </select> 
+                                                      </select>
                                                     </td>
                                                     <td class="title-center">
                                                       <button class="badge btn" (click)="deleteFieldValueDisponibilidadAgua(i)">
@@ -588,7 +588,7 @@
                                                       <select  name="{{newAttributeDisponibilidadAgua.disponibilidad}}+index" [(ngModel)]="newAttributeDisponibilidadAgua.disponibilidad" class="form-control">
                                                         <option value="Premanente">Premanente</option>
                                                         <option value="Temporal">Temporal</option>
-                                                      </select> 
+                                                      </select>
                                                     </td>
                                                     <td class="title-center">
                                                       <button class="badge btn" (click)="addFieldValueDisponibilidadAgua()">
@@ -601,7 +601,7 @@
                                             </div>
                                           </div>
                                         </div>
-                                      </form> 
+                                      </form>
                                       <!-- end table -->
 
                                       <div class="row">
@@ -673,9 +673,9 @@
                                           <div class="col pull-left">
                                             <button type="submit" class="btn btn-info btn-fill"  matStepperPrevious>Atras</button>
                                           </div>
-                                          
+
                                           <!-- <div class="col-ml-5 pull-right ">
-                                            <button type="submit" class="btn btn-info btn-fill " (click) = "onSubmit()" matStepperNext>siguiente</button>    
+                                            <button type="submit" class="btn btn-info btn-fill " (click) = "onSubmit()" matStepperNext>siguiente</button>
                                           </div> -->
                                       </div>
                                     </form>
@@ -695,7 +695,7 @@
                                     <div class="author">
                                           <a href="#">
                                         <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
-    
+
                                           <h4 class="title">Mike Andrew<br />
                                               <small>michael24</small>
                                           </h4>
@@ -711,11 +711,11 @@
                                     <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
                                     <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
                                     <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
-    
+
                                 </div>
                             </div>
                         </div> -->
-    
+
                     </div>
                   </div>
                                 <!--  -->

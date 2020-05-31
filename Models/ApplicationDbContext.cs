@@ -45,6 +45,8 @@ namespace Cafeteros.Models
 
         public DbSet<EvaluacionCompromiso> EvaluacionCompromiso { get; set; }
 
+        public DbSet<ResultadoEvaluacion> ResultadoEvaluacion { get; set; }
+
         public DbSet<CB> CB { get; set; }
 
         public DbSet<MA> MA { get; set; }
@@ -54,5 +56,7 @@ namespace Cafeteros.Models
         public DbSet<MIES> MIES { get; set; }
 
         public DbSet<MS> MS { get; set; }
+
+        
     }
 }

@@ -18,6 +18,7 @@ import { AlmacenamientoAguaService } from '../services/almacenamientoAgua.servic
 import { DisponibilidadAguaService } from '../services/disponibilidadAgua.service';
 import { UsoAgua } from '../Models/UsoAgua';
 import { element } from 'protractor';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrar',
@@ -60,6 +61,7 @@ export class RegistrarComponent implements OnInit {
 
 
   constructor(
+    private router : Router,
     private _formBuilder: FormBuilder, //para formulario reactivo
     private productorService : ProductorService,
     private familiarService : FamiliarService,
@@ -77,12 +79,38 @@ export class RegistrarComponent implements OnInit {
 
   //metodo para guardar los datos capturados en el formulario
   guardar(){//console.log('el array es de '+this.fieldArray.length+' '+this.fieldArray.shift().Nombre)
-    try {
-      this.guardarProductor();
-    } catch (error) {
+    this.mensajeConfirmacion();
 
-    }
+  }
 
+  mensajeConfirmacion(){
+    Swal.fire({
+      title: 'Mensaje de confirmación',
+      text: "Seguro de que quieres realizar esta accion ?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar'
+    }).then((result) => {
+      if (result.value) {
+        //regitro la visita de promotoria
+        try {
+          this.guardarProductor();
+          this.router.navigate(['/List-Productor']);
+        } catch (error) {
+         this.mensajeError()
+        }
+      }
+    })
+  }
+
+  mensajeError(){
+    Swal.fire(
+      'Accion incorrecta!',
+      'Primero tiene que elejir un productor!',
+      'error'
+    )
   }
 
   guardarProductor(){
@@ -95,7 +123,7 @@ export class RegistrarComponent implements OnInit {
   }
 
   incializarVariables(){
-    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",NumeroTelefono : "",AfiliacionSalud : "",ActvidadesDedican : "",fechaAsociacion:"", fechaRegistro : this.fechaRegistro, fechaNoAsociacion : "", estado: 0, tecnicoId : ""};
+    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",numeroTelefono : "",afiliacionSalud : "",actvidadesDedican : "",fechaAsociacion:"", fechaRegistro : this.fechaRegistro, fechaNoAsociacion : "", estado: 0, tecnicoId : ""};
     //this.familiar = {id : null,Nombre : "",NumeroDocumento : "",FechaNacimiento : "",Parentesco : "",TipoPoblacion : "",AfiliacionSalud : "",NivelEducativo : "",ProductorId : ""};
     this.aspectoEconomico = {id : 0, tenenciaTierra : "",legalidad : "",productorId : ""}
     this.participacionComunitaria = {id : 0, asistenteAsamblea : "",cargoAsamblea : "",aistenteTrabajos : "",cargoTrabajo : "",organizacionAparte : "",cualOrganizacion : "",aspectoEconomicoId : 0}
@@ -153,8 +181,8 @@ export class RegistrarComponent implements OnInit {
     });
   }
 
-  private fieldArray: Array<Familiar> = [];
-  private newAttribute: Familiar = {id : 0 ,Nombre : "",NumeroDocumento : "",FechaNacimiento : "",Parentesco : "",TipoPoblacion : "",AfiliacionSalud : "",NivelEducativo : "",ProductorId : ""};
+  fieldArray: Array<Familiar> = [];
+  newAttribute: Familiar = {id : 0 ,Nombre : "",NumeroDocumento : "",FechaNacimiento : "",Parentesco : "",TipoPoblacion : "",AfiliacionSalud : "",NivelEducativo : "",ProductorId : ""};
 
   //agregar filas de la tabla de familiares del productor
   addFieldValue() {
@@ -170,8 +198,8 @@ export class RegistrarComponent implements OnInit {
   }
 
 
-  private fieldArrayDisponibilidadAgua: Array<DisponibilidadAgua> = [];
-  private newAttributeDisponibilidadAgua: DisponibilidadAgua  = {id: 0,fuente: "",usoDomestico: null,usoAgricola: null,disponibilidad: "",productorId: ""};
+  fieldArrayDisponibilidadAgua: Array<DisponibilidadAgua> = [];
+  newAttributeDisponibilidadAgua: DisponibilidadAgua  = {id: 0,fuente: "",usoDomestico: null,usoAgricola: null,disponibilidad: "",productorId: ""};
   //agregar filas de la tabla de diponibilidad de agua
   addFieldValueDisponibilidadAgua() {
     this.newAttributeDisponibilidadAgua.productorId = this.productor.id;
@@ -216,7 +244,7 @@ export class RegistrarComponent implements OnInit {
           }
         );
       });
-      
+
       this.GuardarAspectoEconomico(id);
       this.GuardarDisponibilidadAgua(id);
       this.guardarAlmacenamientoAgua(id);
@@ -284,7 +312,7 @@ export class RegistrarComponent implements OnInit {
           'Accion sastifactoria!',
           'Para saltar esto pulse ok!',
           'success'
-        ) 
+        )
         :
         Swal.fire(
           'Accion incorrecta!',
@@ -294,7 +322,7 @@ export class RegistrarComponent implements OnInit {
       }
     );
   }
-  
+
   onReset() {
     this.submitted = false;
     this.firstFormGroup.reset();

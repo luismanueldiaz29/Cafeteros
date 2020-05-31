@@ -31,6 +31,23 @@ namespace Cafeteros.Controllers
             return await _context.CultivosPresentandos.ToListAsync();
         }
 
+
+       [HttpGet("VisitaAuditoria/{id}")]
+        public async Task<ActionResult<IEnumerable<CultivosPresentandos>>> GetCultivosPresentandoVisita(int id)
+        {
+            var CultivosPresentandos = await _context.CultivosPresentandos.ToListAsync();
+            List <CultivosPresentandos> cultivosPresentados = new List<CultivosPresentandos>();
+            foreach (CultivosPresentandos item in CultivosPresentandos)
+            {
+                if(item.VisitaAuditoriaId == id){
+                    cultivosPresentados.Add(item);
+                }
+            }
+            if(cultivosPresentados == null){
+                return NotFound();
+            }
+            return cultivosPresentados;
+        }
         // GET: api/Task/5
         [HttpGet("{id}")]
         public async Task<ActionResult<CultivosPresentandos>> GetCultivosPresentandos(int id)

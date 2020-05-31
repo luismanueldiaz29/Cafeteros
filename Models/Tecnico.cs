@@ -21,6 +21,9 @@ namespace Cafeteros.Models
         [JsonProperty("Productores")]
         public List<Productor> Productores = new List<Productor>();
 
+        [JsonProperty("VisitaAuditorias")]
+        public List<VisitaAuditoria> VisitaAuditorias = new List<VisitaAuditoria>();
+
         [JsonProperty("VisitaPromotorias")]
         public List<VisitaPromotoria> VisitaPromotorias = new List<VisitaPromotoria>();
     }

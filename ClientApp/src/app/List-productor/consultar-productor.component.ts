@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MaterialModule } from '../material/material';
 import { ProductorService } from '../services/productor.service';
 import { Productor } from '../Models/Productor';
-import { MatMenuTrigger } from '@angular/material';
-import { PromotoriaComponent } from '../promotoria/promotoria.component';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 // Declaramos las variables para jQuery
@@ -17,14 +15,14 @@ declare var $:any;
   styleUrls: ['./consultar-productor.component.css']
 })
 export class ConsultarProductorComponent{
- 
   imports : [MaterialModule];
 
-  private productoresAprobado : Productor[];
-  private productoresSolicitud : Productor[];
-  private productorNoAprobado : Productor[];
- titulo : string;
+  productoresAprobado : Productor[];
+  productoresSolicitud : Productor[];
+  productorNoAprobado : Productor[];
+  titulo : string;
   private vTitulo : true;
+
   constructor(
     private productorService : ProductorService,
     private router : Router
@@ -43,7 +41,7 @@ export class ConsultarProductorComponent{
       productores => {
         this.productorNoAprobado = productores;
       }
-    ); 
+    );
   }
 
   //estado aprobado
@@ -52,7 +50,7 @@ export class ConsultarProductorComponent{
       productores => {
         this.productoresAprobado = productores;
       }
-    ); 
+    );
   }
 
   //estado solicitud
@@ -61,7 +59,7 @@ export class ConsultarProductorComponent{
       productores => {
         this.productoresSolicitud = productores;
       }
-    ); 
+    );
   }
 
   ponerTitulo(){
@@ -70,7 +68,7 @@ export class ConsultarProductorComponent{
     }else{
       this.titulo = "Lista de solicitudes de asociacion con la entidad"
     }
-  }  
+  }
 
   promotoriaNavigate(productor : Productor){
     sessionStorage.setItem('productorId', productor.id);
@@ -120,7 +118,34 @@ export class ConsultarProductorComponent{
   }
 
   auditoria(productor : Productor){
-    sessionStorage.setItem('productorId', productor.id);
-    this.router.navigate(['/auditoria']);
+    Swal.fire({
+      title: 'Elejir opción',
+      text: "Quiere consultar o Registrar una nueva Auditoria ?",
+      icon: 'info',
+      showCancelButton: true,
+      cancelButtonText : 'Consultar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Registrar'
+    }).then((result) => {
+      if (result.value) {
+        // Swal.fire(
+        //   'registar!',
+        //   'Your file has been deleted.',
+        //   'success'
+        // )
+        sessionStorage.setItem('productorId', productor.id);
+        this.router.navigate(['/auditoria']);
+      }else{
+        // Swal.fire(
+        //   'Consultar!',
+        //   'Your file has been deleted.',
+        //   'success'
+        // )
+        sessionStorage.setItem('productorId', productor.id);
+        this.router.navigate(["/List_Auditoria"])
+      }
+    })
+
   }
 }

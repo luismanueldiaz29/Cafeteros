@@ -46,7 +46,7 @@ export class PuntoEvaluacionService {
   }
 
   addMS(MS: MS): Observable<MS> {
-    return this.http.post<MS>(this.baseUrl + 'api/MS', MA, httpOptions).pipe(
+    return this.http.post<MS>(this.baseUrl + 'api/MS', MS, httpOptions).pipe(
       tap((newMS: MS) => this.log(`added newMS w/ id=${newMS.id}`)),
       catchError(this.handleError<MS>('addMS'))
     );

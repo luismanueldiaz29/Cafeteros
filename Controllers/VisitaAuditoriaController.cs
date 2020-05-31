@@ -42,7 +42,23 @@ namespace Cafeteros.Controllers
             return VisitaAuditoria;
         }
 
+        [HttpGet("Productor/{id}")]
+        public async Task<ActionResult<IEnumerable<VisitaAuditoria>>> GetProductorVisitaAuditorias(string id)
+        {
+            var visitas = await _context.VisitaAuditoria.ToListAsync();
+            List<VisitaAuditoria> visitaPromotorias  = new List<VisitaAuditoria>();
 
+            foreach(VisitaAuditoria item in visitas){
+                if(item.ProductorId == id){
+                    visitaPromotorias.Add(item);
+                }
+            }
+            if(visitaPromotorias == null){
+                return NotFound();
+            }
+
+            return visitaPromotorias;
+        }
 
         // POST: api/Task
         [HttpPost]

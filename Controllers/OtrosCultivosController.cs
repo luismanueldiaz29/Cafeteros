@@ -42,7 +42,22 @@ namespace Cafeteros.Controllers
             return OtrosCultivos;
         }
 
-
+       [HttpGet("VisitaAuditoria/{id}")]
+        public async Task<ActionResult<IEnumerable<OtrosCultivos>>> GetCultivosPresentandoVisita(int id)
+        {
+            var OtrosCultivos = await _context.OtrosCultivos.ToListAsync();
+            List <OtrosCultivos> otrosCultivos = new List<OtrosCultivos>();
+            foreach (OtrosCultivos item in OtrosCultivos)
+            {
+                if(item.VisitaAuditoriaId == id){
+                    otrosCultivos.Add(item);
+                }
+            }
+            if(otrosCultivos == null){
+                return NotFound();
+            }
+            return otrosCultivos;
+        }
 
         // POST: api/Task
         [HttpPost]
