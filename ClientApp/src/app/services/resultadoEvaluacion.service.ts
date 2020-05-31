@@ -33,11 +33,11 @@ export class ResultadoEvaluacionService {
       );
   }
   /** este metodo me retorna todos los ResultadoEvaluaciones de los productores */
-  getAllResultadoEvaluacionProdId(id: string): Observable<ResultadoEvaluacion[]> {
-    const url = `${this.baseUrl + 'api/ResultadoEvaluacion/Productor'}/${id}`;
-    return this.http.get<ResultadoEvaluacion[]>(url).pipe(
+  getAllResultadoEvaluacionVisita (id: number): Observable<ResultadoEvaluacion> {
+    const url = `${this.baseUrl + 'api/ResultadoEvaluacion/VisitaAuditoria'}/${id}`;
+    return this.http.get<ResultadoEvaluacion>(url).pipe(
       tap(_ => this.log(`fetched ResultadoEvaluacion id=${id}`)),
-      catchError(this.handleError<ResultadoEvaluacion[]>(`ResultadoEvaluacion id=${id}`))
+      catchError(this.handleError<ResultadoEvaluacion>(`ResultadoEvaluacion id=${id}`))
     );
   }
 

@@ -24,10 +24,26 @@ export class PuntoEvaluacionService {
     );
   }
 
+  getAllCBVisita (id: number): Observable<CB> {
+    const url = `${this.baseUrl + 'api/CB/VisitaAuditoria'}/${id}`;
+    return this.http.get<CB>(url).pipe(
+      tap(_ => this.log(`fetched CB id=${id}`)),
+      catchError(this.handleError<CB>(`CB id=${id}`))
+    );
+  }
+
   addMA(MA: MA): Observable<MA> {
     return this.http.post<MA>(this.baseUrl + 'api/MA', MA, httpOptions).pipe(
       tap((newMA: MA) => this.log(`added newMA w/ id=${newMA.id}`)),
       catchError(this.handleError<MA>('addMA'))
+    );
+  }
+
+  getAllMAVisita (id: number): Observable<MA> {
+    const url = `${this.baseUrl + 'api/MA/VisitaAuditoria'}/${id}`;
+    return this.http.get<MA>(url).pipe(
+      tap(_ => this.log(`fetched MA id=${id}`)),
+      catchError(this.handleError<MA>(`MA id=${id}`))
     );
   }
 
@@ -38,6 +54,14 @@ export class PuntoEvaluacionService {
     );
   }
 
+  getAllMSEVisita (id: number): Observable<MSE> {
+    const url = `${this.baseUrl + 'api/MSE/VisitaAuditoria'}/${id}`;
+    return this.http.get<MSE>(url).pipe(
+      tap(_ => this.log(`fetched MSE id=${id}`)),
+      catchError(this.handleError<MSE>(`MSE id=${id}`))
+    );
+  }
+
   addMIES(MIES: MIES): Observable<MIES> {
     return this.http.post<MIES>(this.baseUrl + 'api/MIES', MIES, httpOptions).pipe(
       tap((newMIES: MIES) => this.log(`added newMIES w/ id=${newMIES.id}`)),
@@ -45,10 +69,26 @@ export class PuntoEvaluacionService {
     );
   }
 
+  getAllMIESVisita (id: number): Observable<MIES> {
+    const url = `${this.baseUrl + 'api/MIES/VisitaAuditoria'}/${id}`;
+    return this.http.get<MIES>(url).pipe(
+      tap(_ => this.log(`fetched MIES id=${id}`)),
+      catchError(this.handleError<MIES>(`MIES id=${id}`))
+    );
+  }
+
   addMS(MS: MS): Observable<MS> {
     return this.http.post<MS>(this.baseUrl + 'api/MS', MS, httpOptions).pipe(
       tap((newMS: MS) => this.log(`added newMS w/ id=${newMS.id}`)),
       catchError(this.handleError<MS>('addMS'))
+    );
+  }
+
+  getAllMSVisita (id: number): Observable<MS> {
+    const url = `${this.baseUrl + 'api/MS/VisitaAuditoria'}/${id}`;
+    return this.http.get<MS>(url).pipe(
+      tap(_ => this.log(`fetched MS id=${id}`)),
+      catchError(this.handleError<MS>(`MS id=${id}`))
     );
   }
 

@@ -168,13 +168,103 @@
                                                               <th class="title">Producción obtenida (últimos 12 meses), kg</th>
                                                               <th class="title">Producción estimada (próximos 12 meses), kg</th>
                                                               <th class="title">Sustancia y última fecha aplicación no permitida</th>
-                                                              <th class="title">Accion</th>
                                                           </tr>
                                                     </thead>
                                                     <tbody>
                                                       <tr *ngFor="let cultivoPresentado of CultivosPrensetados">
+                                                        <td>
+                                                          <input type="text" class="form-control" name="{{cultivoPresentado.cultivo}}" [(ngModel)]="cultivoPresentado.cultivo">
+                                                        </td>
+
+                                                        <td>
+                                                          <input type="number" class="form-control" name="{{cultivoPresentado.area}}" [(ngModel)]="cultivoPresentado.area">
+                                                        </td>
+
+                                                        <td>
+                                                          <input type="text" class="form-control" name="{{cultivoPresentado.produccionObtenida}}" [(ngModel)]="cultivoPresentado.produccionObtenida">
+                                                        </td>
+
+                                                        <td>
+                                                          <input type="text" class="form-control" name="{{cultivoPresentado.produccionEstimada}}" [(ngModel)]="cultivoPresentado.produccionEstimada">
+                                                        </td>
+
+                                                        <td>
+                                                          <input type="text" class="form-control" name="{{cultivoPresentado.sustanciaNoPermitida}}" [(ngModel)]="cultivoPresentado.sustanciaNoPermitida">
+                                                        </td>
+                                                      </tr>
+                                                    </tbody>
+                                                  </table>
+                                                </form>
+
+                                                <form>
+                                                  <table class="table table-striped table-bordered">
+                                                    <thead>
+                                                      <tr>
+                                                        <th class="title">Cultivo</th>
+                                                        <th class="title">Área</th>
+                                                        <th class="title">Orgánico/Convencional</th>
+                                                        <th class="title">Uso</th>
+                                                        <th class="title">Es un riesgo para los cultivos en certificación (S/N)</th>
 
                                                       </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor=" let otrosCultivo of otrosCultivos; let i = index">
+                                                          <td>
+                                                            <input type="text" class="form-control" name="{{otrosCultivo.cultivo}}" [(ngModel)]="otrosCultivo.cultivo">
+                                                          </td>
+
+                                                          <td>
+                                                            <input type="number" class="form-control" name="{{otrosCultivo.area}}" [(ngModel)]="otrosCultivo.area">
+                                                          </td>
+
+                                                          <td>
+                                                            <input type="text" class="form-control" name="{{otrosCultivo.tipoOrganico}}" [(ngModel)]="otrosCultivo.tipoOrganico">
+                                                          </td>
+
+                                                          <td>
+                                                            <input type="text" class="form-control" name="{{otrosCultivo.uso}}" [(ngModel)]="otrosCultivo.uso">
+                                                          </td>
+
+                                                          <td>
+                                                            <input type="text" class="form-control" name="{{otrosCultivo.riesgo}}" [(ngModel)]="otrosCultivo.riesgo">
+                                                          </td>
+                                                        </tr>
+                                                    </tbody>
+                                                  </table>
+                                                </form>
+
+                                                <form>
+                                                  <table class="table table-striped table-bordered">
+                                                    <thead>
+                                                          <tr>
+                                                              <th class="title">Código Criterio</th>
+                                                              <th class="title">Acción Correctiva</th>
+                                                              <th class="title">Completado (Si/No)</th>
+                                                              <th class="title">Si no se realizó, razones</th>
+                                                          </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let evaluacionCompromiso of EvaluacionCompromisos; let i = index">
+
+                                                          <td>
+                                                            <input type="text" class="form-control" name="{{evaluacionCompromiso.codigo}}" [(ngModel)]="evaluacionCompromiso.codigo">
+                                                          </td>
+
+                                                          <td>
+                                                            <input type="text" class="form-control" name="{{evaluacionCompromiso.accionCorrectiva}}" [(ngModel)]="evaluacionCompromiso.accionCorrectiva">
+                                                          </td>
+
+                                                          <td>
+                                                            <input type="text" class="form-control" name="{{evaluacionCompromiso.completado}}" [(ngModel)]="evaluacionCompromiso.completado">
+                                                          </td>
+
+                                                          <td>
+                                                            <input type="text" class="form-control" name="{{evaluacionCompromiso.razones}}" [(ngModel)]="evaluacionCompromiso.razones">
+                                                          </td>
+
+                                                        </tr>
+
                                                     </tbody>
                                                   </table>
                                                 </form>

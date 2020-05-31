@@ -42,8 +42,8 @@ export class CultivosPresentandosService {
     );
   }
 
-  getAllCultivosPresentandosProdId(id: string): Observable<CultivosPresentandos> {
-    const url = `${this.baseUrl + 'api/CultivosPresentandos/Productor'}/${id}`;
+  getAllCultivosPresentandosVisita (id: number): Observable<CultivosPresentandos> {
+    const url = `${this.baseUrl + 'api/CultivosPresentandos/VisitaAuditoria'}/${id}`;
     return this.http.get<CultivosPresentandos>(url).pipe(
       tap(_ => this.log(`fetched CultivosPresentandos id=${id}`)),
       catchError(this.handleError<CultivosPresentandos>(`CultivosPresentandos id=${id}`))

@@ -33,15 +33,13 @@ export class EvaluacionCompromisoService {
       );
   }
 
-     /** GET heroes from the server */
-     getProductorVisitas(id : string): Observable<EvaluacionCompromiso[]> {
-      const url = `${this.baseUrl + 'api/EvaluacionCompromiso/Productor'}/${id}`;
-      return this.http.get<EvaluacionCompromiso[]>(url)
-        .pipe(
-          tap(_ => this.log('fetched productor EvaluacionCompromiso')),
-          catchError(this.handleError<EvaluacionCompromiso[]>('getEvaluacionCompromiso', []))
-        );
-    }
+  getAllEvaluacionCompromisoVisita (id: number): Observable<EvaluacionCompromiso[]> {
+    const url = `${this.baseUrl + 'api/EvaluacionCompromiso/VisitaAuditoria'}/${id}`;
+    return this.http.get<EvaluacionCompromiso[]>(url).pipe(
+      tap(_ => this.log(`fetched EvaluacionCompromiso id=${id}`)),
+      catchError(this.handleError<EvaluacionCompromiso[]>(`EvaluacionCompromiso id=${id}`))
+    );
+  }
 
   get(id: number): Observable<EvaluacionCompromiso> {
     const url = `${this.baseUrl + 'api/EvaluacionCompromiso'}/${id}`;

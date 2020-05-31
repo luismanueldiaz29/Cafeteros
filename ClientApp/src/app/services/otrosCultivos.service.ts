@@ -34,14 +34,16 @@ export class OtrosCultivosService {
   }
 
      /** GET heroes from the server */
-     getProductorVisitas(id : string): Observable<OtrosCultivos[]> {
-      const url = `${this.baseUrl + 'api/OtrosCultivos/Productor'}/${id}`;
+     getOtrosCultivosrVisitas(id : number): Observable<OtrosCultivos[]> {
+      const url = `${this.baseUrl + 'api/OtrosCultivos/VisitaAuditoria'}/${id}`;
       return this.http.get<OtrosCultivos[]>(url)
         .pipe(
           tap(_ => this.log('fetched productor OtrosCultivos')),
           catchError(this.handleError<OtrosCultivos[]>('getOtrosCultivos', []))
         );
     }
+
+
 
   get(id: number): Observable<OtrosCultivos> {
     const url = `${this.baseUrl + 'api/OtrosCultivos'}/${id}`;

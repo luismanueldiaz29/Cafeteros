@@ -12,6 +12,9 @@ import { OtrosCultivosService } from '../services/otrosCultivos.service';
 import { EvaluacionCompromisoService } from '../services/evaluacionCompromiso.service';
 import { ResultadoEvaluacionService } from '../services/resultadoEvaluacion.service';
 import { PuntoEvaluacionService } from '../services/puntoEveluacion.service';
+import { OtrosCultivos } from '../Models/OtrosCultivos';
+import { EvaluacionCompromiso } from '../Models/EvaluacionCompromiso';
+import { CB, MA, MSE, MIES, MS } from '../Models/PuntoEvaluacion';
 
 @Component({
   selector: 'app-info-auditoria',
@@ -28,6 +31,13 @@ export class InfoAuditoriaComponent implements OnInit {
   visitaId : number;
   visita : VisitaAuditoria;
   CultivosPrensetados : CultivosPresentandos
+  otrosCultivos : OtrosCultivos[];
+  EvaluacionCompromisos : EvaluacionCompromiso[];
+  CB : CB;
+  MA : MA;
+  MSE : MSE;
+  MIES : MIES;
+  MS : MS;
 
   constructor(
     private Router : Router,
@@ -88,6 +98,10 @@ export class InfoAuditoriaComponent implements OnInit {
         if(visita != null){
           this.visita = visita;
           this.getProductor(visita.productorId);
+          this.getCultivosPrensetados(visita.id);
+          this.getOtrosCultivos(visita.id);
+          this.getevaluacionCompromiso(visita.id);
+          this.getresultadoEvaluacion(visita.id);
         }else{
           console.log('ocurrio un error a la hora de consultar la visita auditoria');
         }
@@ -96,6 +110,83 @@ export class InfoAuditoriaComponent implements OnInit {
   }
 
   getCultivosPrensetados(visitaId : number){
-
+    this.cultivoPresentadoService.getAllCultivosPresentandosVisita(visitaId).subscribe(
+      cultivosPresentandos => {
+        cultivosPresentandos != null ?
+        this.CultivosPrensetados = cultivosPresentandos
+        :
+        console.log("error cultivosPresentandos")
+      }
+    );
   }
+
+  getOtrosCultivos(visitaId : number){
+    this.otrosCultivosService.getOtrosCultivosrVisitas(visitaId).subscribe(
+      otrosCultivos => {
+        otrosCultivos != null ? this.otrosCultivos = otrosCultivos
+        :
+        console.log("error otrosCultivos")
+      }
+    );
+  }
+
+  getevaluacionCompromiso(visitaId : number){
+    this.evaluacionCompromisoService.getAllEvaluacionCompromisoVisita(visitaId).subscribe(
+      EvaluacionCompromisos => {
+        EvaluacionCompromisos != null ?
+        this.EvaluacionCompromisos = EvaluacionCompromisos
+        :
+        console.log("error otrosCultivos")
+      }
+    );
+  }
+
+  getresultadoEvaluacion(visitaId : number){
+    this.resultadoEvaluacionService.getAllResultadoEvaluacionVisita(visitaId).subscribe(
+      otrosCultivos => {
+        otrosCultivos != null ? console.log('correcto resultadoEvaluacion')
+        :
+        console.log("error resultadoEvaluacion")
+      }
+    );
+  }
+
+  getCB(visitaId : number){
+    this.puntoEvaluacionService.getAllCBVisita(visitaId).subscribe(
+      CB =>{
+        CB != null ? console.log('Correcto CB') : console.log('Error CB')
+      }
+    );
+  }
+
+  getMA(visitaId : number){
+    this.puntoEvaluacionService.getAllMAVisita(visitaId).subscribe(
+      MA =>{
+        MA != null ? console.log('Correcto MA') : console.log('Error MA')
+      }
+    );
+  }
+
+  getMSE(visitaId : number){
+    this.puntoEvaluacionService.getAllMSEVisita(visitaId).subscribe(
+      MSE =>{
+        MSE != null ? console.log('Correcto MSE') : console.log('Error MSE')
+      }
+    );
+  }
+  getMIES(visitaId : number){
+    this.puntoEvaluacionService.getAllMIESVisita(visitaId).subscribe(
+      MIES =>{
+        MIES != null ? console.log('Correcto MIES') : console.log('Error MIES')
+      }
+    );
+  }
+  getMS(visitaId : number){
+    this.puntoEvaluacionService.getAllMSVisita(visitaId).subscribe(
+      MS =>{
+        MS != null ? console.log('Correcto MS') : console.log('Error MS')
+      }
+    );
+  }
+
 }
