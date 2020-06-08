@@ -19,6 +19,7 @@ import { CultivosPresentandosService } from '../services/cultivosPresentandos.se
 import { OtrosCultivosService } from '../services/otrosCultivos.service';
 import { EvaluacionCompromisoService } from '../services/evaluacionCompromiso.service';
 import { ResultadoEvaluacionService } from '../services/resultadoEvaluacion.service';
+import { MaterialModule } from '../material/material';
 
 @Component({
   selector: 'app-auditoria',
@@ -26,6 +27,7 @@ import { ResultadoEvaluacionService } from '../services/resultadoEvaluacion.serv
   styleUrls: ['./auditoria.component.css']
 })
 export class AuditoriaComponent implements OnInit {
+  imports : [MaterialModule];
   //TABLES
   //CultivosPresentados : CultivosPresentandos[];
   //NewCultivoPresentado : CultivosPresentandos;

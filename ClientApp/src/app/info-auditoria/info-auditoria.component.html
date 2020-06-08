@@ -39,7 +39,7 @@
                                       <div class="col-md-12">
                                           <div class="card">
                                               <div class="header">
-                                                  <button mat-icon-button [matMenuTriggerFor]="menu" class="close" aria-label="Close Example icon-button with a menu">
+                                                <button mat-icon-button [matMenuTriggerFor]="menu" class="close" aria-label="Close Example icon-button with a menu">
                                                       <mat-icon>more_vert</mat-icon>
                                                   </button>
 
@@ -57,10 +57,10 @@
                                                   <div class="p-md-2">
                                                       <div class="row">
                                                           <div class="col-md-4">
-                                                              <img src="assets/logo-seynekun.png" alt="Logo">
+                                                            <img src="assets/logo-seynekun.png" alt="Logo">
                                                           </div>
                                                           <div class="col-md-6 mt-5">
-                                                              <h4 class="title">Seguimiento de visita</h4>
+                                                            <h4 class="title">Visita Auditoria</h4>
                                                           </div>
                                                       </div>
                                                   </div>
@@ -268,6 +268,483 @@
                                                     </tbody>
                                                   </table>
                                                 </form>
+
+                                                <!-- Punto evaluacion -->
+                                                <form>
+                                                  <!-- CONSERVACIÓN DE LA BIODIVERSIDAD -->
+                                                  <div class="form-group">
+                                                    <div class="pb-3">
+                                                      <h4 class="title">Punto de evaluación</h4>
+                                                    </div>
+                                                    <div class="title title-center">
+                                                      CONSERVACIÓN DE LA BIODIVERSIDAD
+                                                    </div>
+                                                    <div class="table-responsive table-full-width">
+                                                      <table class="table table-striped table-bordered">
+                                                        <thead>
+                                                          <th class="title">
+                                                            Pregunta
+                                                          </th>
+                                                          <th class="title">
+                                                            Respuesta
+                                                          </th>
+                                                          <th class="title">
+                                                            JUSTIFICACION/COMENTARIOS
+                                                          </th>
+                                                        </thead>
+                                                        <tbody>
+                                                          <tr>
+                                                            <td class="title">
+                                                              CB1. No se amplió las áreas de cultivo en zonas dedicadas a la conservación de bosques
+                                                            </td>
+                                                            <td>
+                                                              {{CB.respuestaCB1}}
+                                                            </td>
+                                                            <td>
+                                                              {{CB.justificacionCB1}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              CB2. El café y otros cultivos son cultivados en forma asociada entre si o con árboles de sombra.
+                                                            </td>
+                                                            <td>
+                                                              {{CB.respuestaCB2}}
+                                                            </td>
+                                                            <td>
+                                                              {{CB.justificacionCB2}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              Comentario/Otras prácticas de conservación de la biodiversidad observadas:
+                                                            </td>
+                                                            <td colspan="2">
+                                                              {{CB.comentarioCB}}
+                                                            </td>
+                                                          </tr>
+                                                        </tbody>
+                                                      </table>
+                                                    </div>
+                                                  </div>
+
+                                                  <!-- MANEJO Y CONSERVACIÓN DEL AGUA -->
+                                                  <div class="form-group">
+                                                    <div class="title title-center">
+                                                      MANEJO Y CONSERVACIÓN DEL AGUA
+                                                    </div>
+                                                    <div class="table-responsive table-full-width">
+                                                      <table class="table table-striped table-bordered">
+                                                        <thead>
+                                                          <th class="title">
+                                                            Pregunta
+                                                          </th>
+                                                          <th class="title">
+                                                            Respuesta
+                                                          </th>
+                                                          <th class="title">
+                                                            JUSTIFICACION/COMENTARIOS
+                                                          </th>
+                                                        </thead>
+                                                        <tbody>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MA1. Se realizan prácticas que reducen el consumo de agua. Menciónelas en "comentarios".
+                                                            </td>
+                                                            <td>
+                                                              {{MA.respuestaMA1}}
+                                                            </td>
+                                                            <td>
+                                                              {{MA.justificacionMA1}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MA2.Se respetan zonas de protección de nacimientos y quebradas.
+                                                            </td>
+                                                            <td>
+                                                              {{MA.respuestaMA2}}
+                                                            </td>
+                                                            <td>
+                                                              {{MA.justificacionMA2}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MA3. El origen del agua utilizada para labores agrícolas es apropiado y conocido. Mencione las fuentes de agua usadas en “comentarios”
+                                                            </td>
+                                                            <td>
+                                                              {{MA.respuestaMA3}}
+                                                            </td>
+                                                            <td>
+                                                              {{MA.justificacionMA3}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MA4. Existen estudios o evaluaciones del estado de las aguas en la unidad productiva o de la cuenca regional de captación en los últimos cuatro años, No es un riesgo para el producto.
+                                                            </td>
+                                                            <td>
+                                                              {{MA.respuestaMA4}}
+                                                            </td>
+                                                            <td>
+                                                              {{MA.justificacionMA4}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              Comentario/Otras prácticas de manejo y conservación del agua observadas:
+                                                            </td>
+                                                            <td colspan="2">
+                                                              {{MA.comentarioMA}}
+                                                            </td>
+                                                          </tr>
+                                                        </tbody>
+                                                      </table>
+                                                    </div>
+                                                  </div>
+
+                                                  <!-- MANEJO DE SEMILLAS Y MATERIAL DE PROPAGACIÓN -->
+                                                  <div class="form-group">
+                                                    <div class="title title-center">
+                                                      MANEJO DE SEMILLAS Y MATERIAL DE PROPAGACIÓN
+                                                    </div>
+                                                    <div class="table-responsive table-full-width">
+                                                      <table class="table table-striped table-bordered">
+                                                        <thead>
+                                                          <th class="title">
+                                                            Pregunta
+                                                          </th>
+                                                          <th class="title">
+                                                            Respuesta
+                                                          </th>
+                                                          <th class="title">
+                                                            JUSTIFICACION/COMENTARIOS
+                                                          </th>
+                                                        </thead>
+                                                        <tbody>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MSE1. Indique en &quot;comentarios&quot; para cuales cultivos se usa semilla y/o material de propagación obtenido en la propia
+                                                              finca
+                                                            </td>
+                                                            <td>
+                                                              {{MSE.respuestaMSE1}}
+                                                            </td>
+                                                            <td>
+                                                              {{MSE.justificacionMSE1}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MSE2. Indique en &quot;comentarios&quot; para cuales cultivos se compra semilla y/o material de propagación de origen
+                                                                comercial, sin tratamiento con sustancias químicas, no OGM
+                                                            </td>
+                                                            <td>
+                                                              {{MSE.respuestaMSE2}}
+                                                            </td>
+                                                            <td>
+                                                              {{MSE.justificacionMSE2}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MSE3. Si se realizan viveros en la finca, se utiliza sustrato e insumos permitidos durante su producción.
+                                                            </td>
+                                                            <td>
+                                                              {{MSE.respuestaMSE3}}
+                                                            </td>
+                                                            <td>
+                                                              {{MSE.justificacionMSE3}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              Comentario/Otras prácticas de manejo de semillas y material de propagación:
+                                                            </td>
+                                                            <td colspan="2">
+                                                              {{MSE.comentarioMSE}}
+                                                            </td>
+                                                          </tr>
+                                                        </tbody>
+                                                      </table>
+                                                    </div>
+                                                  </div>
+
+                                                  <!-- MANEJO DE INSECTOS, ENFERMEDADES Y ARVENSES -->
+                                                  <div class="form-group">
+                                                    <div class="title title-center">
+                                                      MANEJO DE INSECTOS, ENFERMEDADES Y ARVENSES
+                                                    </div>
+                                                    <div class="table-responsive table-full-width">
+                                                      <table class="table table-striped table-bordered">
+                                                        <thead>
+                                                          <th class="title">
+                                                            Pregunta
+                                                          </th>
+                                                          <th class="title">
+                                                            Respuesta
+                                                          </th>
+                                                          <th class="title">
+                                                            JUSTIFICACION/COMENTARIOS
+                                                          </th>
+                                                        </thead>
+                                                        <tbody>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MIES1. Las principales plagas y enfermedades son conocidas y observadas en los cultivos principales. Indique las plagas
+                                                              y enfermedades relevantes en &quot;comentarios&quot;
+                                                            </td>
+                                                            <td>
+                                                              {{MIES.respuestaMIES1}}
+                                                            </td>
+                                                            <td>
+                                                              {{MIES.justificacionMIES1}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MIES2. Las principales plagas y enfermedades son conocidas y observadas en los cultivos secundarios. Indique las
+                                                              plagas y enfermedades relevantes en &quot;comentarios&quot;
+                                                            </td>
+                                                            <td>
+                                                              {{MIES.respuestaMIES2}}
+                                                            </td>
+                                                            <td>
+                                                              {{MIES.justificacionMIES2}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MIES3. Se aplican prácticas de prevención como el uso de variedades adaptadas y locales, cercas vivas, asociación e
+                                                              intercalado de cultivo, entre otras son aplicadas. Indicar cuales en &quot;comentarios&quot;.
+                                                            </td>
+                                                            <td>
+                                                              {{MIES.respuestaMIES3}}
+                                                            </td>
+                                                            <td>
+                                                              {{MIES.justificacionMIES3}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MIES4. Se aplica control cultural y/o mecánico de arvenses. Indicar en &quot;comentarios&quot; el tipo de control cultural
+                                                              (machete, azadón, quema controlada, otros)
+                                                            </td>
+                                                            <td>
+                                                              {{MIES.respuestaMIES4}}
+                                                            </td>
+                                                            <td>
+                                                              {{MIES.justificacionMIES4}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MIES5. En caso de usar insumos para el control de plagas, enfermedades y arvenses, los insumos utilizados hacen parte
+                                                              de la lista de &quot;insumos permitidos&quot; y se utilizan adecuadamente según el caso. Indicar en &quot;comentarios&quot; los insumos
+                                                              usados en los últimos 12 meses
+                                                            </td>
+                                                            <td>
+                                                              {{MIES.respuestaMIES5}}
+                                                            </td>
+                                                            <td>
+                                                              {{MIES.justificacionMIES5}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              Comentario/Otras prácticas de manejo de insectos, enfermedades y arvenses:
+                                                            </td>
+                                                            <td colspan="2">
+                                                              {{MIES.comentarioMIES}}
+                                                            </td>
+                                                          </tr>
+                                                        </tbody>
+                                                      </table>
+                                                    </div>
+                                                  </div>
+
+                                                  <!-- MANEJO DEL SUELO -->
+
+                                                  <div class="form-group">
+                                                    <div class="title title-center">
+                                                      MANEJO DEL SUELO
+                                                    </div>
+                                                    <div class="table-responsive table-full-width">
+                                                      <table class="table table-striped table-bordered">
+                                                        <thead>
+                                                          <th class="title">
+                                                            Pregunta
+                                                          </th>
+                                                          <th class="title">
+                                                            Respuesta
+                                                          </th>
+                                                          <th class="title">
+                                                            JUSTIFICACION/COMENTARIOS
+                                                          </th>
+                                                        </thead>
+                                                        <tbody>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MS1. Se tiene un plan de fertilidad (escrito o verbal) que contribuya al mejoramiento del suelo basado en la experiencia
+                                                              del productor o en análisis de suelos. Especifique en &quot;comentarios&quot;.
+                                                            </td>
+                                                            <td>
+                                                              {{MS.respuestaMS1}}
+                                                            </td>
+                                                            <td>
+                                                              {{MS.justificacionMS1}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MS2. Acciones como curvas a nivel, terrazas, barreras vivas, estacones, entre otros se están aplicando para la
+                                                              prevención y control de la erosión.
+                                                            </td>
+                                                            <td>
+                                                              {{MS.respuestaMS2}}
+                                                            </td>
+                                                            <td>
+                                                              {{MS.justificacionMS2}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MS3. Al realizar las desyerbas del cultivo, se cuida de dejar el suelo cubierto de coberturas vivas y/o muertas
+                                                              favoreciendo el control de la erosión y la protección del suelo.
+                                                            </td>
+                                                            <td>
+                                                              {{MS.respuestaMS3}}
+                                                            </td>
+                                                            <td>
+                                                              {{MS.justificacionMS3}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MS4. Los abonos utilizados hacen parte de la lista de &quot;insumos permitidos&quot; y se utilizan adecuadamente, según el caso.
+                                                              Indique cuales insumos fueron usados en los últimos 12 meses en &quot;comentarios&quot;
+                                                            </td>
+                                                            <td>
+                                                              {{MS.respuestaMS4}}
+                                                            </td>
+                                                            <td>
+                                                              {{MS.justificacionMS4}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              MS5. Si es utilizado estiércol como abono, este es compostado, manteniendo una temperatura entre 55 °C y 66 °C
+                                                              durante mínimo 3 meses y se volteo como mínimo cada semana. Favor indique en &quot;comentarios&quot; el origen (misma finca,
+                                                              vecinos, comercial)
+                                                            </td>
+                                                            <td>
+                                                              {{MS.respuestaMS5}}
+                                                            </td>
+                                                            <td>
+                                                              {{MS.justificacionMS5}}
+                                                            </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="title">
+                                                              Comentario/Otras prácticas de manejo del suelo, preparación de abonos, control de temperaturas:
+                                                            </td>
+                                                            <td colspan="2">
+                                                              {{MS.comentarioMS}}
+                                                            </td>
+                                                          </tr>
+                                                        </tbody>
+                                                      </table>
+                                                    </div>
+                                                  </div>
+                                                </form>
+                                                <!-- fin punto de evauacion -->
+
+                                                <form>
+                                                  <div class="form-group">
+                                                    <h5 class="title mb-3">RESULTADOS DE LA EVALUACION ACTUAL</h5>
+                                                    <div class="table-responsive table-full-width">
+                                                      <table class="table table-striped table-bordered">
+                                                        <thead>
+                                                              <tr>
+                                                                  <th class="title">Código Criterio</th>
+                                                                  <th class="title">Hallazgos Relevantes Observados</th>
+                                                                  <th class="title">Plan de Acción Propuesto</th>
+                                                                  <th class="title title-center">
+                                                                    Aceptado/Entendido <br>
+                                                                    tiempo de cumplimiento <br>
+                                                                    acordado
+                                                                  </th>
+                                                              </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let resultado of resultadoEvaluacion; let i = index">
+                                                              <td>
+                                                                {{resultado.codigo}}
+                                                              </td>
+
+                                                              <td>
+                                                                {{resultado.hallazgo}}
+                                                              </td>
+
+                                                              <td>
+                                                                {{resultado.accionPropuesta}}
+                                                              </td>
+
+                                                              <td>
+                                                                {{resultado.tiempoAcordado}}
+                                                              </td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                      </table>
+                                                    </div>
+                                                  </div>
+                                                  <div class="row">
+                                                    <div class="col-md-11">
+                                                      <div class="form-group">
+                                                        <label>OPORTUNIDADES DE MEJORA IDENTIFICADAS.</label>
+                                                        <input type="text" class="form-control" name="oportunidadMejora" [(ngModel)]="visita.oportunidadMejora">
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="row">
+                                                    <div class="col-md-6">
+                                                      <label>DECISIÓN FINAL</label>
+                                                      <input class="form-control" name="decicionFinal" [(ngModel)]="visita.decicionFinal">
+                                                    </div>
+                                                  </div>
+
+                                                </form>
+                                                <div class="row mt-md-3">
+                                                  <div class="col-md-1"></div>
+                                                  <div class="col-md-10">
+                                                      <table class="table table-bordered">
+                                                          <thead>
+                                                              <tr>
+                                                                  <th>PROMOTOR</th>
+                                                                  <th>PRODUCTOR</th>
+                                                                  <th>V.B COORDINADOR</th>
+                                                              </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                              <tr>
+                                                                  <td>CC : {{tecnico.identificacion}} </td>
+                                                                  <td>CC : {{productor.id}}</td>
+                                                                  <td rowspan="2" class="pt-0">Firma :</td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <td>Firma</td>
+                                                                  <td>Firma</td>
+                                                              </tr>
+                                                          </tbody>
+                                                      </table>
+                                                  </div>
+                                                  <div class="col-md-1"></div>
+                                              </div>
+                                              <div class="Imprimir mt-md-5 mb-md-5">
+                                                  <button class="btn btn-primary" onclick="window.print();">Imprimir</button>
+                                              </div>
                                               </div>
                                             </div>
                                         </div>

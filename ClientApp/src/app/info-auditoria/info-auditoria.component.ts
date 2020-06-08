@@ -15,6 +15,8 @@ import { PuntoEvaluacionService } from '../services/puntoEveluacion.service';
 import { OtrosCultivos } from '../Models/OtrosCultivos';
 import { EvaluacionCompromiso } from '../Models/EvaluacionCompromiso';
 import { CB, MA, MSE, MIES, MS } from '../Models/PuntoEvaluacion';
+import { MaterialModule } from '../material/material';
+import { ResultadoEvaluacion } from '../Models/ResultadoEvaluacion';
 
 @Component({
   selector: 'app-info-auditoria',
@@ -22,6 +24,8 @@ import { CB, MA, MSE, MIES, MS } from '../Models/PuntoEvaluacion';
   styleUrls: ['./info-auditoria.component.css']
 })
 export class InfoAuditoriaComponent implements OnInit {
+
+  imports : [MaterialModule];
 
   veredaMunicipio = "";
   productor : Productor;
@@ -33,6 +37,7 @@ export class InfoAuditoriaComponent implements OnInit {
   CultivosPrensetados : CultivosPresentandos
   otrosCultivos : OtrosCultivos[];
   EvaluacionCompromisos : EvaluacionCompromiso[];
+  resultadoEvaluacion : ResultadoEvaluacion;
   CB : CB;
   MA : MA;
   MSE : MSE;
@@ -54,8 +59,21 @@ export class InfoAuditoriaComponent implements OnInit {
 
   ngOnInit() {
     this.getVisitaAuditoria();
+    this.initVar();
     //this.setProductor();
   }
+
+  initVar(){
+    this.tecnico = {correo : "", identificacion : "", contraseña : "", nombre : ""};
+    this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",numeroTelefono : "",afiliacionSalud : "",actvidadesDedican : "",fechaAsociacion:"", fechaRegistro : "", fechaNoAsociacion : "", estado: 0, tecnicoId : ""};
+    this.visita = {id : 0, recibeVisita : "", oportunidadMejora : "", decicionFinal : "", fechaFinal : "", cultivosPresentandos : "",   fechaVisita: "", horaVisita: "", productorId : "", TecnicoId : ""};
+    this.CB = {id : 0, respuestaCB1 : "", justificacionCB1 : "",  respuestaCB2 : "", justificacionCB2 : "", comentarioCB : "", visitaAuditoriaId : 0};
+    this.MA = {id : 0, respuestaMA1 : "", justificacionMA1 : "", respuestaMA2 : "", justificacionMA2 : "", respuestaMA3 : "", justificacionMA3 : "", respuestaMA4 : "", justificacionMA4 : "", comentarioMA : "", visitaAuditoriaId : 0};
+    this.MSE = {id : 0, respuestaMSE1 : "", justificacionMSE1 : "",respuestaMSE2 : "", justificacionMSE2 : "", respuestaMSE3 : "", justificacionMSE3 : "", comentarioMSE : "", visitaAuditoriaId : 0};
+    this.MIES = {id : 0, respuestaMIES1 : "", justificacionMIES1 : "",  respuestaMIES2 : "", justificacionMIES2 : "",respuestaMIES3 : "", justificacionMIES3 : "", respuestaMIES4 : "", justificacionMIES4 : "", respuestaMIES5 : "", justificacionMIES5 : "", comentarioMIES : "", visitaAuditoriaId : 0};
+    this.MS = {id : 0, respuestaMS1 : "", justificacionMS1 : "",  respuestaMS2 : "", justificacionMS2 : "",respuestaMS3 : "", justificacionMS3 : "", respuestaMS4 : "", justificacionMS4 : "", respuestaMS5 : "", justificacionMS5 : "" ,comentarioMS : "", visitaAuditoriaId : 0};
+  }
+
   volver(){
     this.Router.navigate(['/List-Productor']);
   }
@@ -102,6 +120,11 @@ export class InfoAuditoriaComponent implements OnInit {
           this.getOtrosCultivos(visita.id);
           this.getevaluacionCompromiso(visita.id);
           this.getresultadoEvaluacion(visita.id);
+          this.getCB(visita.id);
+          this.getMA(visita.id);
+          this.getMIES(visita.id);
+          this.getMS(visita.id);
+          this.getMSE(visita.id);
         }else{
           console.log('ocurrio un error a la hora de consultar la visita auditoria');
         }
@@ -143,8 +166,8 @@ export class InfoAuditoriaComponent implements OnInit {
 
   getresultadoEvaluacion(visitaId : number){
     this.resultadoEvaluacionService.getAllResultadoEvaluacionVisita(visitaId).subscribe(
-      otrosCultivos => {
-        otrosCultivos != null ? console.log('correcto resultadoEvaluacion')
+      resultadoEvaluacion => {
+        resultadoEvaluacion != null ? this.resultadoEvaluacion = resultadoEvaluacion
         :
         console.log("error resultadoEvaluacion")
       }
@@ -154,7 +177,7 @@ export class InfoAuditoriaComponent implements OnInit {
   getCB(visitaId : number){
     this.puntoEvaluacionService.getAllCBVisita(visitaId).subscribe(
       CB =>{
-        CB != null ? console.log('Correcto CB') : console.log('Error CB')
+        CB != null ? this.CB = CB : console.log('Error CB')
       }
     );
   }
@@ -162,7 +185,7 @@ export class InfoAuditoriaComponent implements OnInit {
   getMA(visitaId : number){
     this.puntoEvaluacionService.getAllMAVisita(visitaId).subscribe(
       MA =>{
-        MA != null ? console.log('Correcto MA') : console.log('Error MA')
+        MA != null ? this.MA = MA : console.log('Error MA')
       }
     );
   }
@@ -170,21 +193,21 @@ export class InfoAuditoriaComponent implements OnInit {
   getMSE(visitaId : number){
     this.puntoEvaluacionService.getAllMSEVisita(visitaId).subscribe(
       MSE =>{
-        MSE != null ? console.log('Correcto MSE') : console.log('Error MSE')
+        MSE != null ? this.MSE = MSE : console.log('Error MSE')
       }
     );
   }
   getMIES(visitaId : number){
     this.puntoEvaluacionService.getAllMIESVisita(visitaId).subscribe(
       MIES =>{
-        MIES != null ? console.log('Correcto MIES') : console.log('Error MIES')
+        MIES != null ? this.MIES = MIES : console.log('Error MIES')
       }
     );
   }
   getMS(visitaId : number){
     this.puntoEvaluacionService.getAllMSVisita(visitaId).subscribe(
       MS =>{
-        MS != null ? console.log('Correcto MS') : console.log('Error MS')
+        MS != null ? this.MS = MS : console.log('Error MS')
       }
     );
   }

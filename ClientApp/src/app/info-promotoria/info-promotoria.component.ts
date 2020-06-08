@@ -19,7 +19,7 @@ import { TecnicoService } from '../services/tecnico.service';
 })
 export class InfoPromotoriaComponent implements OnInit {
 
-  
+
   imports :  [MaterialModule];
   Visita : VisitaPromotoria;
   visitas : VisitaPromotoria[];
@@ -31,7 +31,7 @@ export class InfoPromotoriaComponent implements OnInit {
   NoRegistrada = "Indefinida";
 
   private id : string;
-  
+
 
   constructor(
     private Router : Router,
@@ -65,7 +65,7 @@ export class InfoPromotoriaComponent implements OnInit {
   // }
 
   getVisita(){
-    if(sessionStorage.getItem('visitaId') != null){  
+    if(sessionStorage.getItem('visitaId') != null){
       this.id = sessionStorage.getItem('visitaId');
       this.visitaService.get(parseInt(this.id)).subscribe(
         visita => {
@@ -81,6 +81,17 @@ export class InfoPromotoriaComponent implements OnInit {
     }
   }
 
+  visitaConsultar(visita : VisitaPromotoria){
+    this.visitaService.get(visita.id).subscribe(
+      visita => {
+        this.Visita = visita;
+        this.getProductor(visita.productorId);
+        this.getVisitaLaboresProgramada(visita.id);
+        this.getVisitaLaboresRealizadas(visita.id);
+        this.getTecnico(visita.tecnicoId);
+      }
+    );
+  }
   getVisitaLaboresRealizadas(visitaId : number){
     this.laboresRealizadaService.getAllVisitaLaboresRealizada(visitaId).subscribe(
       laboresRealizada => {
@@ -109,11 +120,11 @@ export class InfoPromotoriaComponent implements OnInit {
   //   this.visitaService.get(visita.id).subscribe(
   //     visita => {
   //       this.Visita = visita;
-        
+
   //       this.getProductor(visita.productorId);
   //       this.getVisitaLaboresProgramada(visita.id);
   //       this.getVisitaLaboresRealizadas(visita.id);
-        
+
   //     }
   //   );
   // }
@@ -140,7 +151,7 @@ export class InfoPromotoriaComponent implements OnInit {
       this.volver();
     }
   }
-  
+
   getProductorVisitas(productorId : string){
     this.visitaService.getProductorVisitas(productorId).subscribe(
       visitas => {
@@ -148,5 +159,5 @@ export class InfoPromotoriaComponent implements OnInit {
       }
     );
   }
- 
+
 }

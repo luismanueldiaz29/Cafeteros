@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class NavMenuComponent implements OnInit{
   imports : [MaterialModule];
-  private rol : string;
+  rol : string;
   constructor(private router : Router){  }
 
   ngOnInit(){

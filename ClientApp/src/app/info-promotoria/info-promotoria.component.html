@@ -1,7 +1,7 @@
 <!-- inicio del navbar -->
 <nav class="navbar navbar-expand-md navbar-light animated bounceInRight no-print" >
     <div class="row">
-        <div class="col-md-12 ml-auto bg-dark fixed-top py-2 top-navbar">              
+        <div class="col-md-12 ml-auto bg-dark fixed-top py-2 top-navbar">
             <div class="row align-items-center">
             <div class="col-md-4">
                 <h4 class="text-light text-uppercase mb-0">Cafeteros de Colombia</h4>
@@ -9,7 +9,7 @@
             <div class="col-md-5">
                 <form>
                 <div class="input-group" readonly>
-                    
+
                 </div>
                 </form>
             </div>
@@ -39,9 +39,9 @@
                                         <div class="col-md-12">
                                             <div class="card">
                                                 <div class="header">
-                                                    <button mat-icon-button [matMenuTriggerFor]="menu" class="close" aria-label="Close Example icon-button with a menu">
-                                                        <mat-icon>more_vert</mat-icon>
-                                                    </button>
+                                                  <button mat-icon-button [matMenuTriggerFor]="menu" class="close" aria-label="Close Example icon-button with a menu">
+                                                    <mat-icon>more_vert</mat-icon>
+                                                  </button>
 
                                                     <mat-menu #menu="matMenu">
                                                         <button mat-menu-item class="navbar-toggler bg-light" type="button" data-toggle="modal" data-target="#modalCart">
@@ -53,7 +53,7 @@
                                                             <span>Volver</span>
                                                         </button>
                                                     </mat-menu>
-                                                    
+
                                                     <div class="p-md-2">
                                                         <div class="row">
                                                             <div class="col-md-4">
@@ -91,7 +91,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                
+
                                                     <div class="row">
                                                         <div class="col-md-5">
                                                             <div class="form-group">
@@ -191,7 +191,7 @@
                                                                                 <td>
                                                                                     {{laboresRealizada.fecha}}
                                                                                 </td>
-                                                                                
+
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
@@ -229,9 +229,9 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-2"></div>
-                                                        </div> 
+                                                        </div>
                                                     </div>
-                                                    
+
                                                     <div class="row mt-md-3">
                                                         <div class="col-md-1"></div>
                                                         <div class="col-md-10">
@@ -260,7 +260,7 @@
                                                     </div>
                                                     <div class="Imprimir mt-md-5 mb-md-5">
                                                         <button class="btn btn-primary" onclick="window.print();">Imprimir</button>
-                                                    </div>                                                    
+                                                    </div>
 
                                                 </div>
                                             </div>
@@ -275,7 +275,7 @@
         </div>
     </div>
 </section>
-                
+
 
 <!-- Modal: modalCart -->
 <div class="modal fade fadebd-example-modal-lg" data-backdrop="static" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -305,7 +305,7 @@
                         </tr>
                 </thead>
                 <tbody>
-                                                                                
+
                     <tr *ngFor="let visita of visitas" (click)="visitaConsultar(visita)" data-dismiss="modal" aria-label="Close">
                         <td>
                             {{visita.fechaVisita}}
