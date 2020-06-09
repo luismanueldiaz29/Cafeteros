@@ -27,7 +27,7 @@ export class InfoProductorComponent implements OnInit {
 
   estadoModificado : string;
   private productor : Productor;
-  private familiares : Familiar[];
+  familiares : Familiar[];
   private aspectoEconomico : AspectoEconomico;
   private participacionComunitaria : PaticipacionComunitaria;
   private habitabilidad : Habitabilidad;
@@ -121,7 +121,7 @@ export class InfoProductorComponent implements OnInit {
         this.aspectoEconomico = aspectoEconomico;
         this.getParticipacionComunitaria(aspectoEconomico.id);
         this.getHabitabilidadAspecto(aspectoEconomico.id);
-        
+
       }
     );
   }
@@ -149,11 +149,11 @@ export class InfoProductorComponent implements OnInit {
     this.disponibilidadAguaService.getAllDisponibilidadAguaProdId(productorId).subscribe(
       disponibilidadAgua => {
         this.disponibilidadAguas = disponibilidadAgua
-        
+
       }
     );
   }
-  
+
   getAlamacenamientoAgua(productorId : string){
     this.almacenamamientosAguaService.getAllAlmacenamientoAguaProdId(productorId).subscribe(
       almacenamientoAgua => {
@@ -181,7 +181,7 @@ export class InfoProductorComponent implements OnInit {
         'Para saltar esto pulse ok!',
         'error'
       )
-      return 
+      return
     }else if(this.estadoModificado == "Aprobado"){
       this.productor.estado = 1;
     }else if(this.estadoModificado == "Rechazado"){

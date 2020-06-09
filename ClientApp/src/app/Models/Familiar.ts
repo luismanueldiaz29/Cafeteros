@@ -1,11 +1,11 @@
 export class Familiar{
     id : number;
-    Nombre : string;
-    NumeroDocumento : string;
-    FechaNacimiento : string;
-    Parentesco : string;
-    TipoPoblacion : string
-    AfiliacionSalud : string;
-    NivelEducativo : string;
-    ProductorId : string;
+    nombre : string;
+    numeroDocumento : string;
+    fechaNacimiento : string;
+    parentesco : string;
+    tipoPoblacion : string
+    afiliacionSalud : string;
+    nivelEducativo : string;
+    productorId : string;
 }

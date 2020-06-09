@@ -18,7 +18,6 @@ export class ProductorService {
 
   /** POST: add a new Productor to the server */
   add(Productor: Productor): Observable<Productor> {
-
     return this.http.post<Productor>(this.baseUrl + 'api/Productor', Productor, httpOptions).pipe(
       tap((newProductor: Productor) => this.log(`added newProductor w/ id=${newProductor.id}`)),
       catchError(this.handleError<Productor>('addProductor'))

@@ -78,7 +78,7 @@ export class RegistrarComponent implements OnInit {
   }
 
   //metodo para guardar los datos capturados en el formulario
-  guardar(){//console.log('el array es de '+this.fieldArray.length+' '+this.fieldArray.shift().Nombre)
+  guardar(){//console.log('el array es de '+this.fieldArray.length+' '+this.fieldArray.shift().nombre)
     this.mensajeConfirmacion();
 
   }
@@ -124,7 +124,7 @@ export class RegistrarComponent implements OnInit {
 
   incializarVariables(){
     this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",numeroTelefono : "",afiliacionSalud : "",actvidadesDedican : "",fechaAsociacion:"", fechaRegistro : this.fechaRegistro, fechaNoAsociacion : "", estado: 0, tecnicoId : ""};
-    //this.familiar = {id : null,Nombre : "",NumeroDocumento : "",FechaNacimiento : "",Parentesco : "",TipoPoblacion : "",AfiliacionSalud : "",NivelEducativo : "",ProductorId : ""};
+    //this.familiar = {id : null,nombre : "",numeroDocumento : "",fechaNacimiento : "",parentesco : "",tipoPoblacion : "",afiliacionSalud : "",nivelEducativo : "",productorId : ""};
     this.aspectoEconomico = {id : 0, tenenciaTierra : "",legalidad : "",productorId : ""}
     this.participacionComunitaria = {id : 0, asistenteAsamblea : "",cargoAsamblea : "",aistenteTrabajos : "",cargoTrabajo : "",organizacionAparte : "",cualOrganizacion : "",aspectoEconomicoId : 0}
     this.habitabilidad = {id : 0,tipoVivienda : "",numeroHabitaciones : 0,materialPredominante : "",materialTecho : "",materialCosinar : "",energiaCosinar : "",servicioSanitario : "",tipoAlumbrado : "",aspectoEconomicoId : 0}
@@ -173,7 +173,7 @@ export class RegistrarComponent implements OnInit {
       //almacenamiento
       tipoAlmacenamiento : [''],
       volumen : [''],
-      numeroUsuario : [''],
+      numeroUsuario : [],
       estudioAgua : [''],
       existeDesperdicio : [''],
       mantenimiento : [''],
@@ -182,14 +182,14 @@ export class RegistrarComponent implements OnInit {
   }
 
   fieldArray: Array<Familiar> = [];
-  newAttribute: Familiar = {id : 0 ,Nombre : "",NumeroDocumento : "",FechaNacimiento : "",Parentesco : "",TipoPoblacion : "",AfiliacionSalud : "",NivelEducativo : "",ProductorId : ""};
+  newAttribute: Familiar = {id : 0 ,nombre : "",numeroDocumento : "",fechaNacimiento : "",parentesco : "",tipoPoblacion : "",afiliacionSalud : "",nivelEducativo : "",productorId : ""};
 
   //agregar filas de la tabla de familiares del productor
   addFieldValue() {
-    this.newAttribute.ProductorId = this.productor.id;
+    this.newAttribute.productorId = this.productor.id;
     this.fieldArray.push(this.newAttribute)
-    this.newAttribute.ProductorId = this.productor.id;
-    this.newAttribute = {id : 0 ,Nombre : "",NumeroDocumento : "",FechaNacimiento : "",Parentesco : "",TipoPoblacion : "",AfiliacionSalud : "",NivelEducativo : "",ProductorId : ""};
+    this.newAttribute.productorId = this.productor.id;
+    this.newAttribute = {id : 0 ,nombre : "",numeroDocumento : "",fechaNacimiento : "",parentesco : "",tipoPoblacion : "",afiliacionSalud : "",nivelEducativo : "",productorId : ""};
   }
 
   //eliminar una fila de la tabla de familiares del prductor
@@ -228,19 +228,19 @@ export class RegistrarComponent implements OnInit {
   GuardarFamiliar(id : string) : void{
     //guardo el ultimo familiar agregado
     try{
-        this.newAttribute.ProductorId = id;
+        this.newAttribute.productorId = id;
         this.familiarService.add(this.newAttribute).subscribe(
         familiar => {
-          console.log(this.newAttribute.Nombre+' '+this.newAttribute.ProductorId)
-          familiar != null ? console.log(' SE AGREGO NEWFAMILIAR '+this.newAttribute.Nombre) : console.log(' ERROR NEWFAMILIAR '+this.newAttribute.Nombre+' productorId '+this.newAttribute.ProductorId)
+          console.log(this.newAttribute.nombre+' '+this.newAttribute.productorId)
+          familiar != null ? console.log(' SE AGREGO NEWFAMILIAR '+this.newAttribute.nombre) : console.log(' ERROR NEWFAMILIAR '+this.newAttribute.nombre+' productorId '+this.newAttribute.productorId)
         }
       );
       //recorro el array de familiares y los guardo
       this.fieldArray.forEach(element => {
-        element.ProductorId = id;
+        element.productorId = id;
         this.familiarService.add(element).subscribe(
           fam => {
-            fam != null ? console.log('se agrego familiar del array '+fam.Nombre) : console.log('error al recorrer el array'+element.Nombre+' productorId '+element.ProductorId)
+            fam != null ? console.log('se agrego familiar del array '+fam.nombre) : console.log('error al recorrer el array'+element.nombre+' productorId '+element.productorId)
           }
         );
       });
@@ -261,7 +261,7 @@ export class RegistrarComponent implements OnInit {
     this.newAttributeDisponibilidadAgua.productorId = productorId;
     this.disponibilidadAguaService.add(this.newAttributeDisponibilidadAgua).subscribe(
     disponibilidadAgua => {
-      console.log(this.newAttribute.Nombre+' '+this.newAttribute.ProductorId)
+      console.log(this.newAttribute.nombre+' '+this.newAttribute.productorId)
       disponibilidadAgua != null ? console.log(' SE AGREGO newAttributeDisponibilidadAgua '+this.newAttributeDisponibilidadAgua.fuente) : console.log(' ERROR newAttributeDisponibilidadAgua '+this.newAttributeDisponibilidadAgua.fuente+' productorId '+this.newAttributeDisponibilidadAgua.fuente)
     });
 

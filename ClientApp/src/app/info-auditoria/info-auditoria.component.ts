@@ -26,7 +26,7 @@ import { ResultadoEvaluacion } from '../Models/ResultadoEvaluacion';
 export class InfoAuditoriaComponent implements OnInit {
 
   imports : [MaterialModule];
-
+  visitas : VisitaAuditoria[];
   veredaMunicipio = "";
   productor : Productor;
   tecnicoId : string;
@@ -58,7 +58,9 @@ export class InfoAuditoriaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getVisitaAuditoria();
+    this.visitaId = parseInt(sessionStorage.getItem('VisitaId'));
+    this.getVisitaAuditoria(this.visitaId);
+
     this.initVar();
     //this.setProductor();
   }
@@ -94,6 +96,7 @@ export class InfoAuditoriaComponent implements OnInit {
           this.veredaMunicipio = productor.municipio+","+productor.vereda;
           this.productor = productor;
           this.getTecnico();
+          this.getProductorVisitas(productor.id);
         }else{
           console.log('Error al consultar el productor');
         }
@@ -109,9 +112,9 @@ export class InfoAuditoriaComponent implements OnInit {
     );
   }
 
-  getVisitaAuditoria(){
-    this.visitaId = parseInt(sessionStorage.getItem('VisitaId'));
-    this.visitaAuditoriaService.get(this.visitaId).subscribe(
+  getVisitaAuditoria(visitaId : number){
+
+    this.visitaAuditoriaService.get(visitaId).subscribe(
       visita => {
         if(visita != null){
           this.visita = visita;
@@ -212,4 +215,11 @@ export class InfoAuditoriaComponent implements OnInit {
     );
   }
 
+  getProductorVisitas(productorId : string){
+    this.visitaAuditoriaService.getProductorVisitas(productorId).subscribe(
+      visitas => {
+        this.visitas = visitas
+      }
+    );
+  }
 }
