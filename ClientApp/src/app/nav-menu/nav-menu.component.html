@@ -18,9 +18,9 @@
                 <div *ngIf="rol == 'Tec'"><li class="nav-item"><a routerLink = "/Registrar" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Registrar</a></li></div>
                 <div *ngIf="rol == 'Tec'"><li class="nav-item"><a routerLink = "/Promotoria" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-envelope text-light fa-lg mr-3"></i>Promotoria</a></li></div>
                 <li class="nav-item"><a routerLink = "/List-Productor" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-shopping-cart text-light fa-lg mr-3"></i>Productores</a></li>
-                <!-- <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>Opcion 5</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-chart-bar text-light fa-lg mr-3"></i>Opcion 6</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-table text-light fa-lg mr-3"></i>Opcion 7</a></li> -->
+                <li class="nav-item"><a routerLink="/reporte" href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>Estadisticas</a></li>
+                <!--<li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-chart-bar text-light fa-lg mr-3"></i>Opcion 6</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-table text-light fa-lg mr-3"></i>Opcion 7</a></li>-->
 
               </ul>
             </div>
@@ -30,7 +30,7 @@
             <div class="col-xl-10 col-lg-9 col-md-8 ml-auto bg-dark fixed-top py-2 top-navbar">
               <div class="row align-items-center">
                 <div class="col-md-4">
-                  <h4 class="text-light text-uppercase mb-0">Cafeteros de Colombia</h4>
+                  <h5 class="text-light text-uppercase mb-0">Cafeteros de Colombia</h5>
                 </div>
                 <div class="col-md-5">
                   <form>
@@ -97,12 +97,19 @@
 
       <!--Footer-->
       <div class="modal-footer justify-content-center flex-column flex-md-row">
-        <span class="mr-4">Tutorial de como usar la aplicacion web de la asociacion de cafeteros - Seynekun</span>
-        <!-- <div>
-          <a type="button" class="btn-floating btn-sm btn-fb">
+        <span class="mr-3">
+          Tutorial de como usar la aplicación web de la asociación de cafeteros - Seynekun.
+          Queja o inquietud realizarla a
+          <a target="_blank" href="https://supportseyneyun.blogspot.com/2020/06/blog-post.html" class="">
+            Soporte tecnico
+          </a>
+        </span>
+
+        <!--  <div>
+          <a href="https://supportseyneyun.blogspot.com/2020/06/blog-post.html" type="button" class="btn-floating btn-sm btn-fb mr-2">
             <i class="fab fa-facebook-f"></i>
           </a>
-          <a type="button" class="btn-floating btn-sm btn-tw">
+         <a type="button" class="btn-floating btn-sm btn-tw">
             <i class="fab fa-twitter"></i>
           </a>
           <a type="button" class="btn-floating btn-sm btn-gplus">
@@ -112,7 +119,7 @@
             <i class="fab fa-linkedin-in"></i>
           </a>
         </div> -->
-        <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
+        <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-1"
           data-dismiss="modal">Close</button>
 
 

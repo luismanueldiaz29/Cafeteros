@@ -444,9 +444,9 @@ namespace Cafeteros.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RespuestaCB1 = table.Column<string>(nullable: true),
+                    RespuestaCB1 = table.Column<int>(nullable: false),
                     JustificacionCB1 = table.Column<string>(nullable: true),
-                    RespuestaCB2 = table.Column<string>(nullable: true),
+                    RespuestaCB2 = table.Column<int>(nullable: false),
                     JustificacionCB2 = table.Column<string>(nullable: true),
                     ComentarioCB = table.Column<string>(nullable: true),
                     VisitaAuditoriaId = table.Column<int>(nullable: false)
@@ -515,13 +515,13 @@ namespace Cafeteros.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RespuestaCB1 = table.Column<string>(nullable: true),
+                    RespuestaCB1 = table.Column<int>(nullable: false),
                     JustificacionCB1 = table.Column<string>(nullable: true),
-                    RespuestaMA2 = table.Column<string>(nullable: true),
+                    RespuestaMA2 = table.Column<int>(nullable: false),
                     JustificacionMA2 = table.Column<string>(nullable: true),
-                    RespuestaMA3 = table.Column<string>(nullable: true),
+                    RespuestaMA3 = table.Column<int>(nullable: false),
                     JustificacionMA3 = table.Column<string>(nullable: true),
-                    RespuestaMA4 = table.Column<string>(nullable: true),
+                    RespuestaMA4 = table.Column<int>(nullable: false),
                     JustificacionMA4 = table.Column<string>(nullable: true),
                     ComentarioMA = table.Column<string>(nullable: true),
                     VisitaAuditoriaId = table.Column<int>(nullable: false)
@@ -543,15 +543,15 @@ namespace Cafeteros.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RespuestaMIES1 = table.Column<string>(nullable: true),
+                    RespuestaMIES1 = table.Column<int>(nullable: false),
                     JustificacionMIES1 = table.Column<string>(nullable: true),
-                    RespuestaMIES2 = table.Column<string>(nullable: true),
+                    RespuestaMIES2 = table.Column<int>(nullable: false),
                     JustificacionMIES2 = table.Column<string>(nullable: true),
-                    RespuestaMIES3 = table.Column<string>(nullable: true),
+                    RespuestaMIES3 = table.Column<int>(nullable: false),
                     JustificacionMIES3 = table.Column<string>(nullable: true),
-                    RespuestaMIES4 = table.Column<string>(nullable: true),
+                    RespuestaMIES4 = table.Column<int>(nullable: false),
                     JustificacionMIES4 = table.Column<string>(nullable: true),
-                    RespuestaMIES5 = table.Column<string>(nullable: true),
+                    RespuestaMIES5 = table.Column<int>(nullable: false),
                     JustificacionMIES5 = table.Column<string>(nullable: true),
                     ComentarioMIES = table.Column<string>(nullable: true),
                     VisitaAuditoriaId = table.Column<int>(nullable: false)
@@ -573,15 +573,15 @@ namespace Cafeteros.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RespuestaMS1 = table.Column<string>(nullable: true),
+                    RespuestaMS1 = table.Column<int>(nullable: false),
                     JustificacionMS1 = table.Column<string>(nullable: true),
-                    RespuestaMS2 = table.Column<string>(nullable: true),
+                    RespuestaMS2 = table.Column<int>(nullable: false),
                     JustificacionMS2 = table.Column<string>(nullable: true),
-                    RespuestaMS3 = table.Column<string>(nullable: true),
+                    RespuestaMS3 = table.Column<int>(nullable: false),
                     JustificacionMS3 = table.Column<string>(nullable: true),
-                    RespuestaMS4 = table.Column<string>(nullable: true),
+                    RespuestaMS4 = table.Column<int>(nullable: false),
                     JustificacionMS4 = table.Column<string>(nullable: true),
-                    RespuestaMS5 = table.Column<string>(nullable: true),
+                    RespuestaMS5 = table.Column<int>(nullable: false),
                     JustificacionMS5 = table.Column<string>(nullable: true),
                     ComentarioMS = table.Column<string>(nullable: true),
                     VisitaAuditoriaId = table.Column<int>(nullable: false)
@@ -603,11 +603,11 @@ namespace Cafeteros.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RespuestaMSE1 = table.Column<string>(nullable: true),
+                    RespuestaMSE1 = table.Column<int>(nullable: false),
                     JustificacionMSE1 = table.Column<string>(nullable: true),
-                    RespuestaMSE2 = table.Column<string>(nullable: true),
+                    RespuestaMSE2 = table.Column<int>(nullable: false),
                     JustificacionMSE3 = table.Column<string>(nullable: true),
-                    RespuestaMSE3 = table.Column<string>(nullable: true),
+                    RespuestaMSE3 = table.Column<int>(nullable: false),
                     JustificacionMA3 = table.Column<string>(nullable: true),
                     ComentarioMSE = table.Column<string>(nullable: true),
                     VisitaAuditoriaId = table.Column<int>(nullable: false)

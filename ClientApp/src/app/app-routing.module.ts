@@ -12,6 +12,7 @@ import { ListPromotoriaComponent } from './list-promotoria/list-promotoria.compo
 import { InfoPromotoriaComponent } from './info-promotoria/info-promotoria.component';
 import { ListAuditoriaComponent } from './list-auditoria/list-auditoria.component';
 import { InfoAuditoriaComponent } from './info-auditoria/info-auditoria.component';
+import { ListReportesComponent } from './Reportes/list-reportes/list-reportes.component';
 
 const routes : Routes = [
   {
@@ -57,6 +58,10 @@ const routes : Routes = [
   {
     path : 'info_Auditoria',
     component : InfoAuditoriaComponent
+  },
+  {
+    path: 'reporte',
+    component: ListReportesComponent
   }
 ]
 

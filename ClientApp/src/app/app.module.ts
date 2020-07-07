@@ -20,6 +20,7 @@ import { ListPromotoriaComponent } from './list-promotoria/list-promotoria.compo
 import { InfoPromotoriaComponent } from './info-promotoria/info-promotoria.component';
 import { InfoAuditoriaComponent } from './info-auditoria/info-auditoria.component';
 import { ListAuditoriaComponent } from './list-auditoria/list-auditoria.component';
+import { ListReportesComponent } from './Reportes/list-reportes/list-reportes.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ListAuditoriaComponent } from './list-auditoria/list-auditoria.componen
     ListPromotoriaComponent,
     InfoPromotoriaComponent,
     InfoAuditoriaComponent,
-    ListAuditoriaComponent
+    ListAuditoriaComponent,
+    ListReportesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

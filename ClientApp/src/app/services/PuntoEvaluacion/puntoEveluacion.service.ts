@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { CB, MA, MSE, MIES, MS} from '../Models/PuntoEvaluacion';
+import { CB, MA, MSE, MIES, MS} from '../../Models/PuntoEvaluacion';
 
 
 const httpOptions = {

@@ -162,11 +162,11 @@ namespace Cafeteros.Migrations
                     b.Property<string>("JustificacionCB2")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RespuestaCB1")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaCB1")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RespuestaCB2")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaCB2")
+                        .HasColumnType("int");
 
                     b.Property<int>("VisitaAuditoriaId")
                         .HasColumnType("int");
@@ -441,17 +441,17 @@ namespace Cafeteros.Migrations
                     b.Property<string>("JustificacionMA4")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RespuestaCB1")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaCB1")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RespuestaMA2")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaMA2")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RespuestaMA3")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaMA3")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RespuestaMA4")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaMA4")
+                        .HasColumnType("int");
 
                     b.Property<int>("VisitaAuditoriaId")
                         .HasColumnType("int");
@@ -489,20 +489,20 @@ namespace Cafeteros.Migrations
                     b.Property<string>("JustificacionMIES5")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RespuestaMIES1")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaMIES1")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RespuestaMIES2")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaMIES2")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RespuestaMIES3")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaMIES3")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RespuestaMIES4")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaMIES4")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RespuestaMIES5")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaMIES5")
+                        .HasColumnType("int");
 
                     b.Property<int>("VisitaAuditoriaId")
                         .HasColumnType("int");
@@ -540,20 +540,20 @@ namespace Cafeteros.Migrations
                     b.Property<string>("JustificacionMS5")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RespuestaMS1")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaMS1")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RespuestaMS2")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaMS2")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RespuestaMS3")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaMS3")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RespuestaMS4")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaMS4")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RespuestaMS5")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaMS5")
+                        .HasColumnType("int");
 
                     b.Property<int>("VisitaAuditoriaId")
                         .HasColumnType("int");
@@ -585,14 +585,14 @@ namespace Cafeteros.Migrations
                     b.Property<string>("JustificacionMSE3")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RespuestaMSE1")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaMSE1")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RespuestaMSE2")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaMSE2")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RespuestaMSE3")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RespuestaMSE3")
+                        .HasColumnType("int");
 
                     b.Property<int>("VisitaAuditoriaId")
                         .HasColumnType("int");

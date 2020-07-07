@@ -11,7 +11,7 @@ import { Habitabilidad } from '../Models/Habitabilidad';
 import { PaticipacionComunitaria } from '../Models/PaticipacionComunitaria';
 import { AspectoEconomicoService } from '../services/aspectoEconomico.service';
 import { HabitabilidadService } from '../services/habitabilidad.service';
-import { PaticipacionComunitariaService } from '../services/participacionComunitaria';
+import { PaticipacionComunitariaService } from '../services/participacionComunitaria.service';
 import { AlmacenamientoAgua } from '../Models/AlmacenamientoAgua';
 import { DisponibilidadAgua } from '../Models/DisponibilidadAgua';
 import { AlmacenamientoAguaService } from '../services/almacenamientoAgua.service';

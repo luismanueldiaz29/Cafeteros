@@ -417,9 +417,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaCB1" [(ngModel)]="CB.respuestaCB1">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -432,9 +430,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaCB2" [(ngModel)]="CB.respuestaCB2">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -479,9 +475,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMA1" [(ngModel)]="MA.respuestaMA1">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -494,9 +488,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMA2" [(ngModel)]="MA.respuestaMA2">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -509,9 +501,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMA3" [(ngModel)]="MA.respuestaMA3">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -524,9 +514,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMA4" [(ngModel)]="MA.respuestaMA4">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -572,9 +560,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMSE1" [(ngModel)]="MSE.respuestaMSE1">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -588,9 +574,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMSE2" [(ngModel)]="MSE.respuestaMSE2">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -603,9 +587,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMSE3" [(ngModel)]="MSE.respuestaMSE3">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -651,9 +633,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMIES1" [(ngModel)]="MIES.respuestaMIES1">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -667,9 +647,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMIES2" [(ngModel)]="MIES.respuestaMIES2">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -683,9 +661,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMIES3" [(ngModel)]="MIES.respuestaMIES3">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -699,9 +675,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMIES4" [(ngModel)]="MIES.respuestaMIES4">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -716,9 +690,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMIES5" [(ngModel)]="MIES.respuestaMIES5">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -765,9 +737,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMS1" [(ngModel)]="MS.respuestaMS1">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -781,9 +751,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMIES2" [(ngModel)]="MS.respuestaMS2">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -797,9 +765,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMS3" [(ngModel)]="MS.respuestaMS3">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -813,9 +779,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMS4" [(ngModel)]="MS.respuestaMS4">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>
@@ -830,9 +794,7 @@
                                       </td>
                                       <td>
                                         <select class="form-control" name="respuestaMS5" [(ngModel)]="MS.respuestaMS5">
-                                          <option value="NA">NA</option>
-                                          <option value="CUM">CUM</option>
-                                          <option value="NO CUM">NO CUM</option>
+                                          <option  *ngFor="let item of items" [value]='item.values' >{{item.name}}{{item.values}}</option>
                                         </select>
                                       </td>
                                       <td>

@@ -11,7 +11,7 @@ import { CultivosPresentandosService } from '../services/cultivosPresentandos.se
 import { OtrosCultivosService } from '../services/otrosCultivos.service';
 import { EvaluacionCompromisoService } from '../services/evaluacionCompromiso.service';
 import { ResultadoEvaluacionService } from '../services/resultadoEvaluacion.service';
-import { PuntoEvaluacionService } from '../services/puntoEveluacion.service';
+import { PuntoEvaluacionService } from '../services/PuntoEvaluacion/puntoEveluacion.service';
 import { OtrosCultivos } from '../Models/OtrosCultivos';
 import { EvaluacionCompromiso } from '../Models/EvaluacionCompromiso';
 import { CB, MA, MSE, MIES, MS } from '../Models/PuntoEvaluacion';
@@ -69,11 +69,11 @@ export class InfoAuditoriaComponent implements OnInit {
     this.tecnico = {correo : "", identificacion : "", contraseña : "", nombre : ""};
     this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",numeroTelefono : "",afiliacionSalud : "",actvidadesDedican : "",fechaAsociacion:"", fechaRegistro : "", fechaNoAsociacion : "", estado: 0, tecnicoId : ""};
     this.visita = {id : 0, recibeVisita : "", oportunidadMejora : "", decicionFinal : "", fechaFinal : "", cultivosPresentandos : "",   fechaVisita: "", horaVisita: "", productorId : "", TecnicoId : ""};
-    this.CB = {id : 0, respuestaCB1 : "", justificacionCB1 : "",  respuestaCB2 : "", justificacionCB2 : "", comentarioCB : "", visitaAuditoriaId : 0};
-    this.MA = {id : 0, respuestaMA1 : "", justificacionMA1 : "", respuestaMA2 : "", justificacionMA2 : "", respuestaMA3 : "", justificacionMA3 : "", respuestaMA4 : "", justificacionMA4 : "", comentarioMA : "", visitaAuditoriaId : 0};
-    this.MSE = {id : 0, respuestaMSE1 : "", justificacionMSE1 : "",respuestaMSE2 : "", justificacionMSE2 : "", respuestaMSE3 : "", justificacionMSE3 : "", comentarioMSE : "", visitaAuditoriaId : 0};
-    this.MIES = {id : 0, respuestaMIES1 : "", justificacionMIES1 : "",  respuestaMIES2 : "", justificacionMIES2 : "",respuestaMIES3 : "", justificacionMIES3 : "", respuestaMIES4 : "", justificacionMIES4 : "", respuestaMIES5 : "", justificacionMIES5 : "", comentarioMIES : "", visitaAuditoriaId : 0};
-    this.MS = {id : 0, respuestaMS1 : "", justificacionMS1 : "",  respuestaMS2 : "", justificacionMS2 : "",respuestaMS3 : "", justificacionMS3 : "", respuestaMS4 : "", justificacionMS4 : "", respuestaMS5 : "", justificacionMS5 : "" ,comentarioMS : "", visitaAuditoriaId : 0};
+    this.CB = {id : 0, respuestaCB1 : null, justificacionCB1 : "",  respuestaCB2 : null, justificacionCB2 : "", comentarioCB : "", visitaAuditoriaId : 0};
+    this.MA = {id : 0, respuestaMA1 : null, justificacionMA1 : "", respuestaMA2 : null, justificacionMA2 : "", respuestaMA3 : null, justificacionMA3 : "", respuestaMA4 : null, justificacionMA4 : "", comentarioMA : "", visitaAuditoriaId : 0};
+    this.MSE = {id : 0, respuestaMSE1 : null, justificacionMSE1 : "",respuestaMSE2 : null, justificacionMSE2 : "", respuestaMSE3 : null, justificacionMSE3 : "", comentarioMSE : null, visitaAuditoriaId : 0};
+    this.MIES = {id : 0, respuestaMIES1 : null, justificacionMIES1 : "",  respuestaMIES2 : null, justificacionMIES2 : "",respuestaMIES3 : null, justificacionMIES3 : "", respuestaMIES4 : null, justificacionMIES4 : "", respuestaMIES5 : null, justificacionMIES5 : "", comentarioMIES : "", visitaAuditoriaId : 0};
+    this.MS = {id : 0, respuestaMS1 : null, justificacionMS1 : "",  respuestaMS2 : null, justificacionMS2 : "",respuestaMS3 : null, justificacionMS3 : "", respuestaMS4 : null, justificacionMS4 : "", respuestaMS5 : null, justificacionMS5 : "" ,comentarioMS : "", visitaAuditoriaId : 0};
   }
 
   volver(){

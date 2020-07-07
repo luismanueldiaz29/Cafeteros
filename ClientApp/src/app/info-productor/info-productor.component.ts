@@ -6,7 +6,7 @@ import { FamiliarService } from '../services/familiar.service';
 import { Familiar } from '../Models/Familiar';
 import { AspectoEconomico } from '../Models/AspectoEconomico';
 import { AspectoEconomicoService } from '../services/aspectoEconomico.service';
-import { PaticipacionComunitariaService } from '../services/participacionComunitaria';
+import { PaticipacionComunitariaService } from '../services/participacionComunitaria.service';
 import { PaticipacionComunitaria } from '../Models/PaticipacionComunitaria';
 import { HabitabilidadService } from '../services/habitabilidad.service';
 import { Habitabilidad } from '../Models/Habitabilidad';
