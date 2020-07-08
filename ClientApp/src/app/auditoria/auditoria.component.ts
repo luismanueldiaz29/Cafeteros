@@ -157,11 +157,11 @@ export class AuditoriaComponent implements OnInit {
     this.tecnico = {correo : "", identificacion : "", contraseña : "", nombre : ""};
     this.productor = {id : "",nombre : "",codigoCafetero : "",nombrePredio : "",codigoSica : "",municipio : "",vereda : "",numeroTelefono : "",afiliacionSalud : "",actvidadesDedican : "",fechaAsociacion:"", fechaRegistro : "", fechaNoAsociacion : "", estado: 0, tecnicoId : ""};
     this.visitaAuditoria = {id : 0, recibeVisita : "", oportunidadMejora : "", decicionFinal : "", fechaFinal : "", cultivosPresentandos : "",   fechaVisita: this.fechaVisita, horaVisita: this.hora, productorId : "", TecnicoId : ""};
-    this.CB = {id : 0, respuestaCB1 : 3, justificacionCB1 : "",  respuestaCB2 : 3, justificacionCB2 : "", comentarioCB : "", visitaAuditoriaId : 0};
-    this.MA = {id : 0, respuestaMA1 : 3, justificacionMA1 : "", respuestaMA2 : 3, justificacionMA2 : "", respuestaMA3 : 3, justificacionMA3 : "", respuestaMA4 : 3, justificacionMA4 : "", comentarioMA : "", visitaAuditoriaId : 0};
-    this.MSE = {id : 0, respuestaMSE1 : 3, justificacionMSE1 : "",respuestaMSE2 : 3, justificacionMSE2 : "", respuestaMSE3 : 3, justificacionMSE3 : "", comentarioMSE : "", visitaAuditoriaId : 0};
-    this.MIES = {id : 0, respuestaMIES1 : 3, justificacionMIES1 : "",  respuestaMIES2 : 3, justificacionMIES2 : "", respuestaMIES3 : 3, justificacionMIES3 : "", respuestaMIES4 : 3, justificacionMIES4 : "", respuestaMIES5 : 3, justificacionMIES5 : "", comentarioMIES : "", visitaAuditoriaId : 0};
-    this.MS = {id : 0, respuestaMS1 : 3, justificacionMS1 : "",  respuestaMS2 : 3, justificacionMS2 : "",respuestaMS3 : 3, justificacionMS3 : "", respuestaMS4 : 3, justificacionMS4 : "", respuestaMS5 : 3, justificacionMS5 : "" ,comentarioMS : "", visitaAuditoriaId : 0};
+    this.CB = {id : 0, respuestaCB1 : 2, justificacionCB1 : "",  respuestaCB2 : 1, justificacionCB2 : "", comentarioCB : "", visitaAuditoriaId : 0};
+    this.MA = {id : 0, respuestaMA1 : 3, justificacionMA1 : "", respuestaMA2 : 3, justificacionMA2 : "", respuestaMA3 : 2, justificacionMA3 : "", respuestaMA4 : 3, justificacionMA4 : "", comentarioMA : "", visitaAuditoriaId : 0};
+    this.MSE = {id : 0, respuestaMSE1 : 1, justificacionMSE1 : "",respuestaMSE2 : 3, justificacionMSE2 : "", respuestaMSE3 : 2, justificacionMSE3 : "", comentarioMSE : "", visitaAuditoriaId : 0};
+    this.MIES = {id : 0, respuestaMIES1 : 2, justificacionMIES1 : "",  respuestaMIES2 : 1, justificacionMIES2 : "", respuestaMIES3 : 2, justificacionMIES3 : "", respuestaMIES4 : 3, justificacionMIES4 : "", respuestaMIES5 : 1, justificacionMIES5 : "", comentarioMIES : "", visitaAuditoriaId : 0};
+    this.MS = {id : 0, respuestaMS1 : 3, justificacionMS1 : "",  respuestaMS2 : 3, justificacionMS2 : "",respuestaMS3 : 2, justificacionMS3 : "", respuestaMS4 : 2, justificacionMS4 : "", respuestaMS5 : 1, justificacionMS5 : "" ,comentarioMS : "", visitaAuditoriaId : 0};
   }
 
   mensajeConfirmacion(){

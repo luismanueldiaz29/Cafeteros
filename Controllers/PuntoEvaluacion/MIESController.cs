@@ -50,6 +50,80 @@ namespace Cafeteros.Controllers
             return null;
         }
 
+        [HttpGet("RespuestaMIES1/{NumRespuesta}")]
+        public async Task<ActionResult<IEnumerable<MIES>>> GetRespuestaMIES1(int NumRespuesta)
+        {
+            var MIESS = await _context.MIES.ToListAsync();
+            List<MIES> returnMIESS = new List<MIES>();
+            foreach (var item in MIESS)
+            {
+                if(item.RespuestaMIES1 == NumRespuesta){
+                    returnMIESS.Add(item);
+                }
+            }
+
+            return returnMIESS;
+        }
+
+        [HttpGet("RespuestaMIES2/{NumRespuesta}")]
+        public async Task<ActionResult<IEnumerable<MIES>>> GetRespuestaMIES2(int NumRespuesta)
+        {
+            var MIESS = await _context.MIES.ToListAsync();
+            List<MIES> returnMIESS = new List<MIES>();
+            foreach (var item in MIESS)
+            {
+                if(item.RespuestaMIES2 == NumRespuesta){
+                    returnMIESS.Add(item);
+                }
+            }
+
+            return returnMIESS;
+        }
+
+        [HttpGet("RespuestaMIES3/{NumRespuesta}")]
+        public async Task<ActionResult<IEnumerable<MIES>>> GetRespuestaMIES3(int NumRespuesta)
+        {
+            var MIESS = await _context.MIES.ToListAsync();
+            List<MIES> returnMIESS = new List<MIES>();
+            foreach (var item in MIESS)
+            {
+                if(item.RespuestaMIES3 == NumRespuesta){
+                    returnMIESS.Add(item);
+                }
+            }
+
+            return returnMIESS;
+        }
+        [HttpGet("RespuestaMIES4/{NumRespuesta}")]
+        public async Task<ActionResult<IEnumerable<MIES>>> GetRespuestaMIES4(int NumRespuesta)
+        {
+            var MIESS = await _context.MIES.ToListAsync();
+            List<MIES> returnMIESS = new List<MIES>();
+            foreach (var item in MIESS)
+            {
+                if(item.RespuestaMIES4 == NumRespuesta){
+                    returnMIESS.Add(item);
+                }
+            }
+
+            return returnMIESS;
+        }
+
+        [HttpGet("RespuestaMIES5/{NumRespuesta}")]
+        public async Task<ActionResult<IEnumerable<MIES>>> GetRespuestaMIES5(int NumRespuesta)
+        {
+            var MIESS = await _context.MIES.ToListAsync();
+            List<MIES> returnMIESS = new List<MIES>();
+            foreach (var item in MIESS)
+            {
+                if(item.RespuestaMIES5 == NumRespuesta){
+                    returnMIESS.Add(item);
+                }
+            }
+
+            return returnMIESS;
+        }
+
         // POST: api/Task
         [HttpPost]
         public async Task<ActionResult<MIES>> PostCB(MIES item)

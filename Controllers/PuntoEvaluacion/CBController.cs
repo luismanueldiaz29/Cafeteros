@@ -50,6 +50,36 @@ namespace Cafeteros.Controllers
             }
             return null;
         }
+        
+        [HttpGet("RespuestaCB1/{NumRespuesta}")]
+        public async Task<ActionResult<IEnumerable<CB>>> GetRespuestaCB1(int NumRespuesta)
+        {
+            var CBS = await _context.CB.ToListAsync();
+            List<CB> returnCBS = new List<CB>();
+            foreach (var item in CBS)
+            {
+                if(item.RespuestaCB1 == NumRespuesta){
+                    returnCBS.Add(item);
+                }
+            }
+
+            return returnCBS;
+        }
+
+        [HttpGet("RespuestaCB2/{NumRespuesta}")]
+        public async Task<ActionResult<IEnumerable<CB>>> GetRespuestaCB2(int NumRespuesta)
+        {
+            var CBS = await _context.CB.ToListAsync();
+            List<CB> returnCBS = new List<CB>();
+            foreach (var item in CBS)
+            {
+                if(item.RespuestaCB2 == NumRespuesta){
+                    returnCBS.Add(item);
+                }
+            }
+
+            return returnCBS;
+        }
 
         // POST: api/Task
         [HttpPost]

@@ -40,10 +40,10 @@ namespace Cafeteros.Models
         public int id { get; set; }
 
         [JsonProperty("RespuestaMA1")]
-        public int RespuestaCB1 { get; set; }
+        public int RespuestaMA1 { get; set; }
 
         [JsonProperty("JustificacionMA1")]
-        public string JustificacionCB1 { get; set; }
+        public string JustificacionMA1 { get; set; }
 
         [JsonProperty("RespuestaMA2")]
         public int RespuestaMA2 { get; set; }

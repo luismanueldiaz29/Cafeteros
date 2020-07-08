@@ -50,6 +50,52 @@ namespace Cafeteros.Controllers
             return null;
         }
 
+
+        [HttpGet("RespuestaMSE1/{NumRespuesta}")]
+        public async Task<ActionResult<IEnumerable<MSE>>> GetRespuestaMSE1(int NumRespuesta)
+        {
+            var MSES = await _context.MSE.ToListAsync();
+            List<MSE> returnMSES = new List<MSE>();
+            foreach (var item in MSES)
+            {
+                if(item.RespuestaMSE1 == NumRespuesta){
+                    returnMSES.Add(item);
+                }
+            }
+
+            return returnMSES;
+        }
+
+        [HttpGet("RespuestaMSE2/{NumRespuesta}")]
+        public async Task<ActionResult<IEnumerable<MSE>>> GetRespuestaMSE2(int NumRespuesta)
+        {
+            var MSES = await _context.MSE.ToListAsync();
+            List<MSE> returnMSES = new List<MSE>();
+            foreach (var item in MSES)
+            {
+                if(item.RespuestaMSE2 == NumRespuesta){
+                    returnMSES.Add(item);
+                }
+            }
+
+            return returnMSES;
+        }
+
+        [HttpGet("RespuestaMSE3/{NumRespuesta}")]
+        public async Task<ActionResult<IEnumerable<MSE>>> GetRespuestaMSE3(int NumRespuesta)
+        {
+            var MSES = await _context.MSE.ToListAsync();
+            List<MSE> returnMSES = new List<MSE>();
+            foreach (var item in MSES)
+            {
+                if(item.RespuestaMSE3 == NumRespuesta){
+                    returnMSES.Add(item);
+                }
+            }
+
+            return returnMSES;
+        }
+
         // POST: api/Task
         [HttpPost]
         public async Task<ActionResult<MSE>> PostCB(MSE item)

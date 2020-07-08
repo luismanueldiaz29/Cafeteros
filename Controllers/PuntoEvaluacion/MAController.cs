@@ -50,6 +50,67 @@ namespace Cafeteros.Controllers
             }
             return null;
         }
+
+        [HttpGet("RespuestaMA1/{NumRespuesta}")]
+        public async Task<ActionResult<IEnumerable<MA>>> GetRespuestaMA1(int NumRespuesta)
+        {
+            var MAS = await _context.MA.ToListAsync();
+            List<MA> returnMAS = new List<MA>();
+            foreach (var item in MAS)
+            {
+                if(item.RespuestaMA1 == NumRespuesta){
+                    returnMAS.Add(item);
+                }
+            }
+
+            return returnMAS;
+        }
+
+        [HttpGet("RespuestaMA2/{NumRespuesta}")]
+        public async Task<ActionResult<IEnumerable<MA>>> GetRespuestaMA2(int NumRespuesta)
+        {
+            var MAS = await _context.MA.ToListAsync();
+            List<MA> returnMAS = new List<MA>();
+            foreach (var item in MAS)
+            {
+                if(item.RespuestaMA2 == NumRespuesta){
+                    returnMAS.Add(item);
+                }
+            }
+
+            return returnMAS;
+        }
+
+        [HttpGet("RespuestaMA3/{NumRespuesta}")]
+        public async Task<ActionResult<IEnumerable<MA>>> GetRespuestaMA3(int NumRespuesta)
+        {
+            var MAS = await _context.MA.ToListAsync();
+            List<MA> returnMAS = new List<MA>();
+            foreach (var item in MAS)
+            {
+                if(item.RespuestaMA3 == NumRespuesta){
+                    returnMAS.Add(item);
+                }
+            }
+
+            return returnMAS;
+        }
+
+        [HttpGet("RespuestaMA4/{NumRespuesta}")]
+        public async Task<ActionResult<IEnumerable<MA>>> GetRespuestaMA4(int NumRespuesta)
+        {
+            var MAS = await _context.MA.ToListAsync();
+            List<MA> returnMAS = new List<MA>();
+            foreach (var item in MAS)
+            {
+                if(item.RespuestaMA4 == NumRespuesta){
+                    returnMAS.Add(item);
+                }
+            }
+
+            return returnMAS;
+        }
+
         // POST: api/Task
         [HttpPost]
         public async Task<ActionResult<MA>> PostMA(MA item)

@@ -515,8 +515,8 @@ namespace Cafeteros.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RespuestaCB1 = table.Column<int>(nullable: false),
-                    JustificacionCB1 = table.Column<string>(nullable: true),
+                    RespuestaMA1 = table.Column<int>(nullable: false),
+                    JustificacionMA1 = table.Column<string>(nullable: true),
                     RespuestaMA2 = table.Column<int>(nullable: false),
                     JustificacionMA2 = table.Column<string>(nullable: true),
                     RespuestaMA3 = table.Column<int>(nullable: false),
